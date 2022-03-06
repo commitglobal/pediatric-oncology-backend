@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: oncoped-db
+    build:
+      context: ./db
+    env_file:
+      - .env
+    ports:
+      - "5454:5432"
+    networks:
+      - internal
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+
+  cache:
+    container_name: oncoped-cache
+    image: memcached:1.6.14-alpine
+    networks:
+      - internal
+
+  redis:
+    image: redis:alpine
+    networks:
+      - internal
+    container_name: oncoped-redis
+    expose:
+      - "6379"
+
+  oncoped:
+    container_name: oncoped-admin
+    build:
+      context: ./oncoped
+    command: dockerize -wait tcp://db:5432 -timeout 90s
+    env_file:
+      - .env
+    networks:
+      - internal
+    volumes:
+      - ./oncoped:/code
+    ports:
+      - "8070:8070"
+    depends_on:
+      - db
+      - cache
+      - redis
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  pgdata:
+    name: oncoped-pgdata

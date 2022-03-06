@@ -1,0 +1,36 @@
+# django and related apps
+django>=3.2,<3.3
+django-environ
+django-storages
+
+# scheduler
+django-q
+django-q-email
+supervisor
+
+
+# django dashboard
+django-import-export==2.7.1
+django-jazzmin==2.4.9
+
+# py caching
+pymemcache
+
+# database
+psycopg2<2.10
+dj-database-url
+
+# data analysis
+pandas
+xlsxwriter
+
+# file handling
+whitenoise
+
+# wsgi server
+gunicorn
+gevent
+
+# admin
+django-jazzmin
+django-multiselectfield>=0.1.12,<1.0.0
