@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     # project apps
     "static_custom",
     "app_account",
+    "dispatch"
 ]
 
 MIDDLEWARE = [
@@ -325,14 +326,12 @@ JAZZMIN_SETTINGS = {
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
         "account.EmailAddress": "fas fa-at",
-        "app_account.CustomUser": "fas fa-user",
-        # "app_item.Category": "fas fa-cube",
-        # "app_item.TextileCategory": "fas fa-cubes",
-        # "app_item.ItemOffer": "fas fa-arrow-alt-circle-right",
-        # "app_item.ItemRequest": "far fa-arrow-alt-circle-left",
         "django_q.Failure": "fas fa-times",
         "django_q.Schedule": "fas fa-calendar-check",
         "django_q.Success": "fas fa-check",
+        #
+        "app_account.CustomUser": "fas fa-user",
+        "dispatch.PatientRequest": "fas fa-hospital-user",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
@@ -341,7 +340,7 @@ JAZZMIN_SETTINGS = {
     # Related Modal #
     #################
     # Use modals instead of popups
-    "related_modal_active": False,
+    "related_modal_active": True,
     #############
     # UI Tweaks #
     #############
@@ -359,7 +358,7 @@ JAZZMIN_SETTINGS = {
     # - vertical_tabs
     # - collapsible
     # - carousel
-    "changeform_format": "single",
+    "changeform_format": "horizontal_tabs",
     # override change forms on a per modeladmin basis
     "changeform_format_overrides": {
         "auth.user": "collapsible",
