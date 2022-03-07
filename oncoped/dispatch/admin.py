@@ -10,9 +10,15 @@ class PatientRequestFileInline(admin.TabularInline):
     model = PatientRequestFile
     extra = 1
     show_change_link = True
+    show_delete_link = True
     view_on_site = True
     verbose_name_plural = _("Upload Medical Files")
 
+@admin.register(PatientRequestFile)
+class AdminPatientRequestFile(admin.ModelAdmin):
+    # Just to hide the model in admin...
+    def get_model_perms(self, request):
+        return {}
 
 @admin.register(PatientRequest)
 class AdminPatientRequest(ImportExportModelAdmin):

@@ -229,10 +229,8 @@ class PatientRequest(models.Model):
 
 
 def patient_request_upload(instance, filename):
-    pr_name = instance.name.lower().replace(" ", "_")
     file_name = filename.lower().replace(" ", "_")
-    return "patient_request_files/{}/{}".format(pr_name, file_name)
-
+    return f"patient_request_files/{filename}"
 
 class PatientRequestFile(models.Model):
     request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE)
