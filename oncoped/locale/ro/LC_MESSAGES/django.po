@@ -3,315 +3,317 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-07 11:37+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2022-03-07 11:57+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: app_account/admin.py:11 app_account/admin.py:47
 msgid "Personal info"
-msgstr ""
+msgstr "Informații Personale"
 
 #: app_account/admin.py:15
 msgid "Password"
-msgstr ""
+msgstr "Parolă"
 
 #: app_account/admin.py:19 app_account/admin.py:52
 msgid "Permissions"
-msgstr ""
+msgstr "Permisiuni"
 
 #: app_account/admin.py:50
 msgid "Profile data"
-msgstr ""
+msgstr "Date de profil"
 
 #: app_account/admin.py:64
 msgid "DOP User"
-msgstr ""
+msgstr "Utilizator DOP"
 
 #: app_account/apps.py:8
 msgid "Accounts"
-msgstr ""
+msgstr "Conturi"
 
 #: app_account/models.py:11
 msgid "Individual"
-msgstr ""
+msgstr "Individual"
 
 #: app_account/models.py:12
 msgid "Corporate"
-msgstr ""
+msgstr "Corporativ"
 
 #: app_account/models.py:13
 msgid "Non-Profit"
-msgstr ""
+msgstr "Non-Profit"
 
 #: app_account/models.py:14
 msgid "Government"
-msgstr ""
+msgstr "Guvernamental"
 
 #: app_account/models.py:17
 msgid "email address"
-msgstr ""
+msgstr "adresa de email"
 
 #: app_account/models.py:19
 msgid "type"
-msgstr ""
+msgstr "tip"
 
 #: app_account/models.py:21
 msgid "phone number"
-msgstr ""
+msgstr "număr de telefon"
 
 #: app_account/models.py:23
 msgid "address"
-msgstr ""
+msgstr "adresă"
 
 #: app_account/models.py:24
 msgid "details"
-msgstr ""
+msgstr "detalii"
 
 #: app_account/models.py:26
 msgid "general user description"
-msgstr ""
+msgstr "descriere generală utilizator"
 
 #: app_account/models.py:36
 msgid "user"
-msgstr ""
+msgstr "utilizator"
 
 #: app_account/models.py:37
 msgid "users"
-msgstr ""
+msgstr "utilizatori"
 
 #: dispatch/admin.py:43
 msgid "Identification"
-msgstr ""
+msgstr "Identificare"
 
 #: dispatch/admin.py:57
 msgid "Requester"
-msgstr ""
+msgstr "Solicitant"
 
 #: dispatch/admin.py:69
 msgid "Medical Info"
-msgstr ""
+msgstr "Informații Medicale"
 
 #: dispatch/admin.py:82
 msgid "Logistical Info"
-msgstr ""
+msgstr "Informații Logistice"
 
 #: dispatch/models.py:7
 msgid "Passport"
-msgstr ""
+msgstr "Pașaport"
 
 #: dispatch/models.py:8
 msgid "National ID"
-msgstr ""
+msgstr "Carte de Identitate"
 
 #: dispatch/models.py:12
 msgid "Male"
-msgstr ""
+msgstr "Masculin"
 
 #: dispatch/models.py:13
 msgid "Female"
-msgstr ""
+msgstr "Feminin"
 
 #: dispatch/models.py:14
 msgid "Other / Unspecified"
-msgstr ""
+msgstr "Altul / Nespecificat"
 
 #: dispatch/models.py:17
 msgid "Solid"
-msgstr ""
+msgstr "Solid"
 
 #: dispatch/models.py:17
 msgid "Hemato"
-msgstr ""
+msgstr "Hemato"
 
 #: dispatch/models.py:20
 msgid "Chemotherapy"
-msgstr ""
+msgstr "Chimioterapie"
 
 #: dispatch/models.py:21
 msgid "Surgical"
-msgstr ""
+msgstr "Chirurgical"
 
 #: dispatch/models.py:22
 msgid "Palliative"
-msgstr ""
+msgstr "Paliativ"
 
 #: dispatch/models.py:23
 msgid "Monitoring"
-msgstr ""
+msgstr "Monitorizare"
 
 #: dispatch/models.py:24
 msgid "Diagnostic Investigation"
-msgstr ""
+msgstr "Investigații Diagnostice"
 
 #: dispatch/models.py:25
 msgid "Supportive Treatment"
-msgstr ""
+msgstr "Tratament Suportiv"
 
 #: dispatch/models.py:26
 msgid "Radiotherapy"
-msgstr ""
+msgstr "Radioterapie"
 
 #: dispatch/models.py:27
 msgid "Transplant"
-msgstr ""
+msgstr "Transplant"
 
 #: dispatch/models.py:40
 msgid "Document Type"
-msgstr ""
+msgstr "Tip de Document"
 
 #: dispatch/models.py:48
 msgid "Document Expiry Date"
-msgstr ""
+msgstr "Data de Expirare a Documentului"
 
 #: dispatch/models.py:53
 msgid "Document Issuing Country"
-msgstr ""
+msgstr "Țara de Eliberare a Documentului"
 
 #: dispatch/models.py:59
 msgid "First Name"
-msgstr ""
+msgstr "Prenume"
 
 #: dispatch/models.py:65
 msgid "Last Name"
-msgstr ""
+msgstr "Nume"
 
 #: dispatch/models.py:71
 msgid "Age"
-msgstr ""
+msgstr "Vârstă"
 
 #: dispatch/models.py:74
 msgid "Sex"
-msgstr ""
+msgstr "Sex"
 
 #: dispatch/models.py:84
 msgid "Requester First Name"
-msgstr ""
+msgstr "Prenumele Solicitantului"
 
 #: dispatch/models.py:90
 msgid "Requester Last Name"
-msgstr ""
+msgstr "Numele Solicitantului"
 
 #: dispatch/models.py:96
 msgid "Requester Phone Number"
-msgstr ""
+msgstr "Numărul de Telefon al Solicitantului"
 
 #: dispatch/models.py:98
 msgid "Please include country prefix e.g. +40723000123"
-msgstr ""
+msgstr "Te rog include prefixul țării, ex: +40723000123"
 
 #: dispatch/models.py:101
 msgid "Medical Institution"
-msgstr ""
+msgstr "Instituție Medicală"
 
 #: dispatch/models.py:104
 msgid "Medical Institution Name"
-msgstr ""
+msgstr "Numele Instituției Medicale"
 
 #: dispatch/models.py:108
 msgid "Fill in only if requester is a medical institution"
-msgstr ""
+msgstr "Completează doar dacă solicitantul este o instituție medicală"
 
 #: dispatch/models.py:113
 msgid "Complete Diagnostic"
-msgstr ""
+msgstr "Diagnostic Complet"
 
 #: dispatch/models.py:119
 msgid "Available Diagnostic / Request Reason"
-msgstr ""
+msgstr "Diagnostic Disponibil / Motivul Solicitării"
 
 #: dispatch/models.py:125
 msgid "Tumor Type"
-msgstr ""
+msgstr "Tipul Tumoarei"
 
 #: dispatch/models.py:133
 msgid "Therapy Needs"
-msgstr ""
+msgstr "Necesarul Terapeutic"
 
 #: dispatch/models.py:139
 msgid "Child Location"
-msgstr ""
+msgstr "Locația Copilului"
 
 #: dispatch/models.py:141
 msgid "Where is the child at the moment of the request"
-msgstr ""
+msgstr "Unde se află copilul la momentul solicitării"
 
 #: dispatch/models.py:146
 msgid "Clinical Status"
-msgstr ""
+msgstr "Status Clinic"
 
 #: dispatch/models.py:155
 msgid "Estimated Arrival"
-msgstr ""
+msgstr "Data estimată a sosirii"
 
 #: dispatch/models.py:158
 msgid "Redirect Info"
-msgstr ""
+msgstr "Informații de Redirecționare"
 
 #: dispatch/models.py:160
 msgid ""
 "Redirection to a different specialty. Provide all info, including contact!"
 msgstr ""
+"Redirecționare către o instituție diferită. Te rog furnizează toate "
+"informațiile, inclusiv contact!"
 
 #: dispatch/models.py:164
 msgid "Direct Request"
-msgstr ""
+msgstr "Prezentare Directă"
 
 #: dispatch/models.py:167
 msgid ""
 "Patient has directly presented him/herself in the clinc without contact?"
-msgstr ""
+msgstr "Pacientul s-a prezentat direct în clinică, fără contact în prealabil?"
 
 #: dispatch/models.py:178
 msgid "Patient Request"
-msgstr ""
+msgstr "Solicitare Pacient"
 
 #: dispatch/models.py:179
 msgid "Patient Requests"
-msgstr ""
+msgstr "Solicitări Pacienți"
 
 #: oncoped_site/admin.py:12
 msgid "Allocate this resource to a request"
-msgstr ""
+msgstr "Alocă această resursă unei cereri"
 
 #: oncoped_site/admin.py:16
 msgid "Allocate from the available offers"
-msgstr ""
+msgstr "Alocă din ofertele disponibile"
 
 #: oncoped_site/settings/base.py:28
 msgid "Dispecerat Oncologie Pediatrică"
-msgstr ""
+msgstr "Dispecerat Oncologie Pediatrică"
 
 #: oncoped_site/settings/base.py:29
 msgid "DOP"
-msgstr ""
+msgstr "DOP"
 
 #: oncoped_site/settings/base.py:135
 msgid "Romanian"
-msgstr ""
+msgstr "Română"
 
 #: oncoped_site/settings/base.py:136
 msgid "English"
-msgstr ""
+msgstr "Engleză"
 
 #: oncoped_site/utils.py:7
 msgid "County"
-msgstr ""
+msgstr "Județ"
 
 #: templates/app_account/user_offers.html:14
 #: templates/app_account/user_offers.html:22
 msgid "Delete"
-msgstr ""
+msgstr "Șterge"
 
 #: templates/app_account/user_offers.html:29
 #, python-format
@@ -320,6 +322,9 @@ msgid ""
 "related objects, but your account doesn't have permission to delete the "
 "following types of objects:"
 msgstr ""
+"Ștergerea obiectelor %(object_name)s '%(escaped_object)s' ar rezulta în "
+"ștergerea obiectelor relaționale, dar contul tău nu are permisiunile "
+"necesare să șteargă următoarele obiecte:"
 
 #: templates/app_account/user_offers.html:36
 #, python-format
@@ -327,6 +332,8 @@ msgid ""
 "Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
 "following protected related objects:"
 msgstr ""
+"Ștergerea obiectelor %(object_name)s '%(escaped_object)s' ar necesita "
+"ștergerea următoarelor obiecte relaționale protejate:"
 
 #: templates/app_account/user_offers.html:43
 #, python-format
@@ -334,15 +341,18 @@ msgid ""
 "Are you sure you want to delete the %(object_name)s '%(escaped_object)s'? "
 "All of the following related items will be deleted:"
 msgstr ""
+"Ești sigur că dorești să ștergi obiectele %(object_name)s "
+"'%(escaped_object)s'? Toate obiectele relaționale următoare vor fi de "
+"asemenea șterse:"
 
 #: templates/app_account/user_offers.html:46
 msgid "Objects"
-msgstr ""
+msgstr "Obiecte"
 
 #: templates/app_account/user_offers.html:56
 msgid "Yes, I’m sure"
-msgstr ""
+msgstr "Da, sunt sigur"
 
 #: templates/app_account/user_offers.html:59
 msgid "No, take me back"
-msgstr ""
+msgstr "Nu, du-mă înapoi"
