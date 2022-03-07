@@ -44,6 +44,12 @@ class PatientRequest(models.Model):
         null=False,
         blank=False,
     )
+    document_identification_number = models.CharField(
+        verbose_name=_("Document Identification Number"),
+        max_length=50,
+        null=False,
+        blank=False,
+    )
     document_expiry_date = models.DateField(
         verbose_name=_("Document Expiry Date"),
         null=False,
