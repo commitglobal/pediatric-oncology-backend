@@ -4,7 +4,12 @@ from django.contrib.auth.models import Group, Permission
 from app_account.models import DEFAULT_USER_GROUP
 
 
-DEFAULT_USER_GROUP_PERMISSIONS = []
+DEFAULT_USER_GROUP_PERMISSIONS = [
+    "view_patientrequest",
+    "add_patientrequest",
+    "change_patientrequest",
+    "delete_patientrequest"
+]
 
 
 class Command(BaseCommand):

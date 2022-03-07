@@ -1,3 +1,4 @@
+from secrets import choice
 from django.db import models
 from multiselectfield import MultiSelectField
 from django.utils.translation import gettext_lazy as _
@@ -25,6 +26,14 @@ THERAPY_NEEDS_CHOICES = (
     ("SUT", _("Supportive Treatment")),
     ("RAD", _("Radiotherapy")),
     ("TRA", _("Transplant")),
+    ("OTH", _("Other")),
+)
+
+REQUESTER_TYPE = (
+    ("MED", _("Medical Institution")),
+    ("NGO", _("Non-Governmental Organization")),
+    ("PER", _("Person")),
+    ("COM", _("Company")),
 )
 
 
@@ -73,14 +82,19 @@ class PatientRequest(models.Model):
         null=False,
         blank=False,
     )
-    age = models.IntegerField(
-        verbose_name=_("Age"), null=False, blank=False
-    )
+    birth_date = models.DateField(verbose_name=_("Birth Date"), null=False, blank=False)
+    age = models.IntegerField(verbose_name=_("Age"), null=False, blank=False)
     sex = models.CharField(
         verbose_name=_("Sex"),
         max_length=2,
         choices=SEX_CHOICES,
         default="PAS",
+        null=False,
+        blank=False,
+    )
+    address = models.CharField(
+        verbose_name=_("Address"),
+        max_length=250,
         null=False,
         blank=False,
     )
@@ -101,20 +115,25 @@ class PatientRequest(models.Model):
     requester_phone_number = models.CharField(
         verbose_name=_("Requester Phone Number"),
         max_length=30,
-        help_text=_("Please include country prefix e.g. +40723000123")
+        help_text=_("Please include country prefix e.g. +40723000123"),
     )
-    requester_is_medical_institution = models.BooleanField(
-        verbose_name=_("Medical Institution"), default=False
+    institution_type = models.CharField(
+        verbose_name=_("Institution Type"),
+        max_length=3,
+        choices=REQUESTER_TYPE,
+        default="MED",
+        null=False,
+        blank=False,
     )
-    medical_institution_name = models.CharField(
-        verbose_name=_("Medical Institution Name"),
+    institution_name = models.CharField(
+        verbose_name=_("Institution Name"),
         max_length=250,
         null=True,
         blank=True,
-        help_text=_("Fill in only if requester is a medical institution"),
+        help_text=_("Fill in only if requester is not a Person"),
     )
 
-    # Medical Info
+    # General Medical Info
     complete_diagnostic = models.TextField(
         verbose_name=_("Complete Diagnostic"),
         help_text="Put some helful explanation here...",
@@ -124,8 +143,8 @@ class PatientRequest(models.Model):
     available_diagnostic = models.TextField(
         verbose_name=_("Available Diagnostic / Request Reason"),
         help_text="Put some helful explanation here...",
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
     )
     tumor_type = models.CharField(
         verbose_name=_("Tumor Type"),
@@ -141,16 +160,40 @@ class PatientRequest(models.Model):
         null=False,
         blank=False,
     )
-    location = models.CharField(
-        verbose_name=_("Child Location"),
+    other_therapy_needs = models.CharField(
+        verbose_name=_("Other Therapy Needs"),
         max_length=250,
-        help_text=_("Where is the child at the moment of the request"),
+        null=True,
+        blank=True,
+    )
+    clinical_status_comments = models.TextField(
+        verbose_name=_("Clinical Status Comments"),
+        null=True,
+        blank=True,
+    )
+
+    # Location details
+    child_current_address = models.CharField(
+        verbose_name=_("Child Current Address"),
+        max_length=100,
         null=False,
         blank=False,
     )
-    clinical_status = models.CharField(
-        verbose_name=_("Clinical Status"),
-        max_length=250,
+    child_current_city = models.CharField(
+        verbose_name=_("Child Current City"),
+        max_length=100,
+        null=False,
+        blank=False,
+    )
+    child_current_county = models.CharField(
+        verbose_name=_("Child Current County"),
+        max_length=100,
+        null=True,
+        blank=True,
+    )
+    child_current_country = models.CharField(
+        verbose_name=_("Child Current Country"),
+        max_length=100,
         null=False,
         blank=False,
     )
@@ -183,3 +226,14 @@ class PatientRequest(models.Model):
     class Meta:
         verbose_name = _("Patient Request")
         verbose_name_plural = _("Patient Requests")
+
+
+def patient_request_upload(instance, filename):
+    pr_name = instance.name.lower().replace(" ", "_")
+    file_name = filename.lower().replace(" ", "_")
+    return "patient_request_files/{}/{}".format(pr_name, file_name)
+
+
+class PatientRequestFile(models.Model):
+    request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE)
+    file = models.FileField(upload_to=patient_request_upload, null=True, blank=True)

@@ -1,9 +1,17 @@
 from django.contrib import admin
-from dispatch.models import PatientRequest
+from dispatch.models import PatientRequest, PatientRequestFile
 from import_export.admin import ImportExportModelAdmin
 from django.db.models import TextField
 from django.forms import Textarea
 from django.utils.translation import gettext_lazy as _
+
+
+class PatientRequestFileInline(admin.TabularInline):
+    model = PatientRequestFile
+    extra = 1
+    show_change_link = True
+    view_on_site = True
+    verbose_name_plural = _("Upload Medical Files")
 
 
 @admin.register(PatientRequest)
@@ -15,7 +23,6 @@ class AdminPatientRequest(ImportExportModelAdmin):
         "age",
         "sex",
         "tumor_type",
-        "location",
         "estimated_arrival_dt",
     ]
     list_display_links = [
@@ -27,16 +34,19 @@ class AdminPatientRequest(ImportExportModelAdmin):
         "first_name",
         "last_name",
         "tumor_type",
-        "location",
     ]
 
     ordering = ("pk",)
 
     view_on_site = False
 
+    inlines = [PatientRequestFileInline]
+
     formfield_overrides = {
         TextField: {"widget": Textarea(attrs={"rows": 4, "cols": 63})},
     }
+
+    change_form_template = "admin/patient_request_admin.html"
 
     fieldsets = (
         (
@@ -49,8 +59,10 @@ class AdminPatientRequest(ImportExportModelAdmin):
                     "document_issuing_country",
                     "first_name",
                     "last_name",
+                    "birth_date",
                     "age",
                     "sex",
+                    "address"
                 )
             },
         ),
@@ -61,22 +73,34 @@ class AdminPatientRequest(ImportExportModelAdmin):
                     "requester_first_name",
                     "requester_last_name",
                     "requester_phone_number",
-                    "requester_is_medical_institution",
-                    "medical_institution_name",
+                    "institution_type",
+                    "institution_name",
                 ),
             },
         ),
         (
-            _("Medical Info"),
+            _("General Medical Info"),
             {
                 "fields": (
                     "complete_diagnostic",
                     "available_diagnostic",
                     "tumor_type",
                     "therapy_needs",
-                    "location",
-                    "clinical_status",
+                    "other_therapy_needs",
+                    "clinical_status_comments",
                 ),
+                "classes": ("detalii-produs",),
+            },
+        ),
+        (
+            _("Child Location"),
+            {
+                "fields": (
+                    "child_current_address",
+                    "child_current_city",
+                    "child_current_county",
+                    "child_current_country",
+                )
             },
         ),
         (
