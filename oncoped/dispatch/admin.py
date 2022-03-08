@@ -1,5 +1,6 @@
 from django.contrib import admin
 from dispatch.models import (
+    Clinic,
     PatientRequest,
     PatientRequestFile,
     MedicalAssistance,
@@ -77,6 +78,48 @@ class AdminCompanion(admin.ModelAdmin):
     # Just to hide the model in admin...
     def get_model_perms(self, request):
         return {}
+
+@admin.register(Clinic)
+class AdminClinic(ImportExportModelAdmin):
+    list_display = [
+        "tumor_type",
+        "name",
+        "city",
+        "county",
+        "address",
+        "hospitalization_office_email",
+        "hospitalization_office_phone_number",
+        "head_of_dept_name",
+        "head_of_dept_email",
+        "dept_phone",
+        "available_beds",
+    ]
+
+    list_display_links = [
+        "tumor_type",
+        "name",
+    ]
+
+    search_fields = [
+        "tumor_type",
+        "name",
+        "city",
+        "county",
+    ]
+
+    list_filter = [
+        "tumor_type",
+        "name",
+        "city",
+        "county",
+    ]
+
+    ordering = ("pk",)
+
+    formfield_overrides = {
+        TextField: {"widget": Textarea(attrs={"rows": 4, "cols": 63})},
+    }
+
 
 @admin.register(PatientRequest)
 class AdminPatientRequest(ImportExportModelAdmin):

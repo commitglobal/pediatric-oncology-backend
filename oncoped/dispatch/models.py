@@ -1,8 +1,5 @@
-from secrets import choice
-from tabnanny import verbose
-from xmlrpc.client import Boolean
 from django.db import models
-from django.forms import CharField
+from django.conf import settings
 from multiselectfield import MultiSelectField
 from django.utils.translation import gettext_lazy as _
 
@@ -18,7 +15,7 @@ SEX_CHOICES = (
     ("O", _("Other / Unspecified")),
 )
 
-TUMOR_TYPE_CHOICES = (("S", _("Solid")), ("H", _("Hemato")))
+TUMOR_TYPE_CHOICES = (("S", _("Solid")), ("H", _("Hematologic")))
 
 THERAPY_NEEDS_CHOICES = (
     ("CHE", _("Chemotherapy")),
@@ -47,6 +44,72 @@ TRANSPORT_CHOICES = (
 # TODO Clinics Model
 # contact details
 # Available beds
+
+
+class Clinic(models.Model):
+    tumor_type = models.CharField(
+        verbose_name=_("Tumor Type"),
+        max_length=2,
+        choices=TUMOR_TYPE_CHOICES,
+        default="S",
+        null=False,
+        blank=False,
+    )
+    name = models.CharField(
+        verbose_name=_("Name"),
+        max_length=150,
+        null=False,
+        blank=False,
+    )
+    city = models.CharField(
+        verbose_name=_("City"),
+        max_length=100,
+        null=False,
+        blank=False,
+    )
+    county = models.CharField(
+        verbose_name=_("County"),
+        max_length=3,
+        choices=settings.COUNTY_CHOICES,
+        null=False,
+        blank=False,
+    )
+    address = models.CharField(
+        verbose_name=_("Address"),
+        max_length=250,
+        null=False,
+        blank=False,
+    )
+    hospitalization_office_email = models.EmailField(
+        verbose_name=_("Hospitalization Office Email"), null=False, blank=False
+    )
+    hospitalization_office_phone_number = models.CharField(
+        verbose_name=_("Hospitalization Office Phone Number"),
+        max_length=30,
+        null=False,
+        blank=False,
+    )
+    head_of_dept_name = models.CharField(
+        verbose_name=_("Head Of Department Name"),
+        max_length=100,
+        null=False,
+        blank=False,
+    )
+    head_of_dept_email = models.EmailField(
+        verbose_name=_("Head Of Department Email"), null=False, blank=False
+    )
+    dept_phone = models.CharField(
+        verbose_name=_("Department Phone Number"),
+        max_length=30,
+        null=False,
+        blank=False,
+    )
+    available_beds = models.SmallIntegerField(
+        verbose_name=_("Available Beds"), null=False, blank=False, default=0
+    )
+
+    def __str__(self):
+        return f"{self.tumor_type} | {self.name}, {self.city} ({self.county}) - {self.available_beds}"
 
 
 class PatientRequest(models.Model):
@@ -215,7 +278,7 @@ class PatientRequest(models.Model):
             "Redirection to a different specialty. Provide all info, including contact!"
         ),
         null=True,
-        blank=True
+        blank=True,
     )
     is_direct_request = models.BooleanField(
         verbose_name=_("Direct Request"),
@@ -241,14 +304,14 @@ class PatientRequest(models.Model):
     origin_medical_institution_phone_number = models.CharField(
         verbose_name=_("Phone Number"),
         max_length=30,
-        help_text=_("Contact Person's phone number. Please include country prefix e.g. +40723000123"),
+        help_text=_(
+            "Contact Person's phone number. Please include country prefix e.g. +40723000123"
+        ),
         blank=False,
-        null=False
+        null=False,
     )
     origin_medical_institution_email = models.EmailField(
-        verbose_name=_("Email"),
-        blank=True,
-        null=True
+        verbose_name=_("Email"), blank=True, null=True
     )
 
     def get_full_name(self):
@@ -266,6 +329,7 @@ def patient_request_upload(instance, filename):
     file_name = filename.lower().replace(" ", "_")
     return f"patient_request_files/{filename}"
 
+
 class PatientRequestFile(models.Model):
     request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE)
     file = models.FileField(upload_to=patient_request_upload, null=True, blank=True)
@@ -274,6 +338,12 @@ class PatientRequestFile(models.Model):
 class MedicalAssistance(models.Model):
     request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE)
 
+    clinic = models.ForeignKey(
+        Clinic,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
 
     # Receiving DR
     receiving_dr_full_name = models.CharField(
@@ -287,19 +357,20 @@ class MedicalAssistance(models.Model):
         max_length=30,
         help_text=_("Please include country prefix e.g. +40723000123"),
         blank=True,
-        null=True
+        null=True,
     )
     hospitalization_start = models.DateField(
         verbose_name=_("Hospitalization Start"),
         null=True,
         blank=True,
-        help_text=_("Only with confirmation from the receiving clinic!")
+        help_text=_("Only with confirmation from the receiving clinic!"),
     )
     hospitalization_end = models.DateField(
         verbose_name=_("Hospitalization End"),
         null=True,
         blank=True,
     )
+
 
 class LogisticAndSocialAssistance(models.Model):
     request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE)
@@ -319,7 +390,9 @@ class LogisticAndSocialAssistance(models.Model):
     transport_required = models.BooleanField(
         verbose_name=_("Transport Required"),
         default=False,
-        help_text=_("Wether national or international transportation is required for this assistence")
+        help_text=_(
+            "Wether national or international transportation is required for this assistence"
+        ),
     )
     transport = models.CharField(
         verbose_name=_("Transport"),
@@ -327,31 +400,38 @@ class LogisticAndSocialAssistance(models.Model):
         choices=TRANSPORT_CHOICES,
         null=True,
         blank=True,
-        default="NAT"
+        default="NAT",
     )
     transport_details = models.TextField(
         verbose_name=_("Transport Details"),
         null=True,
         blank=True,
-        help_text=_("Details: contact person / problem owner, phone number, other details.")
+        help_text=_(
+            "Details: contact person / problem owner, phone number, other details."
+        ),
     )
     accommodation_required = models.BooleanField(
         verbose_name=_("Accommodation Required"),
         default=False,
-        help_text=_("Wether accommodation is required for this assistence")
+        help_text=_("Wether accommodation is required for this assistence"),
     )
     accommodation_details = models.TextField(
         verbose_name=_("Accommodation Details"),
         null=True,
         blank=True,
-        help_text=_("Details: contact person / problem owner, phone number, other details.")
+        help_text=_(
+            "Details: contact person / problem owner, phone number, other details."
+        ),
     )
     destination_asisting_entity_details = models.TextField(
         verbose_name=_("Destination Assisting Entity Details"),
         null=True,
         blank=True,
-        help_text=_("Info & contact details of the Organization/Person providing social assitance at destination")
+        help_text=_(
+            "Info & contact details of the Organization/Person providing social assitance at destination"
+        ),
     )
+
 
 class Companion(models.Model):
     request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE)

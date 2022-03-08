@@ -331,6 +331,7 @@ JAZZMIN_SETTINGS = {
         "django_q.Success": "fas fa-check",
         #
         "app_account.CustomUser": "fas fa-user",
+        "dispatch.Clinic": "fas fa-hospital",
         "dispatch.PatientRequest": "fas fa-hospital-user",
     },
     # Icons that are used when one is not manually specified
@@ -340,7 +341,7 @@ JAZZMIN_SETTINGS = {
     # Related Modal #
     #################
     # Use modals instead of popups
-    "related_modal_active": True,
+    "related_modal_active": False,
     #############
     # UI Tweaks #
     #############
