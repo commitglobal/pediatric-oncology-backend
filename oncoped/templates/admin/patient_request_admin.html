@@ -10,9 +10,29 @@
         } else {
             $('.field-other_therapy_needs').hide();
         }
+
+        if ($('#id_logisticandsocialassistance-0-transport_required').is(":checked")) {
+            $('.field-transport').show();
+            $('.field-transport_details').show();
+        } else {
+            $('.field-transport').hide();
+            $('.field-transport_details').hide();
+        }
+
+        if ($('#id_logisticandsocialassistance-0-accommodation_required').is(":checked")) {
+            $('.field-accommodation_details').show();
+        } else {
+            $('.field-accommodation_details').hide();
+        }
     }
 
     $('#id_therapy_needs_8').on('change', function () {
+        detect_category();
+    });
+    $('#id_logisticandsocialassistance-0-transport_required').on('change', function () {
+        detect_category();
+    });
+    $('#id_logisticandsocialassistance-0-accommodation_required').on('change', function () {
         detect_category();
     });
     detect_category();
