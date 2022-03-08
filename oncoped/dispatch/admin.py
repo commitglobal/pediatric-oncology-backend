@@ -4,6 +4,7 @@ from dispatch.models import (
     PatientRequestFile,
     MedicalAssistance,
     LogisticAndSocialAssistance,
+    Companion
 )
 from import_export.admin import ImportExportModelAdmin
 from django.db.models import TextField
@@ -14,9 +15,6 @@ from django.utils.translation import gettext_lazy as _
 class PatientRequestFileInLine(admin.TabularInline):
     model = PatientRequestFile
     extra = 1
-    show_change_link = True
-    show_delete_link = True
-    view_on_site = True
     verbose_name_plural = _("Upload Medical Files")
 
 
@@ -62,13 +60,23 @@ class LogisticAndSocialAssistanceInLine(admin.StackedInline):
     )
     
 
-
 @admin.register(LogisticAndSocialAssistance)
 class AdminLogisticAndSocialAssistance(admin.ModelAdmin):
     # Just to hide the model in admin...
     def get_model_perms(self, request):
         return {}
 
+class CompanionInLine(admin.StackedInline):
+    model = Companion
+    extra = 1
+    verbose_name_plural = _("Add Companion")
+
+
+@admin.register(Companion)
+class AdminCompanion(admin.ModelAdmin):
+    # Just to hide the model in admin...
+    def get_model_perms(self, request):
+        return {}
 
 @admin.register(PatientRequest)
 class AdminPatientRequest(ImportExportModelAdmin):
@@ -100,6 +108,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
         PatientRequestFileInLine,
         MedicalAssistanceInLine,
         LogisticAndSocialAssistanceInLine,
+        CompanionInLine
     ]
 
     formfield_overrides = {

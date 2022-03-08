@@ -204,7 +204,6 @@ class PatientRequest(models.Model):
         null=False,
         blank=False,
     )
-    # TODO Foreign Key to clinics - with filter based on tumor type. not required, e.g. unassigned/assigned -> Important as it is done manually.
 
     # Logistical Info
     estimated_arrival_dt = models.DateTimeField(
@@ -354,5 +353,30 @@ class LogisticAndSocialAssistance(models.Model):
         help_text=_("Info & contact details of the Organization/Person providing social assitance at destination")
     )
 
-# class Companion(models.Model):
-#     pass
+class Companion(models.Model):
+    request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE)
+
+    companion_name = models.CharField(
+        verbose_name=_("Companion Name"),
+        max_length=150,
+        null=True,
+        blank=True,
+    )
+    companion_relationship = models.CharField(
+        verbose_name=_("Companion Relationship"),
+        max_length=150,
+        null=True,
+        blank=True,
+    )
+    companion_phone_number = models.CharField(
+        verbose_name=_("Companion Phone Number"),
+        max_length=30,
+        help_text=_("Please include country prefix e.g. +40723000123"),
+        null=True,
+        blank=True,
+    )
+    companion_other_details = models.TextField(
+        verbose_name=_("Companion Other Details"),
+        null=True,
+        blank=True,
+    )
