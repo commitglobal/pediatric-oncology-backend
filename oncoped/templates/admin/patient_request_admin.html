@@ -11,15 +11,19 @@
             $('.field-other_therapy_needs').hide();
         }
 
-        if ($('#id_logisticandsocialassistance-0-transport_required').is(":checked")) {
+        if ($('#id_logsol_assistance-0-transport_required').is(":checked")) {
             $('.field-transport').show();
             $('.field-transport_details').show();
+            $('.field-pick_up_location').show();
+            $('.field-contact_person').show();
         } else {
             $('.field-transport').hide();
             $('.field-transport_details').hide();
+            $('.field-pick_up_location').hide();
+            $('.field-contact_person').hide();
         }
 
-        if ($('#id_logisticandsocialassistance-0-accommodation_required').is(":checked")) {
+        if ($('#id_logsol_assistance-0-accommodation_required').is(":checked")) {
             $('.field-accommodation_details').show();
         } else {
             $('.field-accommodation_details').hide();
@@ -29,10 +33,10 @@
     $('#id_therapy_needs_8').on('change', function () {
         detect_category();
     });
-    $('#id_logisticandsocialassistance-0-transport_required').on('change', function () {
+    $('#id_logsol_assistance-0-transport_required').on('change', function () {
         detect_category();
     });
-    $('#id_logisticandsocialassistance-0-accommodation_required').on('change', function () {
+    $('#id_logsol_assistance-0-accommodation_required').on('change', function () {
         detect_category();
     });
     detect_category();

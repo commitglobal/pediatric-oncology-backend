@@ -109,8 +109,11 @@ class Clinic(models.Model):
     )
 
     def __str__(self):
-        return f"{self.tumor_type} | {self.name}, {self.city} ({self.county}) - {self.available_beds}"
+        return f"{self.name}, {self.city} ({self.county}) - {self.available_beds} ({self.tumor_type})"
 
+    class Meta:
+        verbose_name = _("Clinic")
+        verbose_name_plural = _("Clinics")
 
 class PatientRequest(models.Model):
 
@@ -317,6 +320,9 @@ class PatientRequest(models.Model):
     def get_full_name(self):
         return self.first_name + " " + self.last_name
 
+    get_full_name.short_description = _("Full Name")
+
+
     def __str__(self):
         return f"#{self.id} {self.get_full_name()} {self.age}{self.sex}"
 
@@ -336,13 +342,14 @@ class PatientRequestFile(models.Model):
 
 
 class MedicalAssistance(models.Model):
-    request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE)
+    request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="med_assistance")
 
     clinic = models.ForeignKey(
         Clinic,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        related_name="rel_clinics"
     )
 
     # Receiving DR
@@ -373,7 +380,7 @@ class MedicalAssistance(models.Model):
 
 
 class LogisticAndSocialAssistance(models.Model):
-    request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE)
+    request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="logsol_assistance")
 
     pick_up_location = models.CharField(
         verbose_name=_("Pick Up Location"),
@@ -434,7 +441,7 @@ class LogisticAndSocialAssistance(models.Model):
 
 
 class Companion(models.Model):
-    request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE)
+    request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE, related_name="companions")
 
     companion_name = models.CharField(
         verbose_name=_("Companion Name"),
