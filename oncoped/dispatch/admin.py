@@ -267,10 +267,6 @@ class AdminPatientRequest(ImportExportModelAdmin):
             _("Identification"),
             {
                 "fields": (
-                    "document_type",
-                    "document_identification_number",
-                    "document_expiry_date",
-                    "document_issuing_country",
                     "first_name",
                     "last_name",
                     "birth_date",
