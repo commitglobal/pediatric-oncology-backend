@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-09 22:31+0200\n"
+"POT-Creation-Date: 2022-03-09 23:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,7 @@ msgstr ""
 msgid "users"
 msgstr ""
 
-#: app_account/models.py:52 dispatch/models.py:339
+#: app_account/models.py:52 dispatch/models.py:345
 msgid "Full Name"
 msgstr ""
 
@@ -230,283 +230,335 @@ msgstr ""
 msgid "International"
 msgstr ""
 
-#: dispatch/models.py:59 dispatch/models.py:238
+#: dispatch/models.py:57
+msgid "Case Pending"
+msgstr ""
+
+#: dispatch/models.py:58
+msgid "Clinic is Ready for takeover"
+msgstr ""
+
+#: dispatch/models.py:59
+msgid "Taken over by Clinic"
+msgstr ""
+
+#: dispatch/models.py:60
+msgid "Taken over previously, in person"
+msgstr ""
+
+#: dispatch/models.py:65 dispatch/models.py:243
 msgid "Tumor Type"
 msgstr ""
 
-#: dispatch/models.py:67 dispatch/models.py:170
+#: dispatch/models.py:72 dispatch/models.py:175
 msgid "Name"
 msgstr ""
 
-#: dispatch/models.py:73
+#: dispatch/models.py:78
 msgid "City"
 msgstr ""
 
-#: dispatch/models.py:79 oncoped_site/utils.py:7
+#: dispatch/models.py:84 oncoped_site/utils.py:7
 msgid "County"
 msgstr ""
 
-#: dispatch/models.py:86 dispatch/models.py:154
+#: dispatch/models.py:91 dispatch/models.py:159
 msgid "Address"
 msgstr ""
 
-#: dispatch/models.py:92
+#: dispatch/models.py:97
 msgid "Hospitalization Office Email"
 msgstr ""
 
-#: dispatch/models.py:95
+#: dispatch/models.py:100
 msgid "Hospitalization Office Phone Number"
 msgstr ""
 
-#: dispatch/models.py:101
+#: dispatch/models.py:106
 msgid "Head Of Department Name"
 msgstr ""
 
-#: dispatch/models.py:107
+#: dispatch/models.py:112
 msgid "Head Of Department Email"
 msgstr ""
 
-#: dispatch/models.py:110
+#: dispatch/models.py:115
 msgid "Department Phone Number"
 msgstr ""
 
-#: dispatch/models.py:116 templates/admin/custom_admin_index.html:82
+#: dispatch/models.py:121 templates/admin/custom_admin_index.html:82
 msgid "Available Beds"
 msgstr ""
 
-#: dispatch/models.py:123
+#: dispatch/models.py:128
 msgid "Clinic"
 msgstr ""
 
-#: dispatch/models.py:124
+#: dispatch/models.py:129
 msgid "Clinics"
 msgstr ""
 
-#: dispatch/models.py:132 dispatch/models.py:177
+#: dispatch/models.py:137 dispatch/models.py:182
 msgid "First Name"
 msgstr ""
 
-#: dispatch/models.py:138 dispatch/models.py:183
+#: dispatch/models.py:143 dispatch/models.py:188
 msgid "Last Name"
 msgstr ""
 
-#: dispatch/models.py:143
+#: dispatch/models.py:148
 msgid "Birth Date"
 msgstr ""
 
-#: dispatch/models.py:144
+#: dispatch/models.py:149
 msgid "Age"
 msgstr ""
 
-#: dispatch/models.py:146
+#: dispatch/models.py:151
 msgid "Sex"
 msgstr ""
 
-#: dispatch/models.py:162
+#: dispatch/models.py:167
 msgid "Type"
 msgstr ""
 
-#: dispatch/models.py:174
+#: dispatch/models.py:179
 msgid "Fill in only if requester is not a Person"
 msgstr ""
 
-#: dispatch/models.py:189 dispatch/models.py:324
+#: dispatch/models.py:194 dispatch/models.py:330
 msgid "Phone Number"
 msgstr ""
 
-#: dispatch/models.py:191 dispatch/models.py:398 dispatch/models.py:498
+#: dispatch/models.py:196 dispatch/models.py:546
 msgid "Please include country prefix e.g. +40723000123"
 msgstr ""
 
-#: dispatch/models.py:194 dispatch/models.py:333
+#: dispatch/models.py:199 dispatch/models.py:339
 msgid "Email"
 msgstr ""
 
-#: dispatch/models.py:201
+#: dispatch/models.py:206
 msgid "Diagnostic Class"
 msgstr ""
 
-#: dispatch/models.py:208
+#: dispatch/models.py:213
 msgid "Complete Diagnostic Known"
 msgstr ""
 
-#: dispatch/models.py:212
+#: dispatch/models.py:217
 msgid "Complete Diagnostic"
 msgstr ""
 
-#: dispatch/models.py:217
+#: dispatch/models.py:222
 msgid "Date Diagnosed"
 msgstr ""
 
-#: dispatch/models.py:222
+#: dispatch/models.py:227
 msgid "Diagnosing Institution Name"
 msgstr ""
 
-#: dispatch/models.py:228
+#: dispatch/models.py:233
 msgid "General Problem Description"
 msgstr ""
 
-#: dispatch/models.py:234
+#: dispatch/models.py:239
 msgid "Medical Documents Checked"
 msgstr ""
 
-#: dispatch/models.py:246
+#: dispatch/models.py:251
 msgid "Therapy Needs"
 msgstr ""
 
-#: dispatch/models.py:252
+#: dispatch/models.py:257
 msgid "Other Therapy Needs"
 msgstr ""
 
-#: dispatch/models.py:258
+#: dispatch/models.py:263
 msgid "Current Clinical Status"
 msgstr ""
 
-#: dispatch/models.py:266
+#: dispatch/models.py:271
 msgid "Child Current Address"
 msgstr ""
 
-#: dispatch/models.py:272
+#: dispatch/models.py:277
 msgid "Child Current City"
 msgstr ""
 
-#: dispatch/models.py:278
+#: dispatch/models.py:283
 msgid "Child Current County"
 msgstr ""
 
-#: dispatch/models.py:284
+#: dispatch/models.py:289
 msgid "Child Current Country"
 msgstr ""
 
-#: dispatch/models.py:292
+#: dispatch/models.py:297
 msgid "Estimated Arrival"
 msgstr ""
 
-#: dispatch/models.py:295
+#: dispatch/models.py:300
 msgid "Redirect Info"
 msgstr ""
 
-#: dispatch/models.py:297
+#: dispatch/models.py:302
 msgid ""
 "Redirection to a different specialty. Provide all info, including contact!"
 msgstr ""
 
-#: dispatch/models.py:303
+#: dispatch/models.py:308
 msgid "Direct Request"
 msgstr ""
 
-#: dispatch/models.py:306
+#: dispatch/models.py:311
 msgid ""
 "Patient has directly presented him/herself in the clinc without contact?"
 msgstr ""
 
-#: dispatch/models.py:312
+#: dispatch/models.py:317
 msgid "Institution Name"
 msgstr ""
 
-#: dispatch/models.py:318 dispatch/models.py:427
+#: dispatch/models.py:323 dispatch/models.py:475
 msgid "Contact Person"
 msgstr ""
 
 #: dispatch/models.py:327
+msgid "Full Name of the contact person"
+msgstr ""
+
+#: dispatch/models.py:333
 msgid ""
 "Contact Person's phone number. Please include country prefix e.g. "
 "+40723000123"
 msgstr ""
 
-#: dispatch/models.py:350
+#: dispatch/models.py:356
 msgid "There is already a Pacient Request with this name, birth date and age."
 msgstr ""
 
-#: dispatch/models.py:355
+#: dispatch/models.py:361
 msgid "Patient Request"
 msgstr ""
 
-#: dispatch/models.py:356
+#: dispatch/models.py:362
 msgid "Patient Requests"
 msgstr ""
 
-#: dispatch/models.py:390
-msgid "Receiving Dr Full Name"
-msgstr ""
-
-#: dispatch/models.py:396
-msgid "Receiving Dr Phone Number"
+#: dispatch/models.py:395
+msgid "Case Status"
 msgstr ""
 
 #: dispatch/models.py:403
+msgid "Estimated Arrival Date"
+msgstr ""
+
+#: dispatch/models.py:408
 msgid "Hospitalization Start"
 msgstr ""
 
-#: dispatch/models.py:406
+#: dispatch/models.py:411
 msgid "Only with confirmation from the receiving clinic!"
 msgstr ""
 
-#: dispatch/models.py:409
-msgid "Hospitalization End"
+#: dispatch/models.py:414
+msgid "Receiving Dr Full Name"
 msgstr ""
 
-#: dispatch/models.py:421
-msgid "Pick Up Location"
+#: dispatch/models.py:420
+msgid "Comments"
+msgstr ""
+
+#: dispatch/models.py:425
+msgid "Needs Transfer"
+msgstr ""
+
+#: dispatch/models.py:429
+msgid "International Redirect"
 msgstr ""
 
 #: dispatch/models.py:433
+msgid "Redirect Institution"
+msgstr ""
+
+#: dispatch/models.py:439
+msgid "Specialty"
+msgstr ""
+
+#: dispatch/models.py:445
+msgid "Town"
+msgstr ""
+
+#: dispatch/models.py:451
+msgid "Country"
+msgstr ""
+
+#: dispatch/models.py:457
+msgid "Reason"
+msgstr ""
+
+#: dispatch/models.py:469
+msgid "Pick Up Location"
+msgstr ""
+
+#: dispatch/models.py:481
 msgid "Transport Required"
 msgstr ""
 
-#: dispatch/models.py:436
+#: dispatch/models.py:484
 msgid ""
 "Wether national or international transportation is required for this "
 "assistence"
 msgstr ""
 
-#: dispatch/models.py:440
+#: dispatch/models.py:488
 msgid "Transport"
 msgstr ""
 
-#: dispatch/models.py:448
+#: dispatch/models.py:496
 msgid "Transport Details"
 msgstr ""
 
-#: dispatch/models.py:452 dispatch/models.py:465
+#: dispatch/models.py:500 dispatch/models.py:513
 msgid "Details: contact person / problem owner, phone number, other details."
 msgstr ""
 
-#: dispatch/models.py:456
+#: dispatch/models.py:504
 msgid "Accommodation Required"
 msgstr ""
 
-#: dispatch/models.py:458
+#: dispatch/models.py:506
 msgid "Wether accommodation is required for this assistence"
 msgstr ""
 
-#: dispatch/models.py:461
+#: dispatch/models.py:509
 msgid "Accommodation Details"
 msgstr ""
 
-#: dispatch/models.py:469
+#: dispatch/models.py:517
 msgid "Destination Assisting Entity Details"
 msgstr ""
 
-#: dispatch/models.py:473
+#: dispatch/models.py:521
 msgid ""
 "Info & contact details of the Organization/Person providing social assitance "
 "at destination"
 msgstr ""
 
-#: dispatch/models.py:484
+#: dispatch/models.py:532
 msgid "Companion Name"
 msgstr ""
 
-#: dispatch/models.py:490
+#: dispatch/models.py:538
 msgid "Companion Relationship"
 msgstr ""
 
-#: dispatch/models.py:496
+#: dispatch/models.py:544
 msgid "Companion Phone Number"
 msgstr ""
 
-#: dispatch/models.py:503
+#: dispatch/models.py:551
 msgid "Companion Other Details"
 msgstr ""
 
