@@ -179,6 +179,7 @@ class AdminClinic(ImportExportModelAdmin):
     }
 
 
+
 @admin.register(PatientRequest)
 class AdminPatientRequest(ImportExportModelAdmin):
     def assigned_clinic(self, obj):
@@ -290,17 +291,21 @@ class AdminPatientRequest(ImportExportModelAdmin):
             },
         ),
         (
-            _("General Medical Info"),
+            _("Diagnostic"),
             {
                 "fields": (
+                    "diagnostic_class",
+                    "known_complete_diagnostic",
                     "complete_diagnostic",
-                    "available_diagnostic",
+                    "date_diagnosed",
+                    "diagnosing_institution_name",
+                    "general_problem_description",
+                    "medical_documents_checked",
                     "tumor_type",
                     "therapy_needs",
                     "other_therapy_needs",
-                    "clinical_status_comments",
+                    "current_clinical_status",
                 ),
-                "classes": ("detalii-produs",),
             },
         ),
         (
