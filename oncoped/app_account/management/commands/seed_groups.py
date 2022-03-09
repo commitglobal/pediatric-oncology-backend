@@ -8,7 +8,11 @@ DEFAULT_USER_GROUP_PERMISSIONS = [
     "view_patientrequest",
     "add_patientrequest",
     "change_patientrequest",
-    "delete_patientrequest"
+    "delete_patientrequest",
+    "view_clinic",
+    "add_clinic",
+    "change_clinic",
+    "delete_clinic",
 ]
 
 
