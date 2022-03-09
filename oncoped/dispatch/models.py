@@ -5,10 +5,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
-DOCUMENT_TYPES_CHOICES = (
-    ("PAS", _("Passport")),
-    ("NID", _("National ID")),
-)
 
 SEX_CHOICES = (
     ("M", _("Male")),
@@ -41,10 +37,6 @@ TRANSPORT_CHOICES = (
     ("NAT", _("National")),
     ("INT", _("International")),
 )
-
-# TODO Clinics Model
-# contact details
-# Available beds
 
 
 class Clinic(models.Model):
@@ -119,31 +111,7 @@ class Clinic(models.Model):
 class PatientRequest(models.Model):
 
     # Identification
-    document_type = models.CharField(
-        verbose_name=_("Document Type"),
-        max_length=3,
-        choices=DOCUMENT_TYPES_CHOICES,
-        default="PAS",
-        null=False,
-        blank=False,
-    )
-    document_identification_number = models.CharField(
-        verbose_name=_("Document Identification Number"),
-        max_length=50,
-        null=False,
-        blank=False,
-    )
-    document_expiry_date = models.DateField(
-        verbose_name=_("Document Expiry Date"),
-        null=False,
-        blank=False,
-    )
-    document_issuing_country = models.CharField(
-        verbose_name=_("Document Issuing Country"),
-        max_length=50,
-        null=False,
-        blank=False,
-    )
+
     first_name = models.CharField(
         verbose_name=_("First Name"),
         max_length=100,
