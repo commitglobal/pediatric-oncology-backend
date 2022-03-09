@@ -5,7 +5,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
-
 SEX_CHOICES = (
     ("M", _("Male")),
     ("F", _("Female")),
@@ -108,6 +107,7 @@ class Clinic(models.Model):
         verbose_name = _("Clinic")
         verbose_name_plural = _("Clinics")
 
+
 class PatientRequest(models.Model):
 
     # Identification
@@ -142,25 +142,8 @@ class PatientRequest(models.Model):
     )
 
     # Requester
-    requester_first_name = models.CharField(
-        verbose_name=_("Requester First Name"),
-        max_length=100,
-        null=False,
-        blank=False,
-    )
-    requester_last_name = models.CharField(
-        verbose_name=_("Requester Last Name"),
-        max_length=100,
-        null=False,
-        blank=False,
-    )
-    requester_phone_number = models.CharField(
-        verbose_name=_("Requester Phone Number"),
-        max_length=30,
-        help_text=_("Please include country prefix e.g. +40723000123"),
-    )
     institution_type = models.CharField(
-        verbose_name=_("Institution Type"),
+        verbose_name=_("Type"),
         max_length=3,
         choices=REQUESTER_TYPE,
         default="MED",
@@ -168,11 +151,33 @@ class PatientRequest(models.Model):
         blank=False,
     )
     institution_name = models.CharField(
-        verbose_name=_("Institution Name"),
+        verbose_name=_("Name"),
         max_length=250,
         null=True,
         blank=True,
         help_text=_("Fill in only if requester is not a Person"),
+    )
+    requester_first_name = models.CharField(
+        verbose_name=_("First Name"),
+        max_length=100,
+        null=False,
+        blank=False,
+    )
+    requester_last_name = models.CharField(
+        verbose_name=_("Last Name"),
+        max_length=100,
+        null=False,
+        blank=False,
+    )
+    requester_phone_number = models.CharField(
+        verbose_name=_("Phone Number"),
+        max_length=30,
+        help_text=_("Please include country prefix e.g. +40723000123"),
+    )
+    requester_email = models.EmailField(
+        verbose_name=_("Email"),
+        blank=False,
+        null=False,
     )
 
     # General Medical Info
@@ -291,15 +296,18 @@ class PatientRequest(models.Model):
 
     get_full_name.short_description = _("Full Name")
 
-
     def __str__(self):
         return f"#{self.id} {self.get_full_name()} {self.age}{self.sex}"
 
-    def validate_unique(self,exclude=None):
+    def validate_unique(self, exclude=None):
         try:
             super().validate_unique()
         except ValidationError as e:
-            raise ValidationError(_("There is already a Pacient Request with this name, birth date and age."))
+            raise ValidationError(
+                _(
+                    "There is already a Pacient Request with this name, birth date and age."
+                )
+            )
 
     class Meta:
         verbose_name = _("Patient Request")
@@ -310,6 +318,7 @@ class PatientRequest(models.Model):
             "birth_date",
             "age",
         ]
+
 
 def patient_request_upload(instance, filename):
     file_name = filename.lower().replace(" ", "_")
@@ -322,14 +331,16 @@ class PatientRequestFile(models.Model):
 
 
 class MedicalAssistance(models.Model):
-    request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="med_assistance")
+    request = models.OneToOneField(
+        PatientRequest, on_delete=models.CASCADE, related_name="med_assistance"
+    )
 
     clinic = models.ForeignKey(
         Clinic,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name="rel_clinics"
+        related_name="rel_clinics",
     )
 
     # Receiving DR
@@ -360,7 +371,9 @@ class MedicalAssistance(models.Model):
 
 
 class LogisticAndSocialAssistance(models.Model):
-    request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="logsol_assistance")
+    request = models.OneToOneField(
+        PatientRequest, on_delete=models.CASCADE, related_name="logsol_assistance"
+    )
 
     pick_up_location = models.CharField(
         verbose_name=_("Pick Up Location"),
@@ -421,7 +434,9 @@ class LogisticAndSocialAssistance(models.Model):
 
 
 class Companion(models.Model):
-    request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE, related_name="companions")
+    request = models.ForeignKey(
+        PatientRequest, on_delete=models.CASCADE, related_name="companions"
+    )
 
     companion_name = models.CharField(
         verbose_name=_("Companion Name"),

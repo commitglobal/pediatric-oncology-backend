@@ -277,14 +277,15 @@ class AdminPatientRequest(ImportExportModelAdmin):
             },
         ),
         (
-            _("Requester"),
+            _("Requester Data"),
             {
                 "fields": (
+                    "institution_type",
+                    "institution_name",
                     "requester_first_name",
                     "requester_last_name",
                     "requester_phone_number",
-                    "institution_type",
-                    "institution_name",
+                    "requester_email",
                 ),
             },
         ),

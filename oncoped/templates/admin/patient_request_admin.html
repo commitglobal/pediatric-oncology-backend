@@ -5,6 +5,20 @@
 <script type="text/javascript">
     let detect_category = function () {
 
+        switch ($('#id_institution_type').find('option:selected').text()) {
+            case "Person":
+                $('.field-institution_name').hide();
+                $('#id_institution_name').attr('value', '');
+                break;
+            case "Persoană":
+                $('.field-institution_name').hide();
+                $('#id_institution_name').attr('value', '');
+                break;
+            default:
+                $('.field-institution_name').show();
+                break;
+        }
+
         if ($('#id_therapy_needs_8').is(":checked")) {
             $('.field-other_therapy_needs').show();
         } else {
@@ -30,6 +44,9 @@
         }
     }
 
+    $('#id_institution_type').on('change', function () {
+        detect_category();
+    });
     $('#id_therapy_needs_8').on('change', function () {
         detect_category();
     });
