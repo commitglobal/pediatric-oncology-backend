@@ -39,18 +39,54 @@ TRANSPORT_CHOICES = (
 )
 
 DIAGNOSTIC_CLASS_CHOICES = (
-    ("LAMM", "Leucemii, afecțiuni mieloproliferative și mielodisplazice",),
-    ("LNR", "Limfoame și neoplasme reticuloendoteliale",),
-    ("SNCNII", "SNC și neoplasme intracraniene și intraspinale",),
-    ("NATCNP", "Neuroblastom și alte tumori ale celulelor nervoase periferice",),
-    ("R", "Retinoblastom",),
-    ("TR", "Tumori renale",),
-    ("TH", "Tumori hepatice",),
-    ("TMO", "Tumori maligne ale oaselor",),
-    ("SPMATE", "Sarcoame de părți moi și alte țesuturi extraosoase",),
-    ("TTNG", "Tumori terofoblastice și neoplasme ale gonadelor",),
-    ("ANMEMM", "Alte neoplasme maligne epiteliale și melanoame maligne",),
-    ("ANMN", "Alte neoplasme maligne nespecificate",),
+    (
+        "LAMM",
+        "Leucemii, afecțiuni mieloproliferative și mielodisplazice",
+    ),
+    (
+        "LNR",
+        "Limfoame și neoplasme reticuloendoteliale",
+    ),
+    (
+        "SNCNII",
+        "SNC și neoplasme intracraniene și intraspinale",
+    ),
+    (
+        "NATCNP",
+        "Neuroblastom și alte tumori ale celulelor nervoase periferice",
+    ),
+    (
+        "R",
+        "Retinoblastom",
+    ),
+    (
+        "TR",
+        "Tumori renale",
+    ),
+    (
+        "TH",
+        "Tumori hepatice",
+    ),
+    (
+        "TMO",
+        "Tumori maligne ale oaselor",
+    ),
+    (
+        "SPMATE",
+        "Sarcoame de părți moi și alte țesuturi extraosoase",
+    ),
+    (
+        "TTNG",
+        "Tumori terofoblastice și neoplasme ale gonadelor",
+    ),
+    (
+        "ANMEMM",
+        "Alte neoplasme maligne epiteliale și melanoame maligne",
+    ),
+    (
+        "ANMN",
+        "Alte neoplasme maligne nespecificate",
+    ),
 )
 
 CASE_STATUS_CHOICES = (
@@ -59,6 +95,7 @@ CASE_STATUS_CHOICES = (
     ("T", _("Taken over by Clinic")),
     ("TP", _("Taken over previously, in person")),
 )
+
 
 class Clinic(models.Model):
     tumor_type = MultiSelectField(
@@ -108,18 +145,14 @@ class Clinic(models.Model):
         null=False,
         blank=False,
     )
-    head_of_dept_email = models.EmailField(
-        verbose_name=_("Head Of Department Email"), null=False, blank=False
-    )
+    head_of_dept_email = models.EmailField(verbose_name=_("Head Of Department Email"), null=False, blank=False)
     dept_phone = models.CharField(
         verbose_name=_("Department Phone Number"),
         max_length=30,
         null=False,
         blank=False,
     )
-    available_beds = models.SmallIntegerField(
-        verbose_name=_("Available Beds"), null=False, blank=False, default=0
-    )
+    available_beds = models.SmallIntegerField(verbose_name=_("Available Beds"), null=False, blank=False, default=0)
 
     def __str__(self):
         return f"{self.name}, {self.city} ({self.county}) - {self.available_beds} ({'+'.join(self.tumor_type)})"
@@ -218,16 +251,9 @@ class PatientRequest(models.Model):
         null=True,
         blank=True,
     )
-    date_diagnosed = models.DateField(
-        verbose_name=_("Date Diagnosed"),
-        null=True,
-        blank=True
-    )
+    date_diagnosed = models.DateField(verbose_name=_("Date Diagnosed"), null=True, blank=True)
     diagnosing_institution_name = models.CharField(
-        verbose_name=_("Diagnosing Institution Name"),
-        max_length=150,
-        null=True,
-        blank=True
+        verbose_name=_("Diagnosing Institution Name"), max_length=150, null=True, blank=True
     )
     general_problem_description = models.TextField(
         verbose_name=_("General Problem Description"),
@@ -235,10 +261,7 @@ class PatientRequest(models.Model):
         null=True,
         blank=True,
     )
-    medical_documents_checked = models.BooleanField(
-        verbose_name=_("Medical Documents Checked"),
-        default=False
-    )
+    medical_documents_checked = models.BooleanField(verbose_name=_("Medical Documents Checked"), default=False)
     tumor_type = models.CharField(
         verbose_name=_("Tumor Type"),
         max_length=2,
@@ -264,7 +287,6 @@ class PatientRequest(models.Model):
         null=True,
         blank=True,
     )
-
 
     # Location details
     child_current_address = models.CharField(
@@ -293,23 +315,17 @@ class PatientRequest(models.Model):
     )
 
     # Logistical Info
-    estimated_arrival_dt = models.DateTimeField(
-        verbose_name=_("Estimated Arrival"), null=False, blank=False
-    )
+    estimated_arrival_dt = models.DateTimeField(verbose_name=_("Estimated Arrival"), null=False, blank=False)
     redirect_info = models.TextField(
         verbose_name=_("Redirect Info"),
-        help_text=_(
-            "Redirection to a different specialty. Provide all info, including contact!"
-        ),
+        help_text=_("Redirection to a different specialty. Provide all info, including contact!"),
         null=True,
         blank=True,
     )
     is_direct_request = models.BooleanField(
         verbose_name=_("Direct Request"),
         default=False,
-        help_text=_(
-            "Patient has directly presented him/herself in the clinc without contact?"
-        ),
+        help_text=_("Patient has directly presented him/herself in the clinc without contact?"),
     )
 
     # Origin Institution
@@ -324,20 +340,16 @@ class PatientRequest(models.Model):
         max_length=150,
         null=True,
         blank=True,
-        help_text=_("Full Name of the contact person")
+        help_text=_("Full Name of the contact person"),
     )
     origin_medical_institution_phone_number = models.CharField(
         verbose_name=_("Phone Number"),
         max_length=30,
-        help_text=_(
-            "Contact Person's phone number. Please include country prefix e.g. +40723000123"
-        ),
+        help_text=_("Contact Person's phone number. Please include country prefix e.g. +40723000123"),
         blank=True,
         null=True,
     )
-    origin_medical_institution_email = models.EmailField(
-        verbose_name=_("Email"), blank=True, null=True
-    )
+    origin_medical_institution_email = models.EmailField(verbose_name=_("Email"), blank=True, null=True)
 
     def get_full_name(self):
         return self.first_name + " " + self.last_name
@@ -351,11 +363,7 @@ class PatientRequest(models.Model):
         try:
             super().validate_unique()
         except ValidationError as e:
-            raise ValidationError(
-                _(
-                    "There is already a Pacient Request with this name, birth date and age."
-                )
-            )
+            raise ValidationError(_("There is already a Pacient Request with this name, birth date and age."))
 
     class Meta:
         verbose_name = _("Patient Request")
@@ -379,9 +387,7 @@ class PatientRequestFile(models.Model):
 
 
 class MedicalAssistance(models.Model):
-    request = models.OneToOneField(
-        PatientRequest, on_delete=models.CASCADE, related_name="med_assistance"
-    )
+    request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="med_assistance")
 
     clinic = models.ForeignKey(
         Clinic,
@@ -399,11 +405,7 @@ class MedicalAssistance(models.Model):
         null=False,
         blank=False,
     )
-    estimated_arrival_date = models.DateField(
-        verbose_name=_("Estimated Arrival Date"),
-        null=True,
-        blank=True
-    )
+    estimated_arrival_date = models.DateField(verbose_name=_("Estimated Arrival Date"), null=True, blank=True)
     hospitalization_start = models.DateField(
         verbose_name=_("Hospitalization Start"),
         null=True,
@@ -416,11 +418,7 @@ class MedicalAssistance(models.Model):
         null=True,
         blank=True,
     )
-    comments = models.TextField(
-        verbose_name=_("Comments"),
-        null=True,
-        blank=True
-    )
+    comments = models.TextField(verbose_name=_("Comments"), null=True, blank=True)
     needs_transfer = models.BooleanField(
         verbose_name=_("Needs Transfer"),
         default=False,
@@ -453,17 +451,11 @@ class MedicalAssistance(models.Model):
         null=True,
         blank=True,
     )
-    reason = models.TextField(
-        verbose_name=_("Reason"),
-        null=True,
-        blank=True
-    )
+    reason = models.TextField(verbose_name=_("Reason"), null=True, blank=True)
 
 
 class LogisticAndSocialAssistance(models.Model):
-    request = models.OneToOneField(
-        PatientRequest, on_delete=models.CASCADE, related_name="logsol_assistance"
-    )
+    request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="logsol_assistance")
 
     pick_up_location = models.CharField(
         verbose_name=_("Pick Up Location"),
@@ -480,9 +472,7 @@ class LogisticAndSocialAssistance(models.Model):
     transport_required = models.BooleanField(
         verbose_name=_("Transport Required"),
         default=False,
-        help_text=_(
-            "Wether national or international transportation is required for this assistence"
-        ),
+        help_text=_("Wether national or international transportation is required for this assistence"),
     )
     transport = models.CharField(
         verbose_name=_("Transport"),
@@ -496,9 +486,7 @@ class LogisticAndSocialAssistance(models.Model):
         verbose_name=_("Transport Details"),
         null=True,
         blank=True,
-        help_text=_(
-            "Details: contact person / problem owner, phone number, other details."
-        ),
+        help_text=_("Details: contact person / problem owner, phone number, other details."),
     )
     accommodation_required = models.BooleanField(
         verbose_name=_("Accommodation Required"),
@@ -509,24 +497,18 @@ class LogisticAndSocialAssistance(models.Model):
         verbose_name=_("Accommodation Details"),
         null=True,
         blank=True,
-        help_text=_(
-            "Details: contact person / problem owner, phone number, other details."
-        ),
+        help_text=_("Details: contact person / problem owner, phone number, other details."),
     )
     destination_asisting_entity_details = models.TextField(
         verbose_name=_("Destination Assisting Entity Details"),
         null=True,
         blank=True,
-        help_text=_(
-            "Info & contact details of the Organization/Person providing social assitance at destination"
-        ),
+        help_text=_("Info & contact details of the Organization/Person providing social assitance at destination"),
     )
 
 
 class Companion(models.Model):
-    request = models.ForeignKey(
-        PatientRequest, on_delete=models.CASCADE, related_name="companions"
-    )
+    request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE, related_name="companions")
 
     companion_name = models.CharField(
         verbose_name=_("Companion Name"),

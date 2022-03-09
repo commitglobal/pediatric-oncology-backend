@@ -19,15 +19,13 @@ class Command(BaseCommand):
             superuser.last_name = settings.SUPER_ADMIN_LAST_NAME
             superuser.set_password(settings.SUPER_ADMIN_PASS)
             superuser.save()
-            
+
             return True
         else:
             return False
 
     def handle(self, *args, **kwargs):
         if self.create_superuser():
-            self.stdout.write(
-                self.style.SUCCESS("Super admin has been created")
-            )
+            self.stdout.write(self.style.SUCCESS("Super admin has been created"))
             return
         self.stdout.write("Super admin already exists")

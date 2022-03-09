@@ -23,5 +23,7 @@ class Command(BaseCommand):
             Permission.objects.filter(codename__in=DEFAULT_USER_GROUP_PERMISSIONS).values_list("id", flat=True)
         )
         self.stdout.write(
-            self.style.SUCCESS(f"'{DEFAULT_USER_GROUP}' group has been created and appropriate permissions were assigned")
+            self.style.SUCCESS(
+                f"'{DEFAULT_USER_GROUP}' group has been created and appropriate permissions were assigned"
+            )
         )

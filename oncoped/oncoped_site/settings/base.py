@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     # project apps
     "static_custom",
     "app_account",
-    "dispatch"
+    "dispatch",
 ]
 
 MIDDLEWARE = [
@@ -89,7 +89,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "dispatch.admin.admin_index_custom_context"
+                "dispatch.admin.admin_index_custom_context",
             ]
         },
     }
@@ -227,18 +227,19 @@ SUPER_ADMIN_LAST_NAME = env("SUPER_ADMIN_LAST_NAME")
 # django-q https://django-q.readthedocs.io/en/latest/configure.html
 
 Q_CLUSTER = {
-    'name': 'SdU',
-    'recycle': 500,
-    'timeout': 60,
-    'compress': True,
-    'save_limit': 250,
-    'queue_limit': 500,
-    'cpu_affinity': 1,
-    'label': 'Django Q',
-    'redis': {
-        'host': 'redis',
-        'port': 6379,
-        'db': 0, }
+    "name": "SdU",
+    "recycle": 500,
+    "timeout": 60,
+    "compress": True,
+    "save_limit": 250,
+    "queue_limit": 500,
+    "cpu_affinity": 1,
+    "label": "Django Q",
+    "redis": {
+        "host": "redis",
+        "port": 6379,
+        "db": 0,
+    },
 }
 
 # django-jazzmin

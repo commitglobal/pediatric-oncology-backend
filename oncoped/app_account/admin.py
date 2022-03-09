@@ -79,19 +79,13 @@ class AdminCustomUser(DjangoUserAdmin):
 
     def has_delete_permission(self, request, obj=None):
         if obj and hasattr(obj, "email"):
-            if (
-                obj.email == settings.SUPER_ADMIN_EMAIL
-                and request.user.email != settings.SUPER_ADMIN_EMAIL
-            ):
+            if obj.email == settings.SUPER_ADMIN_EMAIL and request.user.email != settings.SUPER_ADMIN_EMAIL:
                 return False
         return True
 
     def has_change_permission(self, request, obj=None):
         if obj and hasattr(obj, "email"):
-            if (
-                obj.email == settings.SUPER_ADMIN_EMAIL
-                and request.user.email != settings.SUPER_ADMIN_EMAIL
-            ):
+            if obj.email == settings.SUPER_ADMIN_EMAIL and request.user.email != settings.SUPER_ADMIN_EMAIL:
                 return False
         return True
 

@@ -21,9 +21,7 @@ def admin_index_custom_context(request):
     ctx = {}
     if request.path[3:] == "/admin/":
         patients_count_all = PatientRequest.objects.count()
-        patients_assigned = PatientRequest.objects.filter(
-            med_assistance__clinic__isnull=False
-        ).count()
+        patients_assigned = PatientRequest.objects.filter(med_assistance__clinic__isnull=False).count()
         patiens_unassigned = patients_count_all - patients_assigned
 
         ctx["count_patient_requests_all"] = patients_count_all
@@ -44,9 +42,7 @@ def admin_index_custom_context(request):
 
         clinics_count = Clinic.objects.count()
         all_beds = (
-            Clinic.objects.annotate(all_beds=Sum("available_beds"))
-            .values_list("all_beds", flat=True)
-            .first()
+            Clinic.objects.annotate(all_beds=Sum("available_beds")).values_list("all_beds", flat=True).first()
         ) or 0
         available_beds = all_beds - patients_assigned
         try:
@@ -179,7 +175,6 @@ class AdminClinic(ImportExportModelAdmin):
     }
 
 
-
 @admin.register(PatientRequest)
 class AdminPatientRequest(ImportExportModelAdmin):
     def assigned_clinic(self, obj):
@@ -188,9 +183,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
             return mark_safe(
                 f'<span style="font-weight: bold; color: green;">{clinic.name}, {clinic.city} ({clinic.county})</span>'
             )
-        return mark_safe(
-            '<i class="fas fa-times" style="font-weight: bold; color: red; font-size: 20px;"></i>'
-        )
+        return mark_safe('<i class="fas fa-times" style="font-weight: bold; color: red; font-size: 20px;"></i>')
 
     assigned_clinic.short_description = _("Assigned Clinic")
 
@@ -198,13 +191,9 @@ class AdminPatientRequest(ImportExportModelAdmin):
         transport = obj.logsol_assistance.transport_required
         accommodation = obj.logsol_assistance.accommodation_required
         if transport and not accommodation:
-            return mark_safe(
-                '<i class="fas fa-car-side" style="font-weight: bold; font-size: 20px;"></i>'
-            )
+            return mark_safe('<i class="fas fa-car-side" style="font-weight: bold; font-size: 20px;"></i>')
         if accommodation and not transport:
-            return mark_safe(
-                '<i class="fas fa-house-user" style="font-weight: bold; font-size: 20px;"></i>'
-            )
+            return mark_safe('<i class="fas fa-house-user" style="font-weight: bold; font-size: 20px;"></i>')
         if transport and accommodation:
             return mark_safe(
                 (
@@ -214,9 +203,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
             )
         return None
 
-    requires_logistic_and_social_assistance.short_description = _(
-        "Logistic & Social Assistance"
-    )
+    requires_logistic_and_social_assistance.short_description = _("Logistic & Social Assistance")
 
     def number_of_companions(self, obj):
         companions = obj.companions.count()
