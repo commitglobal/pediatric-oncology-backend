@@ -53,13 +53,18 @@ DIAGNOSTIC_CLASS_CHOICES = (
     ("ANMN", "Alte neoplasme maligne nespecificate",),
 )
 
+CASE_STATUS_CHOICES = (
+    ("P", _("Case Pending")),
+    ("R", _("Clinic is Ready for takeover")),
+    ("T", _("Taken over by Clinic")),
+    ("TP", _("Taken over previously, in person")),
+)
 
 class Clinic(models.Model):
-    tumor_type = models.CharField(
+    tumor_type = MultiSelectField(
         verbose_name=_("Tumor Type"),
-        max_length=2,
+        max_length=3,
         choices=TUMOR_TYPE_CHOICES,
-        default="S",
         null=False,
         blank=False,
     )
@@ -117,7 +122,7 @@ class Clinic(models.Model):
     )
 
     def __str__(self):
-        return f"{self.name}, {self.city} ({self.county}) - {self.available_beds} ({self.tumor_type})"
+        return f"{self.name}, {self.city} ({self.county}) - {self.available_beds} ({'+'.join(self.tumor_type)})"
 
     class Meta:
         verbose_name = _("Clinic")
@@ -265,14 +270,14 @@ class PatientRequest(models.Model):
     child_current_address = models.CharField(
         verbose_name=_("Child Current Address"),
         max_length=100,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
     )
     child_current_city = models.CharField(
         verbose_name=_("Child Current City"),
         max_length=100,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
     )
     child_current_county = models.CharField(
         verbose_name=_("Child Current County"),
@@ -283,8 +288,8 @@ class PatientRequest(models.Model):
     child_current_country = models.CharField(
         verbose_name=_("Child Current Country"),
         max_length=100,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
     )
 
     # Logistical Info
@@ -311,14 +316,15 @@ class PatientRequest(models.Model):
     origin_medical_institution_name = models.CharField(
         verbose_name=_("Institution Name"),
         max_length=150,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
     )
     origin_medical_institution_contact_person = models.CharField(
         verbose_name=_("Contact Person"),
         max_length=150,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
+        help_text=_("Full Name of the contact person")
     )
     origin_medical_institution_phone_number = models.CharField(
         verbose_name=_("Phone Number"),
@@ -326,8 +332,8 @@ class PatientRequest(models.Model):
         help_text=_(
             "Contact Person's phone number. Please include country prefix e.g. +40723000123"
         ),
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
     )
     origin_medical_institution_email = models.EmailField(
         verbose_name=_("Email"), blank=True, null=True
@@ -385,19 +391,18 @@ class MedicalAssistance(models.Model):
         related_name="rel_clinics",
     )
 
-    # Receiving DR
-    receiving_dr_full_name = models.CharField(
-        verbose_name=_("Receiving Dr Full Name"),
-        max_length=150,
-        null=True,
-        blank=True,
+    case_status = models.CharField(
+        verbose_name=_("Case Status"),
+        choices=CASE_STATUS_CHOICES,
+        max_length=3,
+        default="P",
+        null=False,
+        blank=False,
     )
-    receiving_dr_phone_number = models.CharField(
-        verbose_name=_("Receiving Dr Phone Number"),
-        max_length=30,
-        help_text=_("Please include country prefix e.g. +40723000123"),
-        blank=True,
+    estimated_arrival_date = models.DateField(
+        verbose_name=_("Estimated Arrival Date"),
         null=True,
+        blank=True
     )
     hospitalization_start = models.DateField(
         verbose_name=_("Hospitalization Start"),
@@ -405,10 +410,53 @@ class MedicalAssistance(models.Model):
         blank=True,
         help_text=_("Only with confirmation from the receiving clinic!"),
     )
-    hospitalization_end = models.DateField(
-        verbose_name=_("Hospitalization End"),
+    receiving_dr_full_name = models.CharField(
+        verbose_name=_("Receiving Dr Full Name"),
+        max_length=150,
         null=True,
         blank=True,
+    )
+    comments = models.TextField(
+        verbose_name=_("Comments"),
+        null=True,
+        blank=True
+    )
+    needs_transfer = models.BooleanField(
+        verbose_name=_("Needs Transfer"),
+        default=False,
+    )
+    international_redirect = models.BooleanField(
+        verbose_name=_("International Redirect"),
+        default=False,
+    )
+    redirect_institution = models.CharField(
+        verbose_name=_("Redirect Institution"),
+        max_length=250,
+        null=True,
+        blank=True,
+    )
+    specialty = models.CharField(
+        verbose_name=_("Specialty"),
+        max_length=150,
+        null=True,
+        blank=True,
+    )
+    town = models.CharField(
+        verbose_name=_("Town"),
+        max_length=150,
+        null=True,
+        blank=True,
+    )
+    country = models.CharField(
+        verbose_name=_("Country"),
+        max_length=150,
+        null=True,
+        blank=True,
+    )
+    reason = models.TextField(
+        verbose_name=_("Reason"),
+        null=True,
+        blank=True
     )
 
 

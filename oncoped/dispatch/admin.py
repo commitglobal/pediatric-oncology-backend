@@ -251,10 +251,10 @@ class AdminPatientRequest(ImportExportModelAdmin):
     view_on_site = False
 
     inlines = [
-        PatientRequestFileInLine,
         MedicalAssistanceInLine,
         LogisticAndSocialAssistanceInLine,
         CompanionInLine,
+        PatientRequestFileInLine,
     ]
 
     formfield_overrides = {
