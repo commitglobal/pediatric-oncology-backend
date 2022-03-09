@@ -47,7 +47,7 @@ def admin_index_custom_context(request):
             Clinic.objects.annotate(all_beds=Sum("available_beds"))
             .values_list("all_beds", flat=True)
             .first()
-        )
+        ) or 0
         available_beds = all_beds - patients_assigned
         try:
             if all_beds:
