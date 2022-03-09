@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from multiselectfield import MultiSelectField
+from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
@@ -326,10 +327,21 @@ class PatientRequest(models.Model):
     def __str__(self):
         return f"#{self.id} {self.get_full_name()} {self.age}{self.sex}"
 
+    def validate_unique(self,exclude=None):
+        try:
+            super().validate_unique()
+        except ValidationError as e:
+            raise ValidationError(_("There is already a Pacient Request with this name, birth date and age."))
+
     class Meta:
         verbose_name = _("Patient Request")
         verbose_name_plural = _("Patient Requests")
-
+        unique_together = [
+            "first_name",
+            "last_name",
+            "birth_date",
+            "age",
+        ]
 
 def patient_request_upload(instance, filename):
     file_name = filename.lower().replace(" ", "_")

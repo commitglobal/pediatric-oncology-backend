@@ -33,7 +33,7 @@ def admin_index_custom_context(request):
             if patients_assigned:
                 if patiens_unassigned:
                     ctx["patient_requests_assigned_percentage"] = int(
-                        round(patiens_unassigned / patients_count_all * 100, 0)
+                        round((1 - (patiens_unassigned / patients_count_all)) * 100, 0)
                     )
                 else:
                     ctx["patient_requests_assigned_percentage"] = 100
