@@ -61,7 +61,75 @@
         } else {
             $('.field-accommodation_details').hide();
         }
+
+        // Medical Assistance
+        switch ($('#id_med_assistance-0-case_status').find('option:selected').text()) {
+            case "Clinic is Ready for takeover":
+            case "Clinica este pregătită să primească pacientul":
+                $('.field-estimated_arrival_date').show();
+
+                $('.field-hospitalization_start').hide();
+                $('.field-receiving_dr_full_name').hide();
+                $('.field-comments').hide();
+                $('.field-needs_transfer').hide();
+                $('#id_med_assistance-0-needs_transfer').prop('checked', false);
+
+                break;
+            case "Case Pending":
+            case "Caz în așteptare":
+                $('.field-estimated_arrival_date').hide();
+                $('#id_med_assistance-0-estimated_arrival_date').val('');
+
+                $('.field-estimated_arrival_date').hide();
+                $('.field-hospitalization_start').hide();
+                $('.field-receiving_dr_full_name').hide();
+                $('.field-comments').hide();
+                $('.field-needs_transfer').hide();
+
+                $('#id_med_assistance-0-needs_transfer').prop('checked', false);
+                break;
+
+            default:
+                $('.field-estimated_arrival_date').hide();
+                $('#id_med_assistance-0-estimated_arrival_date').val('');
+
+                $('.field-estimated_arrival_date').show();
+                $('.field-hospitalization_start').show();
+                $('.field-receiving_dr_full_name').show();
+                $('.field-comments').show();
+                $('.field-needs_transfer').show();
+
+
+                break;
+        }
+
+
+        if ($('#id_med_assistance-0-needs_transfer').is(":checked")) {
+            $('.field-international_redirect').show();
+            $('.field-redirect_institution').show();
+            $('.field-specialty').show();
+            $('.field-town').show();
+            $('.field-country').show();
+            $('.field-reason').show();
+        } else {
+            $('.field-international_redirect').hide();
+            $('.field-redirect_institution').hide();
+            $('.field-specialty').hide();
+            $('.field-town').hide();
+            $('.field-country').hide();
+            $('.field-reason').hide();
+
+            $('#id_med_assistance-0-international_redirect').prop('checked', false);
+            $('#id_med_assistance-0-redirect_institution').val('');
+            $('#id_med_assistance-0-specialty').val('');
+            $('#id_med_assistance-0-town').val('');
+            $('#id_med_assistance-0-country').val('');
+            $('#id_med_assistance-0-reason').val('');
+        }
+
     }
+
+
 
     $('#id_institution_type').on('change', function () {
         detect_category();
@@ -78,6 +146,15 @@
     $('#id_logsol_assistance-0-accommodation_required').on('change', function () {
         detect_category();
     });
+
+    // Medical Assistance
+    $('#id_med_assistance-0-case_status').on('change', function () {
+        detect_category();
+    });
+    $('#id_med_assistance-0-needs_transfer').on('change', function () {
+        detect_category();
+    });
+
     detect_category();
 
 </script>
