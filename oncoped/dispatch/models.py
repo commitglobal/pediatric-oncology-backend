@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 from django.conf import settings
 from multiselectfield import MultiSelectField
@@ -35,6 +36,21 @@ REQUESTER_TYPE = (
 TRANSPORT_CHOICES = (
     ("NAT", _("National")),
     ("INT", _("International")),
+)
+
+DIAGNOSTIC_CLASS_CHOICES = (
+    ("LAMM", "Leucemii, afecțiuni mieloproliferative și mielodisplazice",),
+    ("LNR", "Limfoame și neoplasme reticuloendoteliale",),
+    ("SNCNII", "SNC și neoplasme intracraniene și intraspinale",),
+    ("NATCNP", "Neuroblastom și alte tumori ale celulelor nervoase periferice",),
+    ("R", "Retinoblastom",),
+    ("TR", "Tumori renale",),
+    ("TH", "Tumori hepatice",),
+    ("TMO", "Tumori maligne ale oaselor",),
+    ("SPMATE", "Sarcoame de părți moi și alte țesuturi extraosoase",),
+    ("TTNG", "Tumori terofoblastice și neoplasme ale gonadelor",),
+    ("ANMEMM", "Alte neoplasme maligne epiteliale și melanoame maligne",),
+    ("ANMN", "Alte neoplasme maligne nespecificate",),
 )
 
 
@@ -180,18 +196,43 @@ class PatientRequest(models.Model):
         null=False,
     )
 
-    # General Medical Info
-    complete_diagnostic = models.TextField(
-        verbose_name=_("Complete Diagnostic"),
-        help_text="Put some helful explanation here...",
+    # Diagnostic
+    diagnostic_class = models.CharField(
+        verbose_name=_("Diagnostic Class"),
+        max_length=10,
+        choices=DIAGNOSTIC_CLASS_CHOICES,
         null=False,
         blank=False,
     )
-    available_diagnostic = models.TextField(
-        verbose_name=_("Available Diagnostic / Request Reason"),
-        help_text="Put some helful explanation here...",
+    known_complete_diagnostic = models.BooleanField(
+        verbose_name=_("Complete Diagnostic Known"),
+        default=False,
+    )
+    complete_diagnostic = models.TextField(
+        verbose_name=_("Complete Diagnostic"),
         null=True,
         blank=True,
+    )
+    date_diagnosed = models.DateField(
+        verbose_name=_("Date Diagnosed"),
+        null=True,
+        blank=True
+    )
+    diagnosing_institution_name = models.CharField(
+        verbose_name=_("Diagnosing Institution Name"),
+        max_length=150,
+        null=True,
+        blank=True
+    )
+    general_problem_description = models.TextField(
+        verbose_name=_("General Problem Description"),
+        help_text="Describe the Child's medical issue",
+        null=True,
+        blank=True,
+    )
+    medical_documents_checked = models.BooleanField(
+        verbose_name=_("Medical Documents Checked"),
+        default=False
     )
     tumor_type = models.CharField(
         verbose_name=_("Tumor Type"),
@@ -213,11 +254,12 @@ class PatientRequest(models.Model):
         null=True,
         blank=True,
     )
-    clinical_status_comments = models.TextField(
-        verbose_name=_("Clinical Status Comments"),
+    current_clinical_status = models.TextField(
+        verbose_name=_("Current Clinical Status"),
         null=True,
         blank=True,
     )
+
 
     # Location details
     child_current_address = models.CharField(

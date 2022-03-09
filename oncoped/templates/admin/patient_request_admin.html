@@ -19,10 +19,29 @@
                 break;
         }
 
+        if ($('#id_known_complete_diagnostic').is(":checked")) {
+            $('.field-complete_diagnostic').show();
+            $('.field-date_diagnosed').show();
+            $('.field-diagnosing_institution_name').show();
+
+            $('.field-general_problem_description').hide();
+            $('#id_general_problem_description').val('');
+        } else {
+            $('.field-complete_diagnostic').hide();
+            $('.field-date_diagnosed').hide();
+            $('.field-diagnosing_institution_name').hide();
+            $('#id_complete_diagnostic').val('');
+            $('#id_date_diagnosed').val('');
+            $('#id_diagnosing_institution_name').val('');
+
+            $('.field-general_problem_description').show();
+        }
+
         if ($('#id_therapy_needs_8').is(":checked")) {
             $('.field-other_therapy_needs').show();
         } else {
             $('.field-other_therapy_needs').hide();
+            $('#id_other_therapy_needs').val('');
         }
 
         if ($('#id_logsol_assistance-0-transport_required').is(":checked")) {
@@ -45,6 +64,9 @@
     }
 
     $('#id_institution_type').on('change', function () {
+        detect_category();
+    });
+    $('#id_known_complete_diagnostic').on('change', function () {
         detect_category();
     });
     $('#id_therapy_needs_8').on('change', function () {
