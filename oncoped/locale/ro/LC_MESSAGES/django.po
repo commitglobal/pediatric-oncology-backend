@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-09 23:42+0200\n"
-"PO-Revision-Date: 2022-03-09 14:31+0200\n"
+"PO-Revision-Date: 2022-03-09 23:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ro\n"
@@ -127,16 +127,12 @@ msgid "Identification"
 msgstr "Identificare"
 
 #: dispatch/admin.py:281
-#, fuzzy
-#| msgid "Requester Last Name"
 msgid "Requester Data"
-msgstr "Numele Solicitantului"
+msgstr "Date ale Solicitantului"
 
 #: dispatch/admin.py:294
-#, fuzzy
-#| msgid "Complete Diagnostic"
 msgid "Diagnostic"
-msgstr "Diagnostic Complet"
+msgstr "Diagnostic"
 
 #: dispatch/admin.py:312
 msgid "Child Location"
@@ -236,19 +232,19 @@ msgstr "Internațional"
 
 #: dispatch/models.py:57
 msgid "Case Pending"
-msgstr ""
+msgstr "Caz în așteptare"
 
 #: dispatch/models.py:58
 msgid "Clinic is Ready for takeover"
-msgstr ""
+msgstr "Clinica este pregătită să primească pacientul"
 
 #: dispatch/models.py:59
 msgid "Taken over by Clinic"
-msgstr ""
+msgstr "Preluat de clinică"
 
 #: dispatch/models.py:60
 msgid "Taken over previously, in person"
-msgstr ""
+msgstr "Preluat anterior, prin prezentare directă"
 
 #: dispatch/models.py:65 dispatch/models.py:243
 msgid "Tumor Type"
@@ -324,7 +320,7 @@ msgstr "Sex"
 
 #: dispatch/models.py:167
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #: dispatch/models.py:179
 msgid "Fill in only if requester is not a Person"
@@ -343,42 +339,32 @@ msgid "Email"
 msgstr "Email"
 
 #: dispatch/models.py:206
-#, fuzzy
-#| msgid "Diagnostic Investigation"
 msgid "Diagnostic Class"
-msgstr "Investigații Diagnostice"
+msgstr "Clasa de diagnostic"
 
 #: dispatch/models.py:213
-#, fuzzy
-#| msgid "Complete Diagnostic"
 msgid "Complete Diagnostic Known"
-msgstr "Diagnostic Complet"
+msgstr "Diagnostic complet disponibil"
 
 #: dispatch/models.py:217
 msgid "Complete Diagnostic"
 msgstr "Diagnostic Complet"
 
 #: dispatch/models.py:222
-#, fuzzy
-#| msgid "Complete Diagnostic"
 msgid "Date Diagnosed"
-msgstr "Diagnostic Complet"
+msgstr "Data de diagnostic"
 
 #: dispatch/models.py:227
-#, fuzzy
-#| msgid "Institution Name"
 msgid "Diagnosing Institution Name"
-msgstr "Numele Instituției"
+msgstr "Numele Instituției care a diagnosticat"
 
 #: dispatch/models.py:233
-#, fuzzy
-#| msgid "general user description"
 msgid "General Problem Description"
-msgstr "descriere generală utilizator"
+msgstr "Descrierea problemei"
 
 #: dispatch/models.py:239
 msgid "Medical Documents Checked"
-msgstr ""
+msgstr "Documente medicale verificate"
 
 #: dispatch/models.py:251
 msgid "Therapy Needs"
@@ -389,10 +375,8 @@ msgid "Other Therapy Needs"
 msgstr "Alte Necesități Terapeutice"
 
 #: dispatch/models.py:263
-#, fuzzy
-#| msgid "Clinical Status Comments"
 msgid "Current Clinical Status"
-msgstr "Observații Status Clinic"
+msgstr "Situație curentă status clinic"
 
 #: dispatch/models.py:271
 msgid "Child Current Address"
@@ -444,7 +428,7 @@ msgstr "Persoană de Contact"
 
 #: dispatch/models.py:327
 msgid "Full Name of the contact person"
-msgstr ""
+msgstr "Numele complet al persoanei de contact"
 
 #: dispatch/models.py:333
 msgid ""
@@ -456,7 +440,7 @@ msgstr ""
 
 #: dispatch/models.py:356
 msgid "There is already a Pacient Request with this name, birth date and age."
-msgstr ""
+msgstr "Există deja un pacient cu acest nume, dată de naștere si vârstă."
 
 #: dispatch/models.py:361
 msgid "Patient Request"
@@ -468,11 +452,9 @@ msgstr "Solicitări Pacienți"
 
 #: dispatch/models.py:395
 msgid "Case Status"
-msgstr ""
+msgstr "Situația cazului"
 
 #: dispatch/models.py:403
-#, fuzzy
-#| msgid "Estimated Arrival"
 msgid "Estimated Arrival Date"
 msgstr "Data estimată a sosirii"
 
@@ -490,41 +472,35 @@ msgstr "Nume Complet Medic Curant"
 
 #: dispatch/models.py:420
 msgid "Comments"
-msgstr ""
+msgstr "Observații"
 
 #: dispatch/models.py:425
 msgid "Needs Transfer"
-msgstr ""
+msgstr "Necesită transfer"
 
 #: dispatch/models.py:429
-#, fuzzy
-#| msgid "International"
 msgid "International Redirect"
-msgstr "Internațional"
+msgstr "Redirecționare internațională"
 
 #: dispatch/models.py:433
-#, fuzzy
-#| msgid "Medical Institution"
 msgid "Redirect Institution"
-msgstr "Instituție Medicală"
+msgstr "Instituție medicală unde se redirecționează"
 
 #: dispatch/models.py:439
 msgid "Specialty"
-msgstr ""
+msgstr "Specialitate"
 
 #: dispatch/models.py:445
 msgid "Town"
-msgstr ""
+msgstr "Oraș"
 
 #: dispatch/models.py:451
-#, fuzzy
-#| msgid "County"
 msgid "Country"
 msgstr "Județ"
 
 #: dispatch/models.py:457
 msgid "Reason"
-msgstr ""
+msgstr "Motivul"
 
 #: dispatch/models.py:469
 msgid "Pick Up Location"
