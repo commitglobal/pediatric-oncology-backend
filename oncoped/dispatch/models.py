@@ -1,12 +1,12 @@
 from tabnanny import verbose
-from django.db import models
-from django.conf import settings
-from multiselectfield import MultiSelectField
-from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
-from django.utils import timezone
-from dateutil.relativedelta import relativedelta
 
+from dateutil.relativedelta import relativedelta
+from django.conf import settings
+from django.core.exceptions import ValidationError
+from django.db import models
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+from multiselectfield import MultiSelectField
 
 SEX_CHOICES = (
     ("M", _("Male")),

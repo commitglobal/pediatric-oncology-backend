@@ -1,15 +1,6 @@
 from django.contrib import admin
-from dispatch.models import (
-    Clinic,
-    PatientRequest,
-    PatientRequestFile,
-    MedicalAssistance,
-    LogisticAndSocialAssistance,
-    Companion,
-)
-from import_export.admin import ImportExportModelAdmin
-from django.db.models import TextField, Sum
-from django.forms import Textarea, ModelForm
+from django.db.models import Sum, TextField
+from django.forms import ModelForm, Textarea
 from django.utils.html import mark_safe
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportModelAdmin
