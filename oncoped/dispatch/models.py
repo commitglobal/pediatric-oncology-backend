@@ -178,7 +178,7 @@ class PatientRequest(models.Model):
         max_length=100,
         blank=False,
     )
-    birth_date = models.DateField(verbose_name=_("Birth Date"), null=False, blank=False)
+    birth_date = models.DateField(verbose_name=_("Birth Date"), blank=False)
     sex = models.CharField(
         verbose_name=_("Sex"),
         max_length=2,
@@ -279,12 +279,12 @@ class PatientRequest(models.Model):
     child_current_address = models.CharField(
         verbose_name=_("Child Current Address"),
         max_length=100,
-        blank=False,
+        blank=True,
     )
     child_current_city = models.CharField(
         verbose_name=_("Child Current City"),
         max_length=100,
-        blank=False,
+        blank=True,
     )
     child_current_county = models.CharField(
         verbose_name=_("Child Current County"),
@@ -315,7 +315,7 @@ class PatientRequest(models.Model):
     origin_medical_institution_name = models.CharField(
         verbose_name=_("Institution Name"),
         max_length=150,
-        blank=False,
+        blank=True,
     )
     origin_medical_institution_contact_person = models.CharField(
         verbose_name=_("Contact Person"),
@@ -327,7 +327,7 @@ class PatientRequest(models.Model):
         verbose_name=_("Phone Number"),
         max_length=30,
         help_text=_("Contact Person's phone number. Please include country prefix e.g. +40723000123"),
-        blank=False,
+        blank=True,
     )
     origin_medical_institution_email = models.EmailField(verbose_name=_("Email"), blank=True)
 
