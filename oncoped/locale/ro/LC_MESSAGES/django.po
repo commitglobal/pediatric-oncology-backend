@@ -635,8 +635,6 @@ msgid "Pediatric Oncology - Patient Request Form"
 msgstr "Oncologie Pediatrică - Formular Înregistrare Pacient"
 
 #: oncoped_site/templates/form.html:11
-#, fuzzy
-#| msgid "Patient request form"
 msgid "Patient Request Form"
 msgstr "Formular Înregistrare Pacient"
 
