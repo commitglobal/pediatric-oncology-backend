@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from os import path
 
-
 import environ
 from django.utils.translation import gettext_lazy as _
 
@@ -23,6 +22,8 @@ env = environ.Env(
     HOME_SITE_URL=(str, ""),
     ALLOWED_HOSTS=(list, ["*"]),
     MEMCACHED_HOST=(str, "cache:11211"),
+    RECAPTCHA_PUBLIC_KEY=(str, ""),
+    RECAPTCHA_PRIVATE_KEY=(str, ""),
 )
 
 ADMIN_TITLE = _("Dispecerat Oncologie Pediatrică")
@@ -56,10 +57,13 @@ INSTALLED_APPS = [
     "import_export",
     "multiselectfield",
     "django_q",
+    "crispy_forms",
+    "captcha",
     # project apps
     "static_custom",
     "app_account",
     "dispatch",
+    "oncoped_site",
 ]
 
 MIDDLEWARE = [
@@ -394,3 +398,12 @@ JAZZMIN_UI_TWEAKS = {
     "theme": "default",
     "dark_mode_theme": "darkly",
 }
+
+# Recaptcha settings
+RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY", default="")
+RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY", default="")
+
+if not RECAPTCHA_PUBLIC_KEY:
+    SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"

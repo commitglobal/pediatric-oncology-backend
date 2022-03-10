@@ -1,18 +1,18 @@
 from django.contrib import admin
-from dispatch.models import (
-    Clinic,
-    PatientRequest,
-    PatientRequestFile,
-    MedicalAssistance,
-    LogisticAndSocialAssistance,
-    Companion,
-)
-from import_export.admin import ImportExportModelAdmin
-from django.db.models import TextField, Sum
+from django.db.models import Sum, TextField
 from django.forms import Textarea
 from django.utils.html import mark_safe
 from django.utils.translation import gettext_lazy as _
+from import_export.admin import ImportExportModelAdmin
 
+from dispatch.models import (
+    Clinic,
+    Companion,
+    LogisticAndSocialAssistance,
+    MedicalAssistance,
+    PatientRequest,
+    PatientRequestFile,
+)
 
 admin.site.index_template = "admin/custom_admin_index.html"
 

@@ -1,8 +1,7 @@
-from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group, Permission
+from django.core.management.base import BaseCommand
 
 from app_account.models import DEFAULT_USER_GROUP
-
 
 DEFAULT_USER_GROUP_PERMISSIONS = [
     "view_patientrequest",

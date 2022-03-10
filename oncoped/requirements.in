@@ -2,6 +2,8 @@
 django>=3.2,<3.3
 django-environ
 django-storages
+django-crispy-forms
+django-recaptcha
 
 # scheduler
 django-q
