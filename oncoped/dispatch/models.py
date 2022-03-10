@@ -1,3 +1,4 @@
+from email.policy import default
 from tabnanny import verbose
 
 from dateutil.relativedelta import relativedelta
@@ -220,6 +221,7 @@ class PatientRequest(models.Model):
         verbose_name=_("Phone Number"),
         max_length=30,
         help_text=_("Please include country prefix e.g. +40723000123"),
+        blank=False,
     )
     requester_email = models.EmailField(
         verbose_name=_("Email"),
@@ -257,13 +259,12 @@ class PatientRequest(models.Model):
         verbose_name=_("Tumor Type"),
         max_length=2,
         choices=TUMOR_TYPE_CHOICES,
-        default="S",
-        blank=False,
+        blank=True,
     )
     therapy_needs = MultiSelectField(
         verbose_name=_("Therapy Needs"),
         choices=THERAPY_NEEDS_CHOICES,
-        blank=False,
+        blank=True,
     )
     other_therapy_needs = models.CharField(
         verbose_name=_("Other Therapy Needs"),
