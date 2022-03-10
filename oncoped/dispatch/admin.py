@@ -9,7 +9,7 @@ from dispatch.models import (
 )
 from import_export.admin import ImportExportModelAdmin
 from django.db.models import TextField, Sum
-from django.forms import Textarea
+from django.forms import Textarea, ModelForm
 from django.utils.html import mark_safe
 from django.utils.translation import gettext_lazy as _
 
@@ -77,6 +77,7 @@ class AdminPatientRequestFile(admin.ModelAdmin):
 class MedicalAssistanceInLine(admin.StackedInline):
     model = MedicalAssistance
 
+    verbose_name = _("Add Medical Assitance")
     verbose_name_plural = _("Add Medical Assitance")
 
 
@@ -90,6 +91,7 @@ class AdminMedicalAssistance(admin.ModelAdmin):
 class LogisticAndSocialAssistanceInLine(admin.StackedInline):
     model = LogisticAndSocialAssistance
 
+    verbose_name = _("Add Logistic & Social Assistance")
     verbose_name_plural = _("Add Logistic & Social Assistance")
 
     fieldsets = (
@@ -99,14 +101,16 @@ class LogisticAndSocialAssistanceInLine(admin.StackedInline):
                 "fields": (
                     "transport_required",
                     "transport",
-                    "transport_details",
                     "pick_up_location",
-                    "contact_person",
+                    "destination_location",
+                    "transport_details",
+                    "transport_rep_external",
+                    "transport_rep_external_details",
                     "accommodation_required",
                     "accommodation_details",
-                    "destination_asisting_entity_details",
+                    "accomodation_rep_external",
+                    "accomodation_rep_external_details",
                 ),
-                "classes": ("logistic-social-assistance",),
             },
         ),
     )
@@ -123,6 +127,7 @@ class CompanionInLine(admin.StackedInline):
     model = Companion
     extra = 1
     max_num = 5
+    verbose_name = _("Add Companion")
     verbose_name_plural = _("Add Companion")
 
 
@@ -175,15 +180,27 @@ class AdminClinic(ImportExportModelAdmin):
     }
 
 
+class AdminPatientRequestForm(ModelForm):
+    model = PatientRequest
+
+    class Meta:
+        help_texts = {
+            "get_child_age": _("Age will be computed once the form is saved."),
+        }
+
+
 @admin.register(PatientRequest)
 class AdminPatientRequest(ImportExportModelAdmin):
+    form = AdminPatientRequestForm
+
     def assigned_clinic(self, obj):
         clinic = obj.med_assistance.clinic
         if clinic:
             return mark_safe(
                 f'<span style="font-weight: bold; color: green;">{clinic.name}, {clinic.city} ({clinic.county})</span>'
             )
-        return mark_safe('<i class="fas fa-times" style="font-weight: bold; color: red; font-size: 20px;"></i>')
+        # return mark_safe('<i class="fas fa-times" style="font-weight: bold; color: red; font-size: 20px;"></i>')
+        return
 
     assigned_clinic.short_description = _("Assigned Clinic")
 
@@ -215,22 +232,40 @@ class AdminPatientRequest(ImportExportModelAdmin):
 
     number_of_companions.short_description = _("Companions")
 
+    @admin.display(description=_("Case Status"))
+    def case_status(self, obj):
+        if obj.med_assistance and obj.med_assistance.clinic:
+            badge_color, badge_text = "secondary", _("NO CASE STATUS")
+            status = obj.med_assistance.case_status
+            if status == "P":
+                badge_color, badge_text = "danger", _("PENDING")
+            if status == "R":
+                badge_color, badge_text = "info", _("READY")
+            if status in ["T", "TP"]:
+                badge_color, badge_text = "success", _("TAKEN")
+            return mark_safe(f'<span class="badge badge-{badge_color}">{badge_text}</span>')
+        badge_color, badge_text = "secondary", _("NO CLINIC ASSIGNED")
+        return mark_safe(f'<span class="badge badge-{badge_color}">{badge_text}</span>')
+
     list_display = [
         "get_full_name",
-        "age",
+        "get_child_age",
         "sex",
         "tumor_type",
         "estimated_arrival_dt",
+        "case_status",
         "assigned_clinic",
         "requires_logistic_and_social_assistance",
         "number_of_companions",
     ]
     list_display_links = ["get_full_name"]
     search_fields = ["first_name", "last_name", "tumor_type"]
+    readonly_fields = ("get_child_age",)
     list_filter = [
         "first_name",
         "last_name",
         "tumor_type",
+        "med_assistance__case_status",
     ]
 
     ordering = ("pk",)
@@ -258,7 +293,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
                     "first_name",
                     "last_name",
                     "birth_date",
-                    "age",
+                    "get_child_age",
                     "sex",
                     "address",
                 )
@@ -327,4 +362,17 @@ class AdminPatientRequest(ImportExportModelAdmin):
                 )
             },
         ),
+    )
+
+    jazzmin_section_order = (
+        _("Identification"),
+        _("Requester Data"),
+        _("Diagnostic"),
+        _("Origin Medical Institution"),
+        _("Child Location"),
+        _("Add Medical Assitance"),
+        _("Logistical Info"),
+        _("Add Logistic & Social Assistance"),
+        _("Add Companion"),
+        _("Upload Medical Files"),
     )
