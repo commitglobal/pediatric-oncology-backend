@@ -44,22 +44,49 @@
             $('#id_other_therapy_needs').val('');
         }
 
+        // Logistic & Accomodation
+        if ($('#id_logsol_assistance-0-transport_rep_external').is(":checked")) {
+
+            $('.field-transport_rep_external_details').show();
+        } else {
+
+            $('.field-transport_rep_external_details').hide();
+            $('#id_logsol_assistance-0-transport_rep_external_details').val('');
+        }
+
         if ($('#id_logsol_assistance-0-transport_required').is(":checked")) {
             $('.field-transport').show();
-            $('.field-transport_details').show();
             $('.field-pick_up_location').show();
-            $('.field-contact_person').show();
+            $('.field-destination_location').show();
+            $('.field-transport_details').show();
+            $('.field-transport_rep_external').show();
         } else {
             $('.field-transport').hide();
-            $('.field-transport_details').hide();
             $('.field-pick_up_location').hide();
-            $('.field-contact_person').hide();
+            $('.field-destination_location').hide();
+            $('.field-transport_details').hide();
+            $('.field-transport_rep_external').hide();
+
+            $('#id_logsol_assistance-0-transport_rep_external').prop('checked', false);
+            $('.field-transport_rep_external_details').hide();
+        }
+
+        if ($('#id_logsol_assistance-0-accomodation_rep_external').is(":checked")) {
+            $('.field-accomodation_rep_external_details').show();
+        } else {
+            $('.field-accomodation_rep_external_details').hide();
+            $('#id_logsol_assistance-0-accomodation_rep_external_details').val('');
         }
 
         if ($('#id_logsol_assistance-0-accommodation_required').is(":checked")) {
             $('.field-accommodation_details').show();
+            $('.field-accomodation_rep_external').show();
         } else {
             $('.field-accommodation_details').hide();
+            $('.field-accomodation_rep_external').hide();
+
+            $('#id_logsol_assistance-0-accomodation_rep_external').prop('checked', false);
+            $('.field-accomodation_rep_external_details').hide();
         }
 
         // Medical Assistance
@@ -140,10 +167,18 @@
     $('#id_therapy_needs_8').on('change', function () {
         detect_category();
     });
+
+    // Logistic & Accommodation
     $('#id_logsol_assistance-0-transport_required').on('change', function () {
         detect_category();
     });
+    $('#id_logsol_assistance-0-transport_rep_external').on('change', function () {
+        detect_category();
+    });
     $('#id_logsol_assistance-0-accommodation_required').on('change', function () {
+        detect_category();
+    });
+    $('#id_logsol_assistance-0-accomodation_rep_external').on('change', function () {
         detect_category();
     });
 
