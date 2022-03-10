@@ -5,42 +5,46 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
 from django.urls import include, path
+from django.utils.translation import ugettext_lazy as _
 
+from .views import PatientRegisterRequestCreateView
 
 admin.site.site_title = settings.ADMIN_TITLE
 admin.site.site_header = settings.ADMIN_TITLE
 admin.site.index_title = settings.ADMIN_TITLE_SHORT
 
 
-urlpatterns = (
-    i18n_patterns(
-        # URL patterns which accept a language prefix
-        path(
-            "admin/password_reset/",
-            auth_views.PasswordResetView.as_view(),
-            name="admin_password_reset",
-        ),
-        path(
-            "admin/password_reset/done/",
-            auth_views.PasswordResetDoneView.as_view(),
-            name="password_reset_done",
-        ),
-        path(
-            "admin/reset/<uidb64>/<token>/",
-            auth_views.PasswordResetConfirmView.as_view(),
-            name="password_reset_confirm",
-        ),
-        path(
-            "admin/reset/done/",
-            auth_views.PasswordResetCompleteView.as_view(),
-            name="password_reset_complete",
-        ),
-        path("admin/", admin.site.urls, name="admin"),
-        path("logout", LogoutView.as_view(), name="logout"),
-        path("i18n/", include("django.conf.urls.i18n")),
-    )
-    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-)
+urlpatterns = i18n_patterns(
+    # URL patterns which accept a language prefix
+    path(
+        _("request-form/"),
+        PatientRegisterRequestCreateView.as_view(),
+        name="patient_request_form",
+    ),
+    path(
+        "admin/password_reset/",
+        auth_views.PasswordResetView.as_view(),
+        name="admin_password_reset",
+    ),
+    path(
+        "admin/password_reset/done/",
+        auth_views.PasswordResetDoneView.as_view(),
+        name="password_reset_done",
+    ),
+    path(
+        "admin/reset/<uidb64>/<token>/",
+        auth_views.PasswordResetConfirmView.as_view(),
+        name="password_reset_confirm",
+    ),
+    path(
+        "admin/reset/done/",
+        auth_views.PasswordResetCompleteView.as_view(),
+        name="password_reset_complete",
+    ),
+    path("admin/", admin.site.urls, name="admin"),
+    path("logout", LogoutView.as_view(), name="logout"),
+    path("i18n/", include("django.conf.urls.i18n")),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 if settings.ENABLE_DEBUG_TOOLBAR:

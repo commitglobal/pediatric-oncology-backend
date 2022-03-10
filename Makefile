@@ -21,6 +21,8 @@ seed_superuser:                   ## creates a superuser for the APP based on th
 seed_groups:                   ## creates a groups for the APP based on the data in the .env file
 	docker-compose exec oncoped ./manage.py seed_groups
 
+seed: seed_superuser seed_groups
+
 drop-db:                          ## drops the database
 	docker-compose down -t 60
 	docker volume rm oncoped-pgdata
@@ -48,7 +50,7 @@ collectstatic:
 	docker-compose exec oncoped ./manage.py collectstatic --no-input
 
 format:
-	black --line-length=120 --target-version=py39  --exclude migrations ./oncoped
+	docker-compose run --rm --no-deps --entrypoint "bash -c" oncoped "isort --skip migrations . && black --target-version=py39 --exclude migrations ."
 
 format-check:
-	black --line-length=120 --target-version=py39 --check --diff  --exclude migrations ./oncoped
+	docker-compose run --rm --no-deps --entrypoint "bash -c" oncoped "isort --skip migrations --check . && black --target-version=py39 --check --diff --exclude migrations ."
