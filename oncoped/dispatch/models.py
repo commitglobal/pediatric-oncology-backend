@@ -1,10 +1,12 @@
 from tabnanny import verbose
-
-from django.conf import settings
-from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 from multiselectfield import MultiSelectField
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+from dateutil.relativedelta import relativedelta
+
 
 SEX_CHOICES = (
     ("M", _("Male")),
@@ -176,8 +178,7 @@ class PatientRequest(models.Model):
         max_length=100,
         blank=False,
     )
-    birth_date = models.DateField(verbose_name=_("Birth Date"), blank=False)
-    age = models.PositiveSmallIntegerField(verbose_name=_("Age"), null=True, blank=False)
+    birth_date = models.DateField(verbose_name=_("Birth Date"), null=False, blank=False)
     sex = models.CharField(
         verbose_name=_("Sex"),
         max_length=2,
@@ -335,8 +336,16 @@ class PatientRequest(models.Model):
 
     get_full_name.short_description = _("Full Name")
 
+    def get_child_age(self):
+        today = timezone.localdate()
+        age = relativedelta(self.birth_date, today)
+
+        return -age.years
+
+    get_child_age.short_description = _("Age")
+
     def __str__(self):
-        return f"#{self.id} {self.get_full_name()} {self.age}{self.sex}"
+        return f"#{self.id} {self.get_full_name()} {self.get_child_age()}{self.sex}"
 
     def validate_unique(self, exclude=None):
         try:
@@ -351,7 +360,6 @@ class PatientRequest(models.Model):
             "first_name",
             "last_name",
             "birth_date",
-            "age",
         ]
 
 
@@ -432,22 +440,15 @@ class MedicalAssistance(models.Model):
     )
     reason = models.TextField(verbose_name=_("Reason"), null=True, blank=True)
 
+    def __str__(self):
+        pre = _("Medical Assistance")
+        return f"{pre} {self.id}"
+
 
 class LogisticAndSocialAssistance(models.Model):
     request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="logsol_assistance")
 
-    pick_up_location = models.CharField(
-        verbose_name=_("Pick Up Location"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
-    contact_person = models.CharField(
-        verbose_name=_("Contact Person"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
+    # Transport
     transport_required = models.BooleanField(
         verbose_name=_("Transport Required"),
         default=False,
@@ -461,12 +462,35 @@ class LogisticAndSocialAssistance(models.Model):
         blank=True,
         default="NAT",
     )
+    pick_up_location = models.CharField(
+        verbose_name=_("Pick Up Location"),
+        max_length=200,
+        null=True,
+        blank=True,
+        help_text=_("Departing from: City, Country"),
+    )
+    destination_location = models.CharField(
+        verbose_name=_("Pick Up Location"),
+        max_length=200,
+        null=True,
+        blank=True,
+        help_text=_("Departing from: City, Country"),
+    )
     transport_details = models.TextField(
         verbose_name=_("Transport Details"),
         null=True,
         blank=True,
-        help_text=_("Details: contact person / problem owner, phone number, other details."),
     )
+    transport_rep_external = models.BooleanField(
+        verbose_name=_("External Transport Representative"),
+        default=False,
+        help_text=_("Is the transport representative external to the organization?"),
+    )
+    transport_rep_external_details = models.TextField(
+        null=True,
+        blank=True,
+    )
+
     accommodation_required = models.BooleanField(
         verbose_name=_("Accommodation Required"),
         default=False,
@@ -476,14 +500,19 @@ class LogisticAndSocialAssistance(models.Model):
         verbose_name=_("Accommodation Details"),
         null=True,
         blank=True,
-        help_text=_("Details: contact person / problem owner, phone number, other details."),
     )
-    destination_asisting_entity_details = models.TextField(
-        verbose_name=_("Destination Assisting Entity Details"),
+    accomodation_rep_external = models.BooleanField(
+        verbose_name=_("External Accomodation Representative"),
+        default=False,
+        help_text=_("Is the accomodation representative external to the organization?"),
+    )
+    accomodation_rep_external_details = models.TextField(
         null=True,
         blank=True,
-        help_text=_("Info & contact details of the Organization/Person providing social assitance at destination"),
     )
+
+    def __str__(self):
+        return f"Logistic & Transport {self.id}"
 
 
 class Companion(models.Model):
