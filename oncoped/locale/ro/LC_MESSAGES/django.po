@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 22:31+0200\n"
+"POT-Creation-Date: 2022-03-10 22:47+0200\n"
 "PO-Revision-Date: 2022-03-10 13:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -92,85 +92,85 @@ msgstr "utilizatori"
 
 #: app_account/models.py:51 dispatch/models.py:337
 msgid "Full Name"
-msgstr "Nume întreg"
+msgstr "Nume Întreg"
 
-#: dispatch/admin.py:76 dispatch/admin.py:386
+#: dispatch/admin.py:67 dispatch/admin.py:377
 msgid "Upload Medical Files"
 msgstr "Încărcați fișiere medicale"
 
-#: dispatch/admin.py:89 dispatch/admin.py:90 dispatch/admin.py:382
+#: dispatch/admin.py:80 dispatch/admin.py:81 dispatch/admin.py:373
 msgid "Add Medical Assitance"
 msgstr "Adaugă asistență medicală"
 
-#: dispatch/admin.py:103 dispatch/admin.py:104 dispatch/admin.py:384
+#: dispatch/admin.py:94 dispatch/admin.py:95 dispatch/admin.py:375
 msgid "Add Logistic & Social Assistance"
 msgstr "Aduagă Asistență Logistică & Socială"
 
-#: dispatch/admin.py:139 dispatch/admin.py:140 dispatch/admin.py:385
+#: dispatch/admin.py:130 dispatch/admin.py:131 dispatch/admin.py:376
 msgid "Add Companion"
 msgstr "Adaugă însoțitor"
 
-#: dispatch/admin.py:197
+#: dispatch/admin.py:188
 msgid "Age will be computed once the form is saved."
 msgstr "Vârsta se va calcula o dată ce formularul este salvat."
 
-#: dispatch/admin.py:214
+#: dispatch/admin.py:205
 msgid "Assigned Clinic"
 msgstr "Clinică Alocată"
 
-#: dispatch/admin.py:232
+#: dispatch/admin.py:223
 msgid "Logistic & Social Assistance"
 msgstr "Asistență Logistică & Socială"
 
-#: dispatch/admin.py:242
+#: dispatch/admin.py:233
 msgid "Companions"
 msgstr "Însoțitori"
 
-#: dispatch/admin.py:244 dispatch/models.py:388
+#: dispatch/admin.py:235 dispatch/models.py:388
 msgid "Case Status"
 msgstr "Situația cazului"
 
-#: dispatch/admin.py:247
+#: dispatch/admin.py:238
 msgid "NO CASE STATUS"
 msgstr "FĂRĂ STATUS"
 
-#: dispatch/admin.py:250
+#: dispatch/admin.py:241
 msgid "PENDING"
 msgstr "ÎN AȘTEPTARE"
 
-#: dispatch/admin.py:252
+#: dispatch/admin.py:243
 msgid "READY"
 msgstr "PREGĂTIT"
 
-#: dispatch/admin.py:254
+#: dispatch/admin.py:245
 msgid "TAKEN"
 msgstr "PRELUAT"
 
-#: dispatch/admin.py:256
+#: dispatch/admin.py:247
 msgid "NO CLINIC ASSIGNED"
 msgstr "CLINICĂ NEASIGNATĂ"
 
-#: dispatch/admin.py:299 dispatch/admin.py:377
+#: dispatch/admin.py:290 dispatch/admin.py:368
 msgid "Identification"
 msgstr "Identificare"
 
-#: dispatch/admin.py:312 dispatch/admin.py:378
+#: dispatch/admin.py:303 dispatch/admin.py:369
 msgid "Requester Data"
 msgstr "Date ale Solicitantului"
 
-#: dispatch/admin.py:325 dispatch/admin.py:379
+#: dispatch/admin.py:316 dispatch/admin.py:370
 msgid "Diagnostic"
 msgstr "Diagnostic"
 
-#: dispatch/admin.py:343 dispatch/admin.py:381
+#: dispatch/admin.py:334 dispatch/admin.py:372
 msgid "Child Location"
 msgstr "Locația Copilului"
 
-#: dispatch/admin.py:354 dispatch/admin.py:383
+#: dispatch/admin.py:345 dispatch/admin.py:374
 msgid "Logistical Info"
 msgstr "Informații Logistice"
 
-#: dispatch/admin.py:364 dispatch/admin.py:380
+#: dispatch/admin.py:355 dispatch/admin.py:371
 msgid "Origin Medical Institution"
 msgstr "Instituție Medicală Originară"
 
@@ -626,15 +626,25 @@ msgstr "Română"
 msgid "English"
 msgstr "Engleză"
 
-#: oncoped_site/templates/form.html:9
-msgid "Patient request form"
-msgstr "Formular înregistrare pacient"
+#: oncoped_site/templates/base.html:8
+msgid "Pediatric Oncology"
+msgstr "Oncologie Pediatrică"
 
-#: oncoped_site/templates/form.html:24 oncoped_site/templates/form.html:30
+#: oncoped_site/templates/form.html:5
+msgid "Pediatric Oncology - Patient Request Form"
+msgstr "Oncologie Pediatrică - Formular Înregistrare Pacient"
+
+#: oncoped_site/templates/form.html:11
+#, fuzzy
+#| msgid "Patient request form"
+msgid "Patient Request Form"
+msgstr "Formular Înregistrare Pacient"
+
+#: oncoped_site/templates/form.html:26 oncoped_site/templates/form.html:32
 msgid "Errors"
 msgstr "Erori"
 
-#: oncoped_site/templates/form.html:36
+#: oncoped_site/templates/form.html:38
 msgid "Send request"
 msgstr "Trimite cerere"
 

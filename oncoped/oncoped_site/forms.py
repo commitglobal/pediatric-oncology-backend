@@ -15,7 +15,6 @@ class PatientRequestForm(forms.ModelForm):
     class Meta:
         model = PatientRequest
         exclude = [
-            "age",
             "current_clinical_status",
             "child_current_address",
             "child_current_city",
