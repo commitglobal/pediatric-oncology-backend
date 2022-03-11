@@ -1,6 +1,10 @@
+import logging
+
 from django.contrib.auth.models import AbstractUser, Group
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+logger = logging.getLogger(__file__)
 
 DEFAULT_USER_GROUP = "Users"
 
@@ -43,7 +47,11 @@ class CustomUser(AbstractUser):
         self.is_staff = True  # needed to be able to login to admin
         super(CustomUser, self).save(*args, **kwargs)
         # all new users are added by default in the users group
-        self.groups.add(Group.objects.get(name=DEFAULT_USER_GROUP))
+        try:
+            if not self.is_superuser:
+                self.groups.add(Group.objects.get(name=DEFAULT_USER_GROUP))
+        except Group.DoesNotExist:
+            logger.warn(f"Could Not add group {DEFAULT_USER_GROUP} for user {self.username} !")
 
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"

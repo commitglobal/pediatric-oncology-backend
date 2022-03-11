@@ -23,8 +23,8 @@ fi
 
 if [[ ${RUN_SEED_DATA} = "yes" ]] ; then
   echo "Load seed data in the database"
-  ./manage.py seed_superuser
   ./manage.py seed_groups
+  ./manage.py seed_superuser
 fi
 
 if [[ ${RUN_COLLECT_STATIC} = "yes" ]] ; then
