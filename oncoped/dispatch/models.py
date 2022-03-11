@@ -104,6 +104,7 @@ LOGISTIC_STATUS_CHOICES = (
     ("S", _("Solved")),
 )
 
+
 class Clinic(models.Model):
     tumor_type = MultiSelectField(
         verbose_name=_("Tumor Type"),
@@ -470,7 +471,7 @@ class LogisticAndSocialAssistance(models.Model):
         choices=LOGISTIC_STATUS_CHOICES,
         default="US",
         null=False,
-        blank=False
+        blank=False,
     )
     transport = models.CharField(
         verbose_name=_("Transport"),
@@ -521,7 +522,7 @@ class LogisticAndSocialAssistance(models.Model):
         choices=LOGISTIC_STATUS_CHOICES,
         default="US",
         null=False,
-        blank=False
+        blank=False,
     )
     accommodation_details = models.TextField(
         verbose_name=_("Accommodation Details"),
@@ -550,7 +551,7 @@ class LogisticAndSocialAssistance(models.Model):
         choices=LOGISTIC_STATUS_CHOICES,
         default="US",
         null=False,
-        blank=False
+        blank=False,
     )
     assistance_rep_external = models.BooleanField(
         verbose_name=_("External Assistance Representative"),

@@ -276,7 +276,12 @@ JAZZMIN_SETTINGS = {
     "topmenu_links": [
         # Url that gets reversed (Permissions can be added)
         {"name": _("Home"), "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": _("External Form"), "url": "patient_request_form", "permissions": ["auth.view_user"], "new_window": True},
+        {
+            "name": _("External Form"),
+            "url": "patient_request_form",
+            "permissions": ["auth.view_user"],
+            "new_window": True,
+        },
         {"name": _("A Code4Romania solution. Find Out More"), "url": "https://www.code4.ro/", "new_window": True},
         # external url that opens in a new window (Permissions can be added)
         # {
