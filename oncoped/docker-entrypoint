@@ -24,7 +24,7 @@ fi
 if [[ ${RUN_SEED_DATA} = "yes" ]] ; then
   echo "Load seed data in the database"
   ./manage.py seed_groups
-  ./manage.py seed_email_templates --replace
+  ./manage.py seed_email_templates
   ./manage.py seed_superuser
 fi
 
