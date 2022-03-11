@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import admin
 from django.db.models import Sum, TextField
 from django.forms import ModelForm, Textarea
@@ -96,20 +97,41 @@ class LogisticAndSocialAssistanceInLine(admin.StackedInline):
 
     fieldsets = (
         (
-            None,
+            _("Transport"),
             {
                 "fields": (
                     "transport_required",
+                    "transport_status",
                     "transport",
                     "pick_up_location",
                     "destination_location",
                     "transport_details",
                     "transport_rep_external",
                     "transport_rep_external_details",
+                ),
+                "classes": ("my-section",),
+            },
+        ),
+        (
+            _("Accommodation"),
+            {
+                "fields": (
                     "accommodation_required",
+                    "accommodation_status",
                     "accommodation_details",
-                    "accomodation_rep_external",
-                    "accomodation_rep_external_details",
+                    "accommodation_rep_external",
+                    "accommodation_rep_external_details",
+                ),
+            },
+        ),
+        (
+            _("Assistance"),
+            {
+                "fields": (
+                    "assistance_required",
+                    "assistance_status",
+                    "assistance_rep_external",
+                    "assistance_rep_external_details",
                 ),
             },
         ),
@@ -140,6 +162,9 @@ class AdminCompanion(admin.ModelAdmin):
 
 @admin.register(Clinic)
 class AdminClinic(ImportExportModelAdmin):
+
+    list_per_page = settings.LIST_PER_PAGE
+
     list_display = [
         "tumor_type",
         "name",
@@ -168,6 +193,7 @@ class AdminClinic(ImportExportModelAdmin):
 
     list_filter = [
         "tumor_type",
+        "therapy_services",
         "name",
         "city",
         "county",
@@ -193,11 +219,13 @@ class AdminPatientRequestForm(ModelForm):
 class AdminPatientRequest(ImportExportModelAdmin):
     form = AdminPatientRequestForm
 
+    list_per_page = settings.LIST_PER_PAGE
+
     def assigned_clinic(self, obj):
         clinic = obj.med_assistance.clinic
         if clinic:
             return mark_safe(
-                f'<span style="font-weight: bold; color: green;">{clinic.name}, {clinic.city} ({clinic.county})</span>'
+                f'<span style="font-weight: bold;" class="text-success">{clinic.name}, {clinic.city} ({clinic.county})</span>'
             )
         # return mark_safe('<i class="fas fa-times" style="font-weight: bold; color: red; font-size: 20px;"></i>')
         return
@@ -206,18 +234,31 @@ class AdminPatientRequest(ImportExportModelAdmin):
 
     def requires_logistic_and_social_assistance(self, obj):
         transport = obj.logsol_assistance.transport_required
+        transport_status_solved = obj.logsol_assistance.transport_status == "S"
+        transport_icon_html = f'<i class="fas fa-car-side {"text-success" if transport_status_solved else "text-warning"}" style="font-weight: bold; font-size: 20px; margin-right: 10px;"></i>'
+
         accommodation = obj.logsol_assistance.accommodation_required
-        if transport and not accommodation:
-            return mark_safe('<i class="fas fa-car-side" style="font-weight: bold; font-size: 20px;"></i>')
-        if accommodation and not transport:
-            return mark_safe('<i class="fas fa-house-user" style="font-weight: bold; font-size: 20px;"></i>')
-        if transport and accommodation:
-            return mark_safe(
-                (
-                    '<i class="fas fa-car-side" style="font-weight: bold; font-size: 20px; margin-right: 10px;"></i>'
-                    '<i class="fas fa-house-user" style="font-weight: bold; font-size: 20px;"></i>'
-                )
-            )
+        accommodation_status_solved = obj.logsol_assistance.accommodation_status == "S"
+        accommodation_icon_html = f'<i class="fas fa-house-user {"text-success" if accommodation_status_solved else "text-warning"}" style="font-weight: bold; font-size: 20px; margin-right: 10px;"></i>'
+
+        assistance = obj.logsol_assistance.assistance_required
+        assistance_status_solved = obj.logsol_assistance.assistance_status == "S"
+        assistance_icon_html = f'<i class="fas fa-hands-helping {"text-success" if assistance_status_solved else "text-warning"}" style="font-weight: bold; font-size: 20px; margin-right: 10px;"></i>'
+
+        if transport and not accommodation and not assistance:
+            return mark_safe(transport_icon_html)
+        if accommodation and not transport and not assistance:
+            return mark_safe(accommodation_icon_html)
+        if assistance and not transport and not accommodation:
+            return mark_safe(assistance_icon_html)
+        if transport and accommodation and not assistance:
+            return mark_safe((transport_icon_html + accommodation_icon_html))
+        if transport and assistance and not accommodation:
+            return mark_safe((transport_icon_html + assistance_icon_html))
+        if accommodation and assistance and not transport:
+            return mark_safe((accommodation_icon_html + assistance_icon_html))
+        if accommodation and assistance and transport:
+            return mark_safe((transport_icon_html + accommodation_icon_html + assistance_icon_html))
         return None
 
     requires_logistic_and_social_assistance.short_description = _("Logistic & Social Assistance")
@@ -226,7 +267,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
         companions = obj.companions.count()
         if companions:
             return mark_safe(
-                '<i class="fas fa-male" style="font-weight: bold; font-size: 20px; margin-right: 10px;"></i>'
+                '<i class="fas fa-male text-success" style="font-weight: bold; font-size: 20px; margin-right: 10px;"></i>'
                 * companions
             )
 
@@ -238,11 +279,13 @@ class AdminPatientRequest(ImportExportModelAdmin):
             badge_color, badge_text = "secondary", _("NO CASE STATUS")
             status = obj.med_assistance.case_status
             if status == "P":
-                badge_color, badge_text = "danger", _("PENDING")
+                badge_color, badge_text = "warning", _("UNALLOCATED")
             if status == "R":
-                badge_color, badge_text = "info", _("READY")
-            if status in ["T", "TP"]:
+                badge_color, badge_text = "primary", _("ACCEPTED")
+            if status == "T":
                 badge_color, badge_text = "success", _("TAKEN")
+            if status == "TP":
+                badge_color, badge_text = "success", _("DIRECT CASE")
             return mark_safe(f'<span class="badge badge-{badge_color}">{badge_text}</span>')
         badge_color, badge_text = "secondary", _("NO CLINIC ASSIGNED")
         return mark_safe(f'<span class="badge badge-{badge_color}">{badge_text}</span>')
@@ -253,8 +296,8 @@ class AdminPatientRequest(ImportExportModelAdmin):
         "sex",
         "tumor_type",
         "estimated_arrival_dt",
-        "case_status",
         "assigned_clinic",
+        "case_status",
         "requires_logistic_and_social_assistance",
         "number_of_companions",
     ]

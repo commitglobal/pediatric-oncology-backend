@@ -94,35 +94,47 @@ msgstr ""
 msgid "Full Name"
 msgstr ""
 
-#: dispatch/admin.py:67 dispatch/admin.py:377
+#: dispatch/admin.py:68 dispatch/admin.py:420
 msgid "Upload Medical Files"
 msgstr ""
 
-#: dispatch/admin.py:80 dispatch/admin.py:81 dispatch/admin.py:373
+#: dispatch/admin.py:81 dispatch/admin.py:82 dispatch/admin.py:416
 msgid "Add Medical Assitance"
 msgstr ""
 
-#: dispatch/admin.py:94 dispatch/admin.py:95 dispatch/admin.py:375
+#: dispatch/admin.py:95 dispatch/admin.py:96 dispatch/admin.py:418
 msgid "Add Logistic & Social Assistance"
 msgstr ""
 
-#: dispatch/admin.py:130 dispatch/admin.py:131 dispatch/admin.py:376
+#: dispatch/admin.py:100 dispatch/models.py:374
+msgid "Transport"
+msgstr ""
+
+#: dispatch/admin.py:116
+msgid "Accommodation"
+msgstr ""
+
+#: dispatch/admin.py:128
+msgid "Assistance"
+msgstr ""
+
+#: dispatch/admin.py:152 dispatch/admin.py:153 dispatch/admin.py:419
 msgid "Add Companion"
 msgstr ""
 
-#: dispatch/admin.py:188
+#: dispatch/admin.py:214
 msgid "Age will be computed once the form is saved."
 msgstr ""
 
-#: dispatch/admin.py:205
+#: dispatch/admin.py:233
 msgid "Assigned Clinic"
 msgstr ""
 
-#: dispatch/admin.py:223
+#: dispatch/admin.py:264
 msgid "Logistic & Social Assistance"
 msgstr ""
 
-#: dispatch/admin.py:233
+#: dispatch/admin.py:274
 msgid "Companions"
 msgstr ""
 
@@ -130,47 +142,51 @@ msgstr ""
 msgid "Case Status"
 msgstr ""
 
-#: dispatch/admin.py:238
+#: dispatch/admin.py:279
 msgid "NO CASE STATUS"
 msgstr ""
 
-#: dispatch/admin.py:241
-msgid "PENDING"
+#: dispatch/admin.py:282
+msgid "UNALLOCATED"
 msgstr ""
 
-#: dispatch/admin.py:243
-msgid "READY"
+#: dispatch/admin.py:284
+msgid "ACCEPTED"
 msgstr ""
 
-#: dispatch/admin.py:245
+#: dispatch/admin.py:286
 msgid "TAKEN"
 msgstr ""
 
-#: dispatch/admin.py:247
+#: dispatch/admin.py:288
+msgid "DIRECT CASE"
+msgstr ""
+
+#: dispatch/admin.py:290
 msgid "NO CLINIC ASSIGNED"
 msgstr ""
 
-#: dispatch/admin.py:290 dispatch/admin.py:368
+#: dispatch/admin.py:333 dispatch/admin.py:411
 msgid "Identification"
 msgstr ""
 
-#: dispatch/admin.py:303 dispatch/admin.py:369
+#: dispatch/admin.py:346 dispatch/admin.py:412
 msgid "Requester Data"
 msgstr ""
 
-#: dispatch/admin.py:316 dispatch/admin.py:370
+#: dispatch/admin.py:359 dispatch/admin.py:413
 msgid "Diagnostic"
 msgstr ""
 
-#: dispatch/admin.py:334 dispatch/admin.py:372
+#: dispatch/admin.py:377 dispatch/admin.py:415
 msgid "Child Location"
 msgstr ""
 
-#: dispatch/admin.py:345 dispatch/admin.py:374
+#: dispatch/admin.py:388 dispatch/admin.py:417
 msgid "Logistical Info"
 msgstr ""
 
-#: dispatch/admin.py:355 dispatch/admin.py:371
+#: dispatch/admin.py:398 dispatch/admin.py:414
 msgid "Origin Medical Institution"
 msgstr ""
 
@@ -616,6 +632,10 @@ msgstr ""
 msgid "Companion Other Details"
 msgstr ""
 
+#: dispatch/models.py:461
+msgid "Companion"
+msgstr ""
+
 #: oncoped_site/admin.py:12
 msgid "Allocate this resource to a request"
 msgstr ""
@@ -653,19 +673,31 @@ msgid "Email templates"
 msgstr ""
 
 #: oncoped_site/settings/base.py:29
-msgid "Dispecerat Oncologie Pediatrică"
+msgid "Pedriatic Oncology Dispatcher"
 msgstr ""
 
 #: oncoped_site/settings/base.py:30
-msgid "DOP"
+msgid "POD"
 msgstr ""
 
-#: oncoped_site/settings/base.py:140
+#: oncoped_site/settings/base.py:142
 msgid "Romanian"
 msgstr ""
 
-#: oncoped_site/settings/base.py:141
+#: oncoped_site/settings/base.py:143
 msgid "English"
+msgstr ""
+
+#: oncoped_site/settings/base.py:278
+msgid "Home"
+msgstr ""
+
+#: oncoped_site/settings/base.py:280
+msgid "External Form"
+msgstr ""
+
+#: oncoped_site/settings/base.py:285
+msgid "A Code4Romania solution. Find Out More"
 msgstr ""
 
 #: oncoped_site/templates/base.html:8

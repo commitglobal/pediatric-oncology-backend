@@ -94,35 +94,47 @@ msgstr "utilizatori"
 msgid "Full Name"
 msgstr "Nume Întreg"
 
-#: dispatch/admin.py:67 dispatch/admin.py:377
+#: dispatch/admin.py:68 dispatch/admin.py:420
 msgid "Upload Medical Files"
 msgstr "Încărcați fișiere medicale"
 
-#: dispatch/admin.py:80 dispatch/admin.py:81 dispatch/admin.py:373
+#: dispatch/admin.py:81 dispatch/admin.py:82 dispatch/admin.py:416
 msgid "Add Medical Assitance"
 msgstr "Adaugă asistență medicală"
 
-#: dispatch/admin.py:94 dispatch/admin.py:95 dispatch/admin.py:375
+#: dispatch/admin.py:95 dispatch/admin.py:96 dispatch/admin.py:418
 msgid "Add Logistic & Social Assistance"
 msgstr "Aduagă Asistență Logistică & Socială"
 
-#: dispatch/admin.py:130 dispatch/admin.py:131 dispatch/admin.py:376
+#: dispatch/admin.py:100 dispatch/models.py:374
+msgid "Transport"
+msgstr "Transport"
+
+#: dispatch/admin.py:116
+msgid "Accommodation"
+msgstr "Cazare"
+
+#: dispatch/admin.py:128
+msgid "Assistance"
+msgstr "Asistență"
+
+#: dispatch/admin.py:152 dispatch/admin.py:153 dispatch/admin.py:419
 msgid "Add Companion"
 msgstr "Adaugă însoțitor"
 
-#: dispatch/admin.py:188
+#: dispatch/admin.py:214
 msgid "Age will be computed once the form is saved."
 msgstr "Vârsta se va calcula o dată ce formularul este salvat."
 
-#: dispatch/admin.py:205
+#: dispatch/admin.py:233
 msgid "Assigned Clinic"
 msgstr "Clinică Alocată"
 
-#: dispatch/admin.py:223
+#: dispatch/admin.py:264
 msgid "Logistic & Social Assistance"
 msgstr "Asistență Logistică & Socială"
 
-#: dispatch/admin.py:233
+#: dispatch/admin.py:274
 msgid "Companions"
 msgstr "Însoțitori"
 
@@ -130,47 +142,51 @@ msgstr "Însoțitori"
 msgid "Case Status"
 msgstr "Situația cazului"
 
-#: dispatch/admin.py:238
+#: dispatch/admin.py:279
 msgid "NO CASE STATUS"
 msgstr "FĂRĂ STATUS"
 
-#: dispatch/admin.py:241
-msgid "PENDING"
-msgstr "ÎN AȘTEPTARE"
+#: dispatch/admin.py:282
+msgid "UNALLOCATED"
+msgstr "NEALOCAT"
 
-#: dispatch/admin.py:243
-msgid "READY"
-msgstr "PREGĂTIT"
+#: dispatch/admin.py:284
+msgid "ACCEPTED"
+msgstr "ACCEPTAT"
 
-#: dispatch/admin.py:245
+#: dispatch/admin.py:286
 msgid "TAKEN"
 msgstr "PRELUAT"
 
-#: dispatch/admin.py:247
+#: dispatch/admin.py:288
+msgid "DIRECT CASE"
+msgstr "CAZ DIRECT"
+
+#: dispatch/admin.py:290
 msgid "NO CLINIC ASSIGNED"
 msgstr "CLINICĂ NEASIGNATĂ"
 
-#: dispatch/admin.py:290 dispatch/admin.py:368
+#: dispatch/admin.py:333 dispatch/admin.py:411
 msgid "Identification"
 msgstr "Identificare"
 
-#: dispatch/admin.py:303 dispatch/admin.py:369
+#: dispatch/admin.py:346 dispatch/admin.py:412
 msgid "Requester Data"
 msgstr "Date ale Solicitantului"
 
-#: dispatch/admin.py:316 dispatch/admin.py:370
+#: dispatch/admin.py:359 dispatch/admin.py:413
 msgid "Diagnostic"
 msgstr "Diagnostic"
 
-#: dispatch/admin.py:334 dispatch/admin.py:372
+#: dispatch/admin.py:377 dispatch/admin.py:415
 msgid "Child Location"
 msgstr "Locația Copilului"
 
-#: dispatch/admin.py:345 dispatch/admin.py:374
+#: dispatch/admin.py:388 dispatch/admin.py:417
 msgid "Logistical Info"
 msgstr "Informații Logistice"
 
-#: dispatch/admin.py:355 dispatch/admin.py:371
+#: dispatch/admin.py:398 dispatch/admin.py:414
 msgid "Origin Medical Institution"
 msgstr "Instituție Medicală Originară"
 
@@ -622,6 +638,10 @@ msgstr "Număr de Telefon însoțitor"
 msgid "Companion Other Details"
 msgstr "Alte detalii însoțitor"
 
+#: dispatch/models.py:461
+msgid "Companion"
+msgstr "Însoțitor"
+
 #: oncoped_site/admin.py:12
 msgid "Allocate this resource to a request"
 msgstr "Alocă această resursă unei cereri"
@@ -659,20 +679,32 @@ msgid "Email templates"
 msgstr "Șabloane email"
 
 #: oncoped_site/settings/base.py:29
-msgid "Dispecerat Oncologie Pediatrică"
+msgid "Pedriatic Oncology Dispatcher"
 msgstr "Dispecerat Oncologie Pediatrică"
 
 #: oncoped_site/settings/base.py:30
-msgid "DOP"
+msgid "POD"
 msgstr "DOP"
 
-#: oncoped_site/settings/base.py:140
+#: oncoped_site/settings/base.py:142
 msgid "Romanian"
 msgstr "Română"
 
-#: oncoped_site/settings/base.py:141
+#: oncoped_site/settings/base.py:143
 msgid "English"
 msgstr "Engleză"
+
+#: oncoped_site/settings/base.py:278
+msgid "Home"
+msgstr "Acasă"
+
+#: oncoped_site/settings/base.py:280
+msgid "External Form"
+msgstr "Formular Extern"
+
+#: oncoped_site/settings/base.py:285
+msgid "A Code4Romania solution. Find Out More"
+msgstr "O soluție Code4Romania. Află mai multe"
 
 #: oncoped_site/templates/base.html:8
 msgid "Pediatric Oncology"

@@ -99,6 +99,11 @@ CASE_STATUS_CHOICES = (
     ("TP", _("Taken over previously, in person")),
 )
 
+LOGISTIC_STATUS_CHOICES = (
+    ("US", _("Unsolved")),
+    ("S", _("Solved")),
+)
+
 
 class Clinic(models.Model):
     tumor_type = MultiSelectField(
@@ -108,8 +113,13 @@ class Clinic(models.Model):
         null=False,
         blank=False,
     )
+    therapy_services = MultiSelectField(
+        verbose_name=_("Therapy Services"),
+        choices=THERAPY_NEEDS_CHOICES,
+        blank=False,
+    )
     name = models.CharField(
-        verbose_name=_("Name"),
+        verbose_name=_("Clinic Name"),
         max_length=150,
         null=False,
         blank=False,
@@ -169,29 +179,13 @@ class PatientRequest(models.Model):
 
     # Identification
 
-    first_name = models.CharField(
-        verbose_name=_("First Name"),
-        max_length=100,
-        blank=False,
-    )
-    last_name = models.CharField(
-        verbose_name=_("Last Name"),
-        max_length=100,
-        blank=False,
-    )
+    first_name = models.CharField(verbose_name=_("First Name"), max_length=100, blank=False, null=False)
+    last_name = models.CharField(verbose_name=_("Last Name"), max_length=100, blank=False, null=False)
     birth_date = models.DateField(verbose_name=_("Birth Date"), blank=False)
     sex = models.CharField(
-        verbose_name=_("Sex"),
-        max_length=2,
-        choices=SEX_CHOICES,
-        default="PAS",
-        blank=False,
+        verbose_name=_("Sex"), max_length=2, choices=SEX_CHOICES, default="PAS", blank=False, null=False
     )
-    address = models.CharField(
-        verbose_name=_("Address"),
-        max_length=250,
-        blank=False,
-    )
+    address = models.CharField(verbose_name=_("Address"), max_length=250, blank=False, null=False)
 
     # Requester
     institution_type = models.CharField(
@@ -205,6 +199,7 @@ class PatientRequest(models.Model):
         verbose_name=_("Organization Name"),
         max_length=250,
         blank=True,
+        null=True,
         help_text=_("Fill in only if requester is not a Person"),
     )
     requester_first_name = models.CharField(
@@ -222,6 +217,7 @@ class PatientRequest(models.Model):
         max_length=30,
         help_text=_("Please include country prefix e.g. +40723000123"),
         blank=False,
+        null=False,
     )
     requester_email = models.EmailField(
         verbose_name=_("Requester Email"),
@@ -230,76 +226,44 @@ class PatientRequest(models.Model):
 
     # Diagnostic
     diagnostic_class = models.CharField(
-        verbose_name=_("Diagnostic Class"),
-        max_length=10,
-        choices=DIAGNOSTIC_CLASS_CHOICES,
-        blank=False,
+        verbose_name=_("Diagnostic Class"), max_length=10, choices=DIAGNOSTIC_CLASS_CHOICES, blank=True, null=True
     )
-    known_complete_diagnostic = models.BooleanField(
-        verbose_name=_("Complete Diagnostic Known"),
-        default=False,
-    )
-    complete_diagnostic = models.TextField(
-        verbose_name=_("Complete Diagnostic"),
-        blank=True,
-    )
+    known_complete_diagnostic = models.BooleanField(verbose_name=_("Complete Diagnostic Known"), default=False)
+    complete_diagnostic = models.TextField(verbose_name=_("Complete Diagnostic"), blank=True, null=True)
     date_diagnosed = models.DateField(verbose_name=_("Date Diagnosed"), null=True, blank=True)
     diagnosing_institution_name = models.CharField(
-        verbose_name=_("Diagnosing Institution Name"),
-        max_length=150,
-        blank=True,
+        verbose_name=_("Diagnosing Institution Name"), max_length=150, blank=True, null=True
     )
     general_problem_description = models.TextField(
         verbose_name=_("General Problem Description"),
         help_text="Describe the Child's medical issue",
         blank=True,
+        null=True,
     )
     medical_documents_checked = models.BooleanField(verbose_name=_("Medical Documents Checked"), default=False)
     tumor_type = models.CharField(
-        verbose_name=_("Tumor Type"),
-        max_length=2,
-        choices=TUMOR_TYPE_CHOICES,
-        blank=True,
+        verbose_name=_("Tumor Type"), max_length=2, choices=TUMOR_TYPE_CHOICES, blank=True, null=True
     )
     therapy_needs = MultiSelectField(
-        verbose_name=_("Therapy Needs"),
-        choices=THERAPY_NEEDS_CHOICES,
-        blank=True,
+        verbose_name=_("Therapy Needs"), choices=THERAPY_NEEDS_CHOICES, blank=True, null=True
     )
-    other_therapy_needs = models.CharField(
-        verbose_name=_("Other Therapy Needs"),
-        max_length=250,
-        blank=True,
-    )
-    current_clinical_status = models.TextField(
-        verbose_name=_("Current Clinical Status"),
-        blank=True,
-    )
+    other_therapy_needs = models.CharField(verbose_name=_("Other Therapy Needs"), max_length=250, blank=True, null=True)
+    current_clinical_status = models.TextField(verbose_name=_("Current Clinical Status"), blank=True, null=True)
 
     # Location details
     child_current_address = models.CharField(
-        verbose_name=_("Child Current Address"),
-        max_length=100,
-        blank=True,
+        verbose_name=_("Child Current Address"), max_length=100, blank=True, null=True
     )
-    child_current_city = models.CharField(
-        verbose_name=_("Child Current City"),
-        max_length=100,
-        blank=True,
-    )
+    child_current_city = models.CharField(verbose_name=_("Child Current City"), max_length=100, blank=True, null=True)
     child_current_county = models.CharField(
-        verbose_name=_("Child Current County"),
-        max_length=100,
-        blank=True,
+        verbose_name=_("Child Current County"), max_length=100, blank=True, null=True
     )
     child_current_country = models.CharField(
-        verbose_name=_("Child Current Country"),
-        max_length=100,
-        blank=True,
+        verbose_name=_("Child Current Country"), max_length=100, blank=True, null=True
     )
 
     # Logistical Info
-    estimated_arrival_dt = models.DateTimeField(verbose_name=_("Estimated Arrival"), null=True, blank=False)
+    estimated_arrival_dt = models.DateTimeField(verbose_name=_("Estimated Arrival"), null=True, blank=True)
     redirect_info = models.TextField(
         verbose_name=_("Redirect Info"),
         help_text=_("Redirection to a different specialty. Provide all info, including contact!"),
@@ -314,14 +278,13 @@ class PatientRequest(models.Model):
 
     # Origin Institution
     origin_medical_institution_name = models.CharField(
-        verbose_name=_("Institution Name"),
-        max_length=150,
-        blank=True,
+        verbose_name=_("Institution Name"), max_length=150, blank=True, null=True
     )
     origin_medical_institution_contact_person = models.CharField(
         verbose_name=_("Contact Person"),
         max_length=150,
         blank=True,
+        null=True,
         help_text=_("Full Name of the contact person"),
     )
     origin_medical_institution_phone_number = models.CharField(
@@ -329,8 +292,9 @@ class PatientRequest(models.Model):
         max_length=30,
         help_text=_("Contact Person's phone number. Please include country prefix e.g. +40723000123"),
         blank=True,
+        null=True,
     )
-    origin_medical_institution_email = models.EmailField(verbose_name=_("Email"), blank=True)
+    origin_medical_institution_email = models.EmailField(verbose_name=_("Email"), blank=True, null=True)
 
     def get_full_name(self):
         return self.first_name + " " + self.last_name
@@ -357,11 +321,7 @@ class PatientRequest(models.Model):
     class Meta:
         verbose_name = _("Patient Request")
         verbose_name_plural = _("Patient Requests")
-        unique_together = [
-            "first_name",
-            "last_name",
-            "birth_date",
-        ]
+        unique_together = ["first_name", "last_name", "birth_date"]
 
 
 def patient_request_upload(instance, filename):
@@ -377,21 +337,10 @@ class PatientRequestFile(models.Model):
 class MedicalAssistance(models.Model):
     request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="med_assistance")
 
-    clinic = models.ForeignKey(
-        Clinic,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="rel_clinics",
-    )
+    clinic = models.ForeignKey(Clinic, on_delete=models.SET_NULL, null=True, blank=True, related_name="rel_clinics")
 
     case_status = models.CharField(
-        verbose_name=_("Case Status"),
-        choices=CASE_STATUS_CHOICES,
-        max_length=3,
-        default="P",
-        null=False,
-        blank=False,
+        verbose_name=_("Case Status"), choices=CASE_STATUS_CHOICES, max_length=3, default="P", null=False, blank=False
     )
     estimated_arrival_date = models.DateField(verbose_name=_("Estimated Arrival Date"), null=True, blank=True)
     hospitalization_start = models.DateField(
@@ -401,44 +350,17 @@ class MedicalAssistance(models.Model):
         help_text=_("Only with confirmation from the receiving clinic!"),
     )
     receiving_dr_full_name = models.CharField(
-        verbose_name=_("Receiving Dr Full Name"),
-        max_length=150,
-        null=True,
-        blank=True,
+        verbose_name=_("Receiving Dr Full Name"), max_length=150, null=True, blank=True
     )
     comments = models.TextField(verbose_name=_("Comments"), null=True, blank=True)
-    needs_transfer = models.BooleanField(
-        verbose_name=_("Needs Transfer"),
-        default=False,
-    )
-    international_redirect = models.BooleanField(
-        verbose_name=_("International Redirect"),
-        default=False,
-    )
+    needs_transfer = models.BooleanField(verbose_name=_("Needs Transfer"), default=False)
+    international_redirect = models.BooleanField(verbose_name=_("International Redirect"), default=False)
     redirect_institution = models.CharField(
-        verbose_name=_("Redirect Institution"),
-        max_length=250,
-        null=True,
-        blank=True,
+        verbose_name=_("Redirect Institution"), max_length=250, null=True, blank=True
     )
-    specialty = models.CharField(
-        verbose_name=_("Specialty"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
-    town = models.CharField(
-        verbose_name=_("Town"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
-    country = models.CharField(
-        verbose_name=_("Country"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
+    specialty = models.CharField(verbose_name=_("Specialty"), max_length=150, null=True, blank=True)
+    town = models.CharField(verbose_name=_("Town"), max_length=150, null=True, blank=True)
+    country = models.CharField(verbose_name=_("Country"), max_length=150, null=True, blank=True)
     reason = models.TextField(verbose_name=_("Reason"), null=True, blank=True)
 
     def __str__(self):
@@ -455,13 +377,16 @@ class LogisticAndSocialAssistance(models.Model):
         default=False,
         help_text=_("Wether national or international transportation is required for this assistence"),
     )
+    transport_status = models.CharField(
+        verbose_name=_("Transport Status"),
+        max_length=2,
+        choices=LOGISTIC_STATUS_CHOICES,
+        default="US",
+        null=False,
+        blank=False,
+    )
     transport = models.CharField(
-        verbose_name=_("Transport"),
-        max_length=3,
-        choices=TRANSPORT_CHOICES,
-        null=True,
-        blank=True,
-        default="NAT",
+        verbose_name=_("Transport"), max_length=3, choices=TRANSPORT_CHOICES, null=True, blank=True, default="NAT"
     )
     pick_up_location = models.CharField(
         verbose_name=_("Pick Up Location"),
@@ -477,59 +402,66 @@ class LogisticAndSocialAssistance(models.Model):
         blank=True,
         help_text=_("Departing from: City, Country"),
     )
-    transport_details = models.TextField(
-        verbose_name=_("Transport Details"),
-        null=True,
-        blank=True,
-    )
+    transport_details = models.TextField(verbose_name=_("Transport Details"), null=True, blank=True)
     transport_rep_external = models.BooleanField(
         verbose_name=_("External Transport Representative"),
         default=False,
         help_text=_("Is the transport representative external to the organization?"),
     )
-    transport_rep_external_details = models.TextField(
-        null=True,
-        blank=True,
-    )
+    transport_rep_external_details = models.TextField(null=True, blank=True)
 
+    # Accommodation
     accommodation_required = models.BooleanField(
         verbose_name=_("Accommodation Required"),
         default=False,
         help_text=_("Wether accommodation is required for this assistence"),
     )
-    accommodation_details = models.TextField(
-        verbose_name=_("Accommodation Details"),
-        null=True,
-        blank=True,
+    accommodation_status = models.CharField(
+        verbose_name=_("Accommodation Status"),
+        max_length=2,
+        choices=LOGISTIC_STATUS_CHOICES,
+        default="US",
+        null=False,
+        blank=False,
     )
-    accomodation_rep_external = models.BooleanField(
-        verbose_name=_("External Accomodation Representative"),
+    accommodation_details = models.TextField(verbose_name=_("Accommodation Details"), null=True, blank=True)
+    accommodation_rep_external = models.BooleanField(
+        verbose_name=_("External accommodation Representative"),
         default=False,
-        help_text=_("Is the accomodation representative external to the organization?"),
+        help_text=_("Is the accommodation representative external to the organization?"),
     )
-    accomodation_rep_external_details = models.TextField(
-        null=True,
-        blank=True,
+    accommodation_rep_external_details = models.TextField(null=True, blank=True)
+
+    # Assistance
+    assistance_required = models.BooleanField(
+        verbose_name=_("Assistance Required"), default=False, help_text=_("Wether assistance is required")
     )
+    assistance_status = models.CharField(
+        verbose_name=_("Assistance Status"),
+        max_length=2,
+        choices=LOGISTIC_STATUS_CHOICES,
+        default="US",
+        null=False,
+        blank=False,
+    )
+    assistance_rep_external = models.BooleanField(
+        verbose_name=_("External Assistance Representative"),
+        default=False,
+        help_text=_("Is the assistance representative external to the organization?"),
+    )
+    assistance_rep_external_details = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return f"Logistic & Transport {self.id}"
+        name = _("Logistic & Transport")
+        return f"{name} {self.id}"
 
 
 class Companion(models.Model):
     request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE, related_name="companions")
 
-    companion_name = models.CharField(
-        verbose_name=_("Companion Name"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
+    companion_name = models.CharField(verbose_name=_("Companion Name"), max_length=150, null=True, blank=True)
     companion_relationship = models.CharField(
-        verbose_name=_("Companion Relationship"),
-        max_length=150,
-        null=True,
-        blank=True,
+        verbose_name=_("Companion Relationship"), max_length=150, null=True, blank=True
     )
     companion_phone_number = models.CharField(
         verbose_name=_("Companion Phone Number"),
@@ -538,8 +470,8 @@ class Companion(models.Model):
         null=True,
         blank=True,
     )
-    companion_other_details = models.TextField(
-        verbose_name=_("Companion Other Details"),
-        null=True,
-        blank=True,
-    )
+    companion_other_details = models.TextField(verbose_name=_("Companion Other Details"), null=True, blank=True)
+
+    def __str__(self):
+        name = _("Companion")
+        return f"{name} {self.id}"

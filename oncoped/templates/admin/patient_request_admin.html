@@ -44,7 +44,9 @@
             $('#id_other_therapy_needs').val('');
         }
 
-        // Logistic & Accomodation
+        // Logistic & accommodation
+
+        // Transport
         if ($('#id_logsol_assistance-0-transport_rep_external').is(":checked")) {
 
             $('.field-transport_rep_external_details').show();
@@ -60,33 +62,57 @@
             $('.field-destination_location').show();
             $('.field-transport_details').show();
             $('.field-transport_rep_external').show();
+            $('.field-transport_status').show();
         } else {
             $('.field-transport').hide();
             $('.field-pick_up_location').hide();
             $('.field-destination_location').hide();
             $('.field-transport_details').hide();
             $('.field-transport_rep_external').hide();
+            $('.field-transport_status').hide();
 
             $('#id_logsol_assistance-0-transport_rep_external').prop('checked', false);
             $('.field-transport_rep_external_details').hide();
         }
 
-        if ($('#id_logsol_assistance-0-accomodation_rep_external').is(":checked")) {
-            $('.field-accomodation_rep_external_details').show();
+        // Accommodation
+        if ($('#id_logsol_assistance-0-accommodation_rep_external').is(":checked")) {
+            $('.field-accommodation_rep_external_details').show();
         } else {
-            $('.field-accomodation_rep_external_details').hide();
-            $('#id_logsol_assistance-0-accomodation_rep_external_details').val('');
+            $('.field-accommodation_rep_external_details').hide();
+            $('#id_logsol_assistance-0-accommodation_rep_external_details').val('');
         }
 
         if ($('#id_logsol_assistance-0-accommodation_required').is(":checked")) {
             $('.field-accommodation_details').show();
-            $('.field-accomodation_rep_external').show();
+            $('.field-accommodation_rep_external').show();
+            $('.field-accommodation_status').show();
         } else {
             $('.field-accommodation_details').hide();
-            $('.field-accomodation_rep_external').hide();
+            $('.field-accommodation_rep_external').hide();
+            $('.field-accommodation_status').hide();
 
-            $('#id_logsol_assistance-0-accomodation_rep_external').prop('checked', false);
-            $('.field-accomodation_rep_external_details').hide();
+            $('#id_logsol_assistance-0-accommodation_rep_external').prop('checked', false);
+            $('.field-accommodation_rep_external_details').hide();
+        }
+
+        // Assistance
+        if ($('#id_logsol_assistance-0-assistance_rep_external').is(":checked")) {
+            $('.field-assistance_rep_external_details').show();
+        } else {
+            $('.field-assistance_rep_external_details').hide();
+            $('#id_logsol_assistance-0-assistance_rep_external_details').val('');
+        }
+
+        if ($('#id_logsol_assistance-0-assistance_required').is(":checked")) {
+            $('.field-assistance_rep_external').show();
+            $('.field-assistance_status').show();
+        } else {
+            $('.field-assistance_rep_external').hide();
+            $('.field-assistance_status').hide();
+
+            $('#id_logsol_assistance-0-assistance_rep_external').prop('checked', false);
+            $('.field-assistance_rep_external_details').hide();
         }
 
         // Medical Assistance
@@ -118,7 +144,6 @@
 
             default:
                 $('.field-estimated_arrival_date').hide();
-                $('#id_med_assistance-0-estimated_arrival_date').val('');
 
                 $('.field-estimated_arrival_date').show();
                 $('.field-hospitalization_start').show();
@@ -178,7 +203,13 @@
     $('#id_logsol_assistance-0-accommodation_required').on('change', function () {
         detect_category();
     });
-    $('#id_logsol_assistance-0-accomodation_rep_external').on('change', function () {
+    $('#id_logsol_assistance-0-accommodation_rep_external').on('change', function () {
+        detect_category();
+    });
+    $('#id_logsol_assistance-0-assistance_required').on('change', function () {
+        detect_category();
+    });
+    $('#id_logsol_assistance-0-assistance_rep_external').on('change', function () {
         detect_category();
     });
 
