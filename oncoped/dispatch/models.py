@@ -179,137 +179,83 @@ class PatientRequest(models.Model):
 
     # Identification
 
-    first_name = models.CharField(
-        verbose_name=_("First Name"),
-        max_length=100,
-        blank=False,
-    )
-    last_name = models.CharField(
-        verbose_name=_("Last Name"),
-        max_length=100,
-        blank=False,
-    )
+    first_name = models.CharField(verbose_name=_("First Name"), max_length=100, blank=False, null=False)
+    last_name = models.CharField(verbose_name=_("Last Name"), max_length=100, blank=False, null=False)
     birth_date = models.DateField(verbose_name=_("Birth Date"), blank=False)
     sex = models.CharField(
-        verbose_name=_("Sex"),
-        max_length=2,
-        choices=SEX_CHOICES,
-        default="PAS",
-        blank=False,
+        verbose_name=_("Sex"), max_length=2, choices=SEX_CHOICES, default="PAS", blank=False, null=False
     )
-    address = models.CharField(
-        verbose_name=_("Address"),
-        max_length=250,
-        blank=False,
-    )
+    address = models.CharField(verbose_name=_("Address"), max_length=250, blank=False, null=False)
 
     # Requester
     institution_type = models.CharField(
-        verbose_name=_("Type"),
-        max_length=3,
-        choices=REQUESTER_TYPE,
-        default="MED",
-        blank=False,
+        verbose_name=_("Type"), max_length=3, choices=REQUESTER_TYPE, default="MED", blank=False, null=False
     )
     institution_name = models.CharField(
         verbose_name=_("Name"),
         max_length=250,
         blank=True,
+        null=True,
         help_text=_("Fill in only if requester is not a Person"),
     )
-    requester_first_name = models.CharField(
-        verbose_name=_("First Name"),
-        max_length=100,
-        blank=False,
-    )
-    requester_last_name = models.CharField(
-        verbose_name=_("Last Name"),
-        max_length=100,
-        blank=False,
-    )
+    requester_first_name = models.CharField(verbose_name=_("First Name"), max_length=100, blank=False, null=False)
+    requester_last_name = models.CharField(verbose_name=_("Last Name"), max_length=100, blank=False, null=False)
     requester_phone_number = models.CharField(
         verbose_name=_("Phone Number"),
         max_length=30,
         help_text=_("Please include country prefix e.g. +40723000123"),
         blank=False,
+        null=False,
     )
-    requester_email = models.EmailField(
-        verbose_name=_("Email"),
-        blank=False,
-    )
+    requester_email = models.EmailField(verbose_name=_("Email"), blank=False, null=False)
 
     # Diagnostic
     diagnostic_class = models.CharField(
-        verbose_name=_("Diagnostic Class"),
-        max_length=10,
-        choices=DIAGNOSTIC_CLASS_CHOICES,
-        blank=False,
+        verbose_name=_("Diagnostic Class"), max_length=10, choices=DIAGNOSTIC_CLASS_CHOICES, blank=True, null=True
     )
     known_complete_diagnostic = models.BooleanField(
         verbose_name=_("Complete Diagnostic Known"),
         default=False,
     )
-    complete_diagnostic = models.TextField(
-        verbose_name=_("Complete Diagnostic"),
-        blank=True,
-    )
+    complete_diagnostic = models.TextField(verbose_name=_("Complete Diagnostic"), blank=True, null=True)
     date_diagnosed = models.DateField(verbose_name=_("Date Diagnosed"), null=True, blank=True)
     diagnosing_institution_name = models.CharField(
-        verbose_name=_("Diagnosing Institution Name"),
-        max_length=150,
-        blank=True,
+        verbose_name=_("Diagnosing Institution Name"), max_length=150, blank=True, null=True
     )
     general_problem_description = models.TextField(
         verbose_name=_("General Problem Description"),
         help_text="Describe the Child's medical issue",
         blank=True,
+        null=True,
     )
     medical_documents_checked = models.BooleanField(verbose_name=_("Medical Documents Checked"), default=False)
     tumor_type = models.CharField(
-        verbose_name=_("Tumor Type"),
-        max_length=2,
-        choices=TUMOR_TYPE_CHOICES,
-        blank=True,
+        verbose_name=_("Tumor Type"), max_length=2, choices=TUMOR_TYPE_CHOICES, blank=True, null=True
     )
     therapy_needs = MultiSelectField(
-        verbose_name=_("Therapy Needs"),
-        choices=THERAPY_NEEDS_CHOICES,
-        blank=True,
+        verbose_name=_("Therapy Needs"), choices=THERAPY_NEEDS_CHOICES, blank=True, null=True
     )
-    other_therapy_needs = models.CharField(
-        verbose_name=_("Other Therapy Needs"),
-        max_length=250,
-        blank=True,
-    )
-    current_clinical_status = models.TextField(
-        verbose_name=_("Current Clinical Status"),
-        blank=True,
-    )
+    other_therapy_needs = models.CharField(verbose_name=_("Other Therapy Needs"), max_length=250, blank=True, null=True)
+    current_clinical_status = models.TextField(verbose_name=_("Current Clinical Status"), blank=True, null=True)
 
     # Location details
     child_current_address = models.CharField(
-        verbose_name=_("Child Current Address"),
-        max_length=100,
-        blank=True,
+        verbose_name=_("Child Current Address"), max_length=100, blank=True, null=True
     )
-    child_current_city = models.CharField(
-        verbose_name=_("Child Current City"),
-        max_length=100,
-        blank=True,
-    )
+    child_current_city = models.CharField(verbose_name=_("Child Current City"), max_length=100, blank=True, null=True)
     child_current_county = models.CharField(
-        verbose_name=_("Child Current County"),
-        max_length=100,
-        blank=True,
+        verbose_name=_("Child Current County"), max_length=100, blank=True, null=True
     )
     child_current_country = models.CharField(
-        verbose_name=_("Child Current Country"),
-        max_length=100,
-        blank=True,
+        verbose_name=_("Child Current Country"), max_length=100, blank=True, null=True
     )
 
     # Logistical Info
-    estimated_arrival_dt = models.DateTimeField(verbose_name=_("Estimated Arrival"), null=True, blank=False)
+    estimated_arrival_dt = models.DateTimeField(
+        verbose_name=_("Estimated Arrival"),
+        null=True,
+        blank=True,
+    )
     redirect_info = models.TextField(
         verbose_name=_("Redirect Info"),
         help_text=_("Redirection to a different specialty. Provide all info, including contact!"),
@@ -327,11 +273,13 @@ class PatientRequest(models.Model):
         verbose_name=_("Institution Name"),
         max_length=150,
         blank=True,
+        null=True,
     )
     origin_medical_institution_contact_person = models.CharField(
         verbose_name=_("Contact Person"),
         max_length=150,
         blank=True,
+        null=True,
         help_text=_("Full Name of the contact person"),
     )
     origin_medical_institution_phone_number = models.CharField(
@@ -339,8 +287,13 @@ class PatientRequest(models.Model):
         max_length=30,
         help_text=_("Contact Person's phone number. Please include country prefix e.g. +40723000123"),
         blank=True,
+        null=True,
     )
-    origin_medical_institution_email = models.EmailField(verbose_name=_("Email"), blank=True)
+    origin_medical_institution_email = models.EmailField(
+        verbose_name=_("Email"),
+        blank=True,
+        null=True,
+    )
 
     def get_full_name(self):
         return self.first_name + " " + self.last_name
