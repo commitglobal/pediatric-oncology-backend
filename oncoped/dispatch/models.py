@@ -222,18 +222,6 @@ class PatientRequest(models.Model):
     child_current_county = models.CharField(verbose_name=_("Child Current County"), max_length=100, blank=True)
     child_current_country = models.CharField(verbose_name=_("Child Current Country"), max_length=100, blank=True)
 
-    # Logistical Info
-    estimated_arrival_dt = models.DateTimeField(verbose_name=_("Estimated Arrival"), null=True, blank=True)
-    redirect_info = models.TextField(
-        verbose_name=_("Redirect Info"),
-        help_text=_("Redirection to a different specialty. Provide all info, including contact!"),
-        blank=True,
-    )
-    is_direct_request = models.BooleanField(
-        verbose_name=_("Direct Request"),
-        default=False,
-        help_text=_("Patient has directly presented him/herself in the clinc without contact?"),
-    )
 
     # Origin Institution
     origin_medical_institution_name = models.CharField(verbose_name=_("Institution Name"), max_length=150, blank=True)

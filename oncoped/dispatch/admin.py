@@ -295,7 +295,6 @@ class AdminPatientRequest(ImportExportModelAdmin):
         "get_child_age",
         "sex",
         "tumor_type",
-        "estimated_arrival_dt",
         "assigned_clinic",
         "case_status",
         "requires_logistic_and_social_assistance",
@@ -381,16 +380,6 @@ class AdminPatientRequest(ImportExportModelAdmin):
                     "child_current_city",
                     "child_current_county",
                     "child_current_country",
-                )
-            },
-        ),
-        (
-            _("Logistical Info"),
-            {
-                "fields": (
-                    "estimated_arrival_dt",
-                    "redirect_info",
-                    "is_direct_request",
                 )
             },
         ),
