@@ -26,8 +26,8 @@ env = environ.Env(
     RECAPTCHA_PRIVATE_KEY=(str, ""),
 )
 
-ADMIN_TITLE = _("Dispecerat Oncologie Pediatrică")
-ADMIN_TITLE_SHORT = _("DOP")
+ADMIN_TITLE = _("Pedriatic Oncology Dispatcher")
+ADMIN_TITLE_SHORT = _("POD")
 
 # Build paths inside the project like this: path.join(BASE_DIR, ...)
 BASE_DIR = path.join(path.dirname(path.abspath(__file__)), "../..")
@@ -260,7 +260,7 @@ JAZZMIN_SETTINGS = {
     "site_icon": "jazzmin/img/sprijin-de-urgenta-logo.svg",
     "site_logo_classes": "site-logo",
     # Welcome text on the login screen
-    "welcome_sign": "",
+    "welcome_sign": ADMIN_TITLE,
     # Copyright on the footer
     "copyright": "Code4Romania - War Task Force",
     # The model admin to search from the search bar, search bar omitted if excluded
@@ -273,8 +273,9 @@ JAZZMIN_SETTINGS = {
     # Links to put along the top menu
     "topmenu_links": [
         # Url that gets reversed (Permissions can be added)
-        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": _("Home"), "url": "admin:index", "permissions": ["auth.view_user"]},
         {"name": _("External Form"), "url": "patient_request_form", "permissions": ["auth.view_user"], "new_window": True},
+        {"name": _("A Code4Romania solution. Find Out More"), "url": "https://www.code4.ro/", "new_window": True},
         # external url that opens in a new window (Permissions can be added)
         # {
         #     "name": "View website",
