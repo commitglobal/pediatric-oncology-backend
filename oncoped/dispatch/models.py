@@ -108,8 +108,13 @@ class Clinic(models.Model):
         null=False,
         blank=False,
     )
+    therapy_services = MultiSelectField(
+        verbose_name=_("Therapy Services"),
+        choices=THERAPY_NEEDS_CHOICES,
+        blank=False,
+    )
     name = models.CharField(
-        verbose_name=_("Name"),
+        verbose_name=_("Clinic Name"),
         max_length=150,
         null=False,
         blank=False,

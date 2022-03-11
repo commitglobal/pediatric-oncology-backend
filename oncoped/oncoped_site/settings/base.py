@@ -26,8 +26,10 @@ env = environ.Env(
     RECAPTCHA_PRIVATE_KEY=(str, ""),
 )
 
-ADMIN_TITLE = _("Dispecerat Oncologie Pediatrică")
-ADMIN_TITLE_SHORT = _("DOP")
+ADMIN_TITLE = _("Pedriatic Oncology Dispatcher")
+ADMIN_TITLE_SHORT = _("POD")
+
+LIST_PER_PAGE = 10
 
 # Build paths inside the project like this: path.join(BASE_DIR, ...)
 BASE_DIR = path.join(path.dirname(path.abspath(__file__)), "../..")
@@ -256,11 +258,11 @@ JAZZMIN_SETTINGS = {
     # Title on the brand, and the login screen (19 chars max)
     "site_header": ADMIN_TITLE,
     # square logo to use for your site, must be present in static files, used for favicon and brand on top left
-    "site_logo": "jazzmin/img/sprijin-de-urgenta.svg",
+    "site_logo": "jazzmin/img/code4.svg",
     "site_icon": "jazzmin/img/sprijin-de-urgenta-logo.svg",
     "site_logo_classes": "site-logo",
     # Welcome text on the login screen
-    "welcome_sign": "",
+    "welcome_sign": ADMIN_TITLE,
     # Copyright on the footer
     "copyright": "Code4Romania - War Task Force",
     # The model admin to search from the search bar, search bar omitted if excluded
@@ -273,7 +275,9 @@ JAZZMIN_SETTINGS = {
     # Links to put along the top menu
     "topmenu_links": [
         # Url that gets reversed (Permissions can be added)
-        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": _("Home"), "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": _("External Form"), "url": "patient_request_form", "permissions": ["auth.view_user"], "new_window": True},
+        {"name": _("A Code4Romania solution. Find Out More"), "url": "https://www.code4.ro/", "new_window": True},
         # external url that opens in a new window (Permissions can be added)
         # {
         #     "name": "View website",
@@ -316,14 +320,14 @@ JAZZMIN_SETTINGS = {
     ],
     # Custom links to append to app groups, keyed on app name
     "custom_links": {
-        "books": [
-            {
-                "name": "Make Messages",
-                "url": "make_messages",
-                "icon": "fas fa-comments",
-                "permissions": ["books.view_book"],
-            }
-        ]
+        # "books": [
+        #     {
+        #         "name": "Make Messages",
+        #         "url": "make_messages",
+        #         "icon": "fas fa-comments",
+        #         "permissions": ["books.view_book"],
+        #     }
+        # ]
     },
     # Custom icons for side menu apps/models See https://fontawesome.com/icons?d=gallery&m=free
     # for a list of icon classes
@@ -382,21 +386,21 @@ JAZZMIN_UI_TWEAKS = {
     "brand_small_text": False,
     "brand_colour": False,
     "accent": "accent-primary",
-    "navbar": "navbar-dark",
+    "navbar": "navbar-light",
     "no_navbar_border": False,
     "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-primary",
+    "sidebar": "sidebar-light-primary",
     "sidebar_nav_small_text": False,
     "sidebar_disable_expand": False,
     "sidebar_nav_child_indent": True,
     "sidebar_nav_compact_style": True,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": True,
-    "theme": "default",
-    "dark_mode_theme": "darkly",
+    "theme": "cosmo",
+    "dark_mode_theme": None,
 }
 
 # Recaptcha settings

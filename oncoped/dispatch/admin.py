@@ -4,6 +4,7 @@ from django.forms import ModelForm, Textarea
 from django.utils.html import mark_safe
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportModelAdmin
+from django.conf import settings
 
 from dispatch.models import (
     Clinic,
@@ -140,6 +141,9 @@ class AdminCompanion(admin.ModelAdmin):
 
 @admin.register(Clinic)
 class AdminClinic(ImportExportModelAdmin):
+
+    list_per_page = settings.LIST_PER_PAGE
+
     list_display = [
         "tumor_type",
         "name",
@@ -192,6 +196,8 @@ class AdminPatientRequestForm(ModelForm):
 @admin.register(PatientRequest)
 class AdminPatientRequest(ImportExportModelAdmin):
     form = AdminPatientRequestForm
+
+    list_per_page = settings.LIST_PER_PAGE
 
     def assigned_clinic(self, obj):
         clinic = obj.med_assistance.clinic
