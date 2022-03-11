@@ -256,7 +256,7 @@ JAZZMIN_SETTINGS = {
     # Title on the brand, and the login screen (19 chars max)
     "site_header": ADMIN_TITLE,
     # square logo to use for your site, must be present in static files, used for favicon and brand on top left
-    "site_logo": "jazzmin/img/sprijin-de-urgenta.svg",
+    "site_logo": "jazzmin/img/code4.svg",
     "site_icon": "jazzmin/img/sprijin-de-urgenta-logo.svg",
     "site_logo_classes": "site-logo",
     # Welcome text on the login screen
@@ -274,6 +274,7 @@ JAZZMIN_SETTINGS = {
     "topmenu_links": [
         # Url that gets reversed (Permissions can be added)
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": _("External Form"), "url": "patient_request_form", "permissions": ["auth.view_user"], "new_window": True},
         # external url that opens in a new window (Permissions can be added)
         # {
         #     "name": "View website",
@@ -316,14 +317,14 @@ JAZZMIN_SETTINGS = {
     ],
     # Custom links to append to app groups, keyed on app name
     "custom_links": {
-        "books": [
-            {
-                "name": "Make Messages",
-                "url": "make_messages",
-                "icon": "fas fa-comments",
-                "permissions": ["books.view_book"],
-            }
-        ]
+        # "books": [
+        #     {
+        #         "name": "Make Messages",
+        #         "url": "make_messages",
+        #         "icon": "fas fa-comments",
+        #         "permissions": ["books.view_book"],
+        #     }
+        # ]
     },
     # Custom icons for side menu apps/models See https://fontawesome.com/icons?d=gallery&m=free
     # for a list of icon classes
@@ -382,21 +383,21 @@ JAZZMIN_UI_TWEAKS = {
     "brand_small_text": False,
     "brand_colour": False,
     "accent": "accent-primary",
-    "navbar": "navbar-dark",
+    "navbar": "navbar-light",
     "no_navbar_border": False,
     "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-primary",
+    "sidebar": "sidebar-light-primary",
     "sidebar_nav_small_text": False,
     "sidebar_disable_expand": False,
     "sidebar_nav_child_indent": True,
     "sidebar_nav_compact_style": True,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": True,
-    "theme": "default",
-    "dark_mode_theme": "darkly",
+    "theme": "cosmo",
+    "dark_mode_theme": None,
 }
 
 # Recaptcha settings
