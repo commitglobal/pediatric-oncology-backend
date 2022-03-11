@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 EMAIL_TEMPLATE_CHOICES = [
-    ("patient_request", _("Patient request form email")),
+    ("patient_request", _("Patient Request Form Email")),
 ]
 
 

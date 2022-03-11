@@ -371,16 +371,12 @@ msgid "Sex"
 msgstr "Sex"
 
 #: dispatch/models.py:180
-#, fuzzy
-#| msgid "Requester Data"
 msgid "Requester Type"
-msgstr "Date Solicitant"
+msgstr "Tip Solicitant"
 
 #: dispatch/models.py:187
-#, fuzzy
-#| msgid "Institution Name"
 msgid "Organization Name"
-msgstr "Numele Instituției"
+msgstr "Numele Organizației"
 
 #: dispatch/models.py:190
 msgid "Fill in only if requester is not a Person"
@@ -391,10 +387,8 @@ msgid "Requester First Name"
 msgstr "Prenumele Solicitantului"
 
 #: dispatch/models.py:198
-#, fuzzy
-#| msgid "Requester First Name"
 msgid "Requester Last Name"
-msgstr "Prenumele Solicitantului"
+msgstr "Numele Solicitantului"
 
 #: dispatch/models.py:203
 msgid "Requester Phone Number"
@@ -405,10 +399,8 @@ msgid "Please include country prefix e.g. +40723000123"
 msgstr "Te rog include prefixul țării, ex: +40723000123"
 
 #: dispatch/models.py:209
-#, fuzzy
-#| msgid "Requester Data"
 msgid "Requester Email"
-msgstr "Date Solicitant"
+msgstr "Email Solicitant"
 
 #: dispatch/models.py:215
 msgid "Diagnostic Class"
@@ -691,10 +683,8 @@ msgid "Site"
 msgstr ""
 
 #: oncoped_site/models.py:6
-#, fuzzy
-#| msgid "Patient Request Form"
-msgid "Patient request form email"
-msgstr "Formular Înregistrare Pacient"
+msgid "Patient Request Form Email"
+msgstr "Email Formular Înregistrare Pacient"
 
 #: oncoped_site/models.py:11
 msgid "Template"

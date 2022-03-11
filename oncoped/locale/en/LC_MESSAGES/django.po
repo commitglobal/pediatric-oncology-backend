@@ -679,7 +679,7 @@ msgid "Site"
 msgstr ""
 
 #: oncoped_site/models.py:6
-msgid "Patient request form email"
+msgid "Patient Request Form Email"
 msgstr ""
 
 #: oncoped_site/models.py:11
