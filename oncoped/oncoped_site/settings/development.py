@@ -6,6 +6,7 @@ ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = True
 SECRET_KEY = "secret"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django_q_email.backends.DjangoQBackend"
 
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",

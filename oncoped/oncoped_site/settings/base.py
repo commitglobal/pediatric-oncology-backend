@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "django_q",
     "crispy_forms",
     "captcha",
+    "ckeditor",
     # project apps
     "static_custom",
     "app_account",
@@ -229,6 +230,28 @@ SUPER_ADMIN_EMAIL = env("SUPER_ADMIN_EMAIL")
 SUPER_ADMIN_FIRST_NAME = env("SUPER_ADMIN_FIRST_NAME")
 SUPER_ADMIN_LAST_NAME = env("SUPER_ADMIN_LAST_NAME")
 
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": [
+            ["Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker"],
+            [
+                "NumberedList",
+                "BulletedList",
+                "Indent",
+                "Outdent",
+                "JustifyLeft",
+                "JustifyCenter",
+                "JustifyRight",
+                "JustifyBlock",
+            ],
+            ["Image", "Table", "Link", "Unlink", "Anchor", "SectionLink", "Subscript", "Superscript"],
+            ["Undo", "Redo"],
+            ["Source"],
+            ["Maximize"],
+        ],
+    },
+}
+
 
 # django-q https://django-q.readthedocs.io/en/latest/configure.html
 
@@ -348,6 +371,7 @@ JAZZMIN_SETTINGS = {
         "app_account.CustomUser": "fas fa-user",
         "dispatch.Clinic": "fas fa-hospital",
         "dispatch.PatientRequest": "fas fa-hospital-user",
+        "oncoped_site.EmailTemplate": "fas fa-at",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
