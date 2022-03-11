@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name='EmailTemplate',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('template', models.CharField(choices=[('patient_request', 'Patient request form email')], max_length=254, unique=True, verbose_name='Template')),
+                ('template', models.CharField(choices=[('patient_request', 'Patient request form email')], max_length=50, unique=True, verbose_name='Template')),
                 ('text_content', models.TextField(verbose_name='Text content')),
                 ('html_content', ckeditor.fields.RichTextField(blank=True, verbose_name='HTML content')),
             ],

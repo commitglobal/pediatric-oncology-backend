@@ -8,7 +8,7 @@ EMAIL_TEMPLATE_CHOICES = [
 
 
 class EmailTemplate(models.Model):
-    template = models.CharField(_("Template"), choices=EMAIL_TEMPLATE_CHOICES, max_length=254, unique=True)
+    template = models.CharField(_("Template"), choices=EMAIL_TEMPLATE_CHOICES, max_length=50, unique=True)
     text_content = models.TextField(_("Text content"))
     html_content = RichTextField(_("HTML content"), blank=True)
 

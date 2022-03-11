@@ -20,22 +20,29 @@ class PatientRegisterRequestCreateView(SuccessMessageMixin, CreateView):
     model = PatientRequest
     form_class = PatientRequestForm
     success_message = _("Thank you for registering the patient! The form you filled in has reached us.")
+    failure_message = _(
+        "There was an error submitting your request. Please try again or contact the site administrator."
+    )
 
     def get_success_url(self):
         return reverse("patient_request_form")
 
     def get_success_message(self, cleaned_data):
-        patient_request = PatientRequest.objects.get(
-            first_name=cleaned_data["first_name"],
-            last_name=cleaned_data["last_name"],
-            birth_date=cleaned_data["birth_date"],
-        )
-        send_email(
-            template="patient_request",
-            context=Context({"pr": patient_request}),
-            subject=_("Pediatric Oncology - Patient Request Form"),
-            to=[settings.NOTIFICATIONS_EMAIL, cleaned_data["requester_email"]],
-        )
+        try:
+            patient_request = PatientRequest.objects.get(
+                first_name=cleaned_data["first_name"],
+                last_name=cleaned_data["last_name"],
+                birth_date=cleaned_data["birth_date"],
+            )
+        except PatientRequest.DoesNotExist:
+            return self.failure_message
+        else:
+            send_email(
+                template="patient_request",
+                context=Context({"pr": patient_request}),
+                subject=_("Pediatric Oncology - Patient Request Form"),
+                to=[settings.NOTIFICATIONS_EMAIL, cleaned_data["requester_email"]],
+            )
 
         return self.success_message
 

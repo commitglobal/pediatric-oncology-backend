@@ -200,7 +200,7 @@ class PatientRequest(models.Model):
         blank=False,
     )
     requester_phone_number = models.CharField(
-        verbose_name=_("Requester Phone"),
+        verbose_name=_("Requester Phone Number"),
         max_length=30,
         help_text=_("Please include country prefix e.g. +40723000123"),
         blank=False,
