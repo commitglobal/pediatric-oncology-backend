@@ -299,6 +299,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
         "case_status",
         "requires_logistic_and_social_assistance",
         "number_of_companions",
+        "created_at",
     ]
     list_display_links = ["get_full_name"]
     search_fields = ["first_name", "last_name", "tumor_type"]
