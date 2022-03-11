@@ -217,6 +217,10 @@ class PatientRequest(models.Model):
         verbose_name=_("Requester Email"),
         blank=False,
     )
+    translator_contact = models.TextField(
+        verbose_name=_("Translator Contact"),
+        blank=True,
+    )
 
     # Diagnostic
     diagnostic_class = models.CharField(

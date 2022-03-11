@@ -359,6 +359,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
                     "requester_last_name",
                     "requester_phone_number",
                     "requester_email",
+                    "translator_contact",
                 ),
             },
         ),
