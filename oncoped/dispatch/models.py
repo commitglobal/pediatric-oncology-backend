@@ -213,10 +213,7 @@ class PatientRequest(models.Model):
     diagnostic_class = models.CharField(
         verbose_name=_("Diagnostic Class"), max_length=10, choices=DIAGNOSTIC_CLASS_CHOICES, blank=True, null=True
     )
-    known_complete_diagnostic = models.BooleanField(
-        verbose_name=_("Complete Diagnostic Known"),
-        default=False,
-    )
+    known_complete_diagnostic = models.BooleanField(verbose_name=_("Complete Diagnostic Known"), default=False)
     complete_diagnostic = models.TextField(verbose_name=_("Complete Diagnostic"), blank=True, null=True)
     date_diagnosed = models.DateField(verbose_name=_("Date Diagnosed"), null=True, blank=True)
     diagnosing_institution_name = models.CharField(
@@ -251,11 +248,7 @@ class PatientRequest(models.Model):
     )
 
     # Logistical Info
-    estimated_arrival_dt = models.DateTimeField(
-        verbose_name=_("Estimated Arrival"),
-        null=True,
-        blank=True,
-    )
+    estimated_arrival_dt = models.DateTimeField(verbose_name=_("Estimated Arrival"), null=True, blank=True)
     redirect_info = models.TextField(
         verbose_name=_("Redirect Info"),
         help_text=_("Redirection to a different specialty. Provide all info, including contact!"),
@@ -270,10 +263,7 @@ class PatientRequest(models.Model):
 
     # Origin Institution
     origin_medical_institution_name = models.CharField(
-        verbose_name=_("Institution Name"),
-        max_length=150,
-        blank=True,
-        null=True,
+        verbose_name=_("Institution Name"), max_length=150, blank=True, null=True
     )
     origin_medical_institution_contact_person = models.CharField(
         verbose_name=_("Contact Person"),
@@ -289,11 +279,7 @@ class PatientRequest(models.Model):
         blank=True,
         null=True,
     )
-    origin_medical_institution_email = models.EmailField(
-        verbose_name=_("Email"),
-        blank=True,
-        null=True,
-    )
+    origin_medical_institution_email = models.EmailField(verbose_name=_("Email"), blank=True, null=True)
 
     def get_full_name(self):
         return self.first_name + " " + self.last_name
@@ -320,11 +306,7 @@ class PatientRequest(models.Model):
     class Meta:
         verbose_name = _("Patient Request")
         verbose_name_plural = _("Patient Requests")
-        unique_together = [
-            "first_name",
-            "last_name",
-            "birth_date",
-        ]
+        unique_together = ["first_name", "last_name", "birth_date"]
 
 
 def patient_request_upload(instance, filename):
@@ -340,21 +322,10 @@ class PatientRequestFile(models.Model):
 class MedicalAssistance(models.Model):
     request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="med_assistance")
 
-    clinic = models.ForeignKey(
-        Clinic,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="rel_clinics",
-    )
+    clinic = models.ForeignKey(Clinic, on_delete=models.SET_NULL, null=True, blank=True, related_name="rel_clinics")
 
     case_status = models.CharField(
-        verbose_name=_("Case Status"),
-        choices=CASE_STATUS_CHOICES,
-        max_length=3,
-        default="P",
-        null=False,
-        blank=False,
+        verbose_name=_("Case Status"), choices=CASE_STATUS_CHOICES, max_length=3, default="P", null=False, blank=False
     )
     estimated_arrival_date = models.DateField(verbose_name=_("Estimated Arrival Date"), null=True, blank=True)
     hospitalization_start = models.DateField(
@@ -364,44 +335,17 @@ class MedicalAssistance(models.Model):
         help_text=_("Only with confirmation from the receiving clinic!"),
     )
     receiving_dr_full_name = models.CharField(
-        verbose_name=_("Receiving Dr Full Name"),
-        max_length=150,
-        null=True,
-        blank=True,
+        verbose_name=_("Receiving Dr Full Name"), max_length=150, null=True, blank=True
     )
     comments = models.TextField(verbose_name=_("Comments"), null=True, blank=True)
-    needs_transfer = models.BooleanField(
-        verbose_name=_("Needs Transfer"),
-        default=False,
-    )
-    international_redirect = models.BooleanField(
-        verbose_name=_("International Redirect"),
-        default=False,
-    )
+    needs_transfer = models.BooleanField(verbose_name=_("Needs Transfer"), default=False)
+    international_redirect = models.BooleanField(verbose_name=_("International Redirect"), default=False)
     redirect_institution = models.CharField(
-        verbose_name=_("Redirect Institution"),
-        max_length=250,
-        null=True,
-        blank=True,
+        verbose_name=_("Redirect Institution"), max_length=250, null=True, blank=True
     )
-    specialty = models.CharField(
-        verbose_name=_("Specialty"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
-    town = models.CharField(
-        verbose_name=_("Town"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
-    country = models.CharField(
-        verbose_name=_("Country"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
+    specialty = models.CharField(verbose_name=_("Specialty"), max_length=150, null=True, blank=True)
+    town = models.CharField(verbose_name=_("Town"), max_length=150, null=True, blank=True)
+    country = models.CharField(verbose_name=_("Country"), max_length=150, null=True, blank=True)
     reason = models.TextField(verbose_name=_("Reason"), null=True, blank=True)
 
     def __str__(self):
@@ -427,12 +371,7 @@ class LogisticAndSocialAssistance(models.Model):
         blank=False,
     )
     transport = models.CharField(
-        verbose_name=_("Transport"),
-        max_length=3,
-        choices=TRANSPORT_CHOICES,
-        null=True,
-        blank=True,
-        default="NAT",
+        verbose_name=_("Transport"), max_length=3, choices=TRANSPORT_CHOICES, null=True, blank=True, default="NAT"
     )
     pick_up_location = models.CharField(
         verbose_name=_("Pick Up Location"),
@@ -448,20 +387,13 @@ class LogisticAndSocialAssistance(models.Model):
         blank=True,
         help_text=_("Departing from: City, Country"),
     )
-    transport_details = models.TextField(
-        verbose_name=_("Transport Details"),
-        null=True,
-        blank=True,
-    )
+    transport_details = models.TextField(verbose_name=_("Transport Details"), null=True, blank=True)
     transport_rep_external = models.BooleanField(
         verbose_name=_("External Transport Representative"),
         default=False,
         help_text=_("Is the transport representative external to the organization?"),
     )
-    transport_rep_external_details = models.TextField(
-        null=True,
-        blank=True,
-    )
+    transport_rep_external_details = models.TextField(null=True, blank=True)
 
     # Accommodation
     accommodation_required = models.BooleanField(
@@ -477,26 +409,17 @@ class LogisticAndSocialAssistance(models.Model):
         null=False,
         blank=False,
     )
-    accommodation_details = models.TextField(
-        verbose_name=_("Accommodation Details"),
-        null=True,
-        blank=True,
-    )
+    accommodation_details = models.TextField(verbose_name=_("Accommodation Details"), null=True, blank=True)
     accommodation_rep_external = models.BooleanField(
         verbose_name=_("External accommodation Representative"),
         default=False,
         help_text=_("Is the accommodation representative external to the organization?"),
     )
-    accommodation_rep_external_details = models.TextField(
-        null=True,
-        blank=True,
-    )
+    accommodation_rep_external_details = models.TextField(null=True, blank=True)
 
     # Assistance
     assistance_required = models.BooleanField(
-        verbose_name=_("Assistance Required"),
-        default=False,
-        help_text=_("Wether assistance is required"),
+        verbose_name=_("Assistance Required"), default=False, help_text=_("Wether assistance is required")
     )
     assistance_status = models.CharField(
         verbose_name=_("Assistance Status"),
@@ -511,10 +434,7 @@ class LogisticAndSocialAssistance(models.Model):
         default=False,
         help_text=_("Is the assistance representative external to the organization?"),
     )
-    assistance_rep_external_details = models.TextField(
-        null=True,
-        blank=True,
-    )
+    assistance_rep_external_details = models.TextField(null=True, blank=True)
 
     def __str__(self):
         name = _("Logistic & Transport")
@@ -524,17 +444,9 @@ class LogisticAndSocialAssistance(models.Model):
 class Companion(models.Model):
     request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE, related_name="companions")
 
-    companion_name = models.CharField(
-        verbose_name=_("Companion Name"),
-        max_length=150,
-        null=True,
-        blank=True,
-    )
+    companion_name = models.CharField(verbose_name=_("Companion Name"), max_length=150, null=True, blank=True)
     companion_relationship = models.CharField(
-        verbose_name=_("Companion Relationship"),
-        max_length=150,
-        null=True,
-        blank=True,
+        verbose_name=_("Companion Relationship"), max_length=150, null=True, blank=True
     )
     companion_phone_number = models.CharField(
         verbose_name=_("Companion Phone Number"),
@@ -543,11 +455,7 @@ class Companion(models.Model):
         null=True,
         blank=True,
     )
-    companion_other_details = models.TextField(
-        verbose_name=_("Companion Other Details"),
-        null=True,
-        blank=True,
-    )
+    companion_other_details = models.TextField(verbose_name=_("Companion Other Details"), null=True, blank=True)
 
     def __str__(self):
         name = _("Companion")
