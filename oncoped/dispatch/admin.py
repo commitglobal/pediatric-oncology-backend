@@ -81,6 +81,11 @@ class MedicalAssistanceInLine(admin.StackedInline):
     verbose_name = _("Add Medical Assitance")
     verbose_name_plural = _("Add Medical Assitance")
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'clinic':
+            kwargs['queryset'] = Clinic.objects.exclude(available_beds__lte=0)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
 
 @admin.register(MedicalAssistance)
 class AdminMedicalAssistance(admin.ModelAdmin):
@@ -286,6 +291,8 @@ class AdminPatientRequest(ImportExportModelAdmin):
                 badge_color, badge_text = "success", _("TAKEN")
             if status == "TP":
                 badge_color, badge_text = "success", _("DIRECT CASE")
+            if status == "RE":
+                badge_color, badge_text = "success", _("REDIRECTED")
             return mark_safe(f'<span class="badge badge-{badge_color}">{badge_text}</span>')
         badge_color, badge_text = "secondary", _("NO CLINIC ASSIGNED")
         return mark_safe(f'<span class="badge badge-{badge_color}">{badge_text}</span>')
@@ -338,7 +345,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
                     "birth_date",
                     "get_child_age",
                     "sex",
-                    "address",
+                    "birth_place",
                 )
             },
         ),
@@ -346,7 +353,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
             _("Requester Data"),
             {
                 "fields": (
-                    "institution_type",
+                    "requester_category",
                     "institution_name",
                     "requester_first_name",
                     "requester_last_name",
