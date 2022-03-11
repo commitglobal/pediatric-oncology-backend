@@ -97,20 +97,41 @@ class LogisticAndSocialAssistanceInLine(admin.StackedInline):
 
     fieldsets = (
         (
-            None,
+            _("Transport"),
             {
                 "fields": (
                     "transport_required",
+                    "transport_status",
                     "transport",
                     "pick_up_location",
                     "destination_location",
                     "transport_details",
                     "transport_rep_external",
                     "transport_rep_external_details",
+                ),
+                "classes": ('my-section', )
+            },
+        ),
+        (
+            _("Accommodation"),
+            {
+                "fields": (
                     "accommodation_required",
+                    "accommodation_status",
                     "accommodation_details",
-                    "accomodation_rep_external",
-                    "accomodation_rep_external_details",
+                    "accommodation_rep_external",
+                    "accommodation_rep_external_details",
+                ),
+            },
+        ),
+        (
+            _("Assistance"),
+            {
+                "fields": (
+                    "assistance_required",
+                    "assistance_status",
+                    "assistance_rep_external",
+                    "assistance_rep_external_details",
                 ),
             },
         ),

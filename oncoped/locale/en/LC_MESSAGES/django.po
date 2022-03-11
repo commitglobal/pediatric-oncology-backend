@@ -573,11 +573,11 @@ msgid "Accommodation Details"
 msgstr ""
 
 #: dispatch/models.py:505
-msgid "External Accomodation Representative"
+msgid "External accommodation Representative"
 msgstr ""
 
 #: dispatch/models.py:507
-msgid "Is the accomodation representative external to the organization?"
+msgid "Is the accommodation representative external to the organization?"
 msgstr ""
 
 #: dispatch/models.py:522

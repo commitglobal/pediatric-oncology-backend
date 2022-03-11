@@ -579,11 +579,11 @@ msgid "Accommodation Details"
 msgstr "Detalii Cazare"
 
 #: dispatch/models.py:505
-msgid "External Accomodation Representative"
+msgid "External accommodation Representative"
 msgstr "Reprezentant Extern Cazare"
 
 #: dispatch/models.py:507
-msgid "Is the accomodation representative external to the organization?"
+msgid "Is the accommodation representative external to the organization?"
 msgstr "Este reprezentantul pentru cazare extern organizației?"
 
 #: dispatch/models.py:522

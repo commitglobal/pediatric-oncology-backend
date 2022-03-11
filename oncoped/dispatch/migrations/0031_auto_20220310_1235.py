@@ -20,12 +20,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='logisticandsocialassistance',
-            name='accomodation_rep_external',
-            field=models.BooleanField(default=False, help_text='Is the accomodation representative external to the organization?', verbose_name='External Accomodation Representative'),
+            name='accommodation_rep_external',
+            field=models.BooleanField(default=False, help_text='Is the accommodation representative external to the organization?', verbose_name='External accommodation Representative'),
         ),
         migrations.AddField(
             model_name='logisticandsocialassistance',
-            name='accomodation_rep_external_details',
+            name='accommodation_rep_external_details',
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(

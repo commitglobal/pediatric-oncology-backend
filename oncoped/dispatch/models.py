@@ -99,6 +99,10 @@ CASE_STATUS_CHOICES = (
     ("TP", _("Taken over previously, in person")),
 )
 
+LOGISTIC_STATUS_CHOICES = (
+    ("US", _("Unsolved")),
+    ("S", _("Solved")),
+)
 
 class Clinic(models.Model):
     tumor_type = MultiSelectField(
@@ -460,6 +464,14 @@ class LogisticAndSocialAssistance(models.Model):
         default=False,
         help_text=_("Wether national or international transportation is required for this assistence"),
     )
+    transport_status = models.CharField(
+        verbose_name=_("Transport Status"),
+        max_length=2,
+        choices=LOGISTIC_STATUS_CHOICES,
+        default="US",
+        null=False,
+        blank=False
+    )
     transport = models.CharField(
         verbose_name=_("Transport"),
         max_length=3,
@@ -497,28 +509,62 @@ class LogisticAndSocialAssistance(models.Model):
         blank=True,
     )
 
+    # Accommodation
     accommodation_required = models.BooleanField(
         verbose_name=_("Accommodation Required"),
         default=False,
         help_text=_("Wether accommodation is required for this assistence"),
+    )
+    accommodation_status = models.CharField(
+        verbose_name=_("Accommodation Status"),
+        max_length=2,
+        choices=LOGISTIC_STATUS_CHOICES,
+        default="US",
+        null=False,
+        blank=False
     )
     accommodation_details = models.TextField(
         verbose_name=_("Accommodation Details"),
         null=True,
         blank=True,
     )
-    accomodation_rep_external = models.BooleanField(
-        verbose_name=_("External Accomodation Representative"),
+    accommodation_rep_external = models.BooleanField(
+        verbose_name=_("External accommodation Representative"),
         default=False,
-        help_text=_("Is the accomodation representative external to the organization?"),
+        help_text=_("Is the accommodation representative external to the organization?"),
     )
-    accomodation_rep_external_details = models.TextField(
+    accommodation_rep_external_details = models.TextField(
+        null=True,
+        blank=True,
+    )
+
+    # Assistance
+    assistance_required = models.BooleanField(
+        verbose_name=_("Assistance Required"),
+        default=False,
+        help_text=_("Wether assistance is required"),
+    )
+    assistance_status = models.CharField(
+        verbose_name=_("Assistance Status"),
+        max_length=2,
+        choices=LOGISTIC_STATUS_CHOICES,
+        default="US",
+        null=False,
+        blank=False
+    )
+    assistance_rep_external = models.BooleanField(
+        verbose_name=_("External Assistance Representative"),
+        default=False,
+        help_text=_("Is the assistance representative external to the organization?"),
+    )
+    assistance_rep_external_details = models.TextField(
         null=True,
         blank=True,
     )
 
     def __str__(self):
-        return f"Logistic & Transport {self.id}"
+        name = _("Logistic & Transport")
+        return f"{name} {self.id}"
 
 
 class Companion(models.Model):
@@ -548,3 +594,7 @@ class Companion(models.Model):
         null=True,
         blank=True,
     )
+
+    def __str__(self):
+        name = _("Companion")
+        return f"{name} {self.id}"
