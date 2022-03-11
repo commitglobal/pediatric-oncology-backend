@@ -172,6 +172,7 @@ class AdminClinic(ImportExportModelAdmin):
 
     list_filter = [
         "tumor_type",
+        "therapy_services",
         "name",
         "city",
         "county",
