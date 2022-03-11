@@ -29,6 +29,8 @@ env = environ.Env(
 ADMIN_TITLE = _("Pedriatic Oncology Dispatcher")
 ADMIN_TITLE_SHORT = _("POD")
 
+LIST_PER_PAGE = 10
+
 # Build paths inside the project like this: path.join(BASE_DIR, ...)
 BASE_DIR = path.join(path.dirname(path.abspath(__file__)), "../..")
 
