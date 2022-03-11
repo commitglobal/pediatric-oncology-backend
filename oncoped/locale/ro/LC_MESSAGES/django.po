@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-11 13:18+0200\n"
-"PO-Revision-Date: 2022-03-11 13:19+0200\n"
+"PO-Revision-Date: 2022-03-11 14:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ro\n"
@@ -52,7 +52,7 @@ msgstr "Corporativ"
 
 #: app_account/models.py:18
 msgid "Non-Profit"
-msgstr "Non-Profit"
+msgstr "Non-Profit (ONG)"
 
 #: app_account/models.py:19
 msgid "Government"
@@ -92,7 +92,7 @@ msgstr "utilizatori"
 
 #: app_account/models.py:59 dispatch/models.py:254
 msgid "Full Name"
-msgstr "Nume Întreg"
+msgstr "Nume medic"
 
 #: dispatch/admin.py:68 dispatch/admin.py:420
 msgid "Upload Medical Files"
@@ -168,11 +168,11 @@ msgstr "CLINICĂ NEASIGNATĂ"
 
 #: dispatch/admin.py:333 dispatch/admin.py:411
 msgid "Identification"
-msgstr "Identificare"
+msgstr "Date identificare"
 
 #: dispatch/admin.py:346 dispatch/admin.py:412
 msgid "Requester Data"
-msgstr "Date ale Solicitantului"
+msgstr "Date Solicitant"
 
 #: dispatch/admin.py:359 dispatch/admin.py:413
 msgid "Diagnostic"
@@ -180,7 +180,7 @@ msgstr "Diagnostic"
 
 #: dispatch/admin.py:377 dispatch/admin.py:415
 msgid "Child Location"
-msgstr "Locația Copilului"
+msgstr "Locația curenta a pacientului"
 
 #: dispatch/admin.py:388 dispatch/admin.py:417
 msgid "Logistical Info"
@@ -188,7 +188,7 @@ msgstr "Informații Logistice"
 
 #: dispatch/admin.py:398 dispatch/admin.py:414
 msgid "Origin Medical Institution"
-msgstr "Instituție Medicală Originară"
+msgstr "Instituție Medicală Anterioară"
 
 #: dispatch/apps.py:10
 msgid "Dispatch"
@@ -196,11 +196,11 @@ msgstr "Dispecerat"
 
 #: dispatch/models.py:13
 msgid "Male"
-msgstr "Masculin"
+msgstr "M"
 
 #: dispatch/models.py:14
 msgid "Female"
-msgstr "Feminin"
+msgstr "F"
 
 #: dispatch/models.py:15
 msgid "Other / Unspecified"
@@ -260,7 +260,7 @@ msgstr "Organizație Non-Guvernamentală"
 
 #: dispatch/models.py:35
 msgid "Person"
-msgstr "Persoană"
+msgstr "Persoană fizică"
 
 #: dispatch/models.py:36
 msgid "Company"
@@ -320,7 +320,7 @@ msgstr "Județ"
 
 #: dispatch/models.py:137 dispatch/models.py:176
 msgid "Address"
-msgstr "Adresă"
+msgstr "Adresă clinică"
 
 #: dispatch/models.py:141
 msgid "Hospitalization Office Email"
@@ -376,11 +376,11 @@ msgstr "Tip"
 
 #: dispatch/models.py:183
 msgid "Name"
-msgstr "Prenume"
+msgstr "Denumire"
 
 #: dispatch/models.py:186
 msgid "Fill in only if requester is not a Person"
-msgstr "Completează doar dacă solicitantul nu este o Persoană"
+msgstr "Completează doar dacă solicitantul nu este o Persoană fizică"
 
 #: dispatch/models.py:191 dispatch/models.py:244
 msgid "Phone Number"
@@ -400,7 +400,7 @@ msgstr "Clasa de diagnostic"
 
 #: dispatch/models.py:202
 msgid "Complete Diagnostic Known"
-msgstr "Diagnostic complet disponibil"
+msgstr "Se cunoaște diagnosticul complet?"
 
 #: dispatch/models.py:203
 msgid "Complete Diagnostic"
@@ -420,35 +420,35 @@ msgstr "Descrierea problemei"
 
 #: dispatch/models.py:213
 msgid "Medical Documents Checked"
-msgstr "Documente medicale verificate"
+msgstr "Am verificat documentele medicale"
 
 #: dispatch/models.py:215
 msgid "Therapy Needs"
-msgstr "Necesarul Terapeutic"
+msgstr "Nevoi Terapeutice"
 
 #: dispatch/models.py:216
 msgid "Other Therapy Needs"
-msgstr "Alte Necesități Terapeutice"
+msgstr "Alte Nevoi terapeutice"
 
 #: dispatch/models.py:217
 msgid "Current Clinical Status"
-msgstr "Situație curentă status clinic"
+msgstr "Situație curentă a pacientului (status clinic)"
 
 #: dispatch/models.py:220
 msgid "Child Current Address"
-msgstr "Adresa Curenta a Copilului"
+msgstr "Adresa Curenta a pacientului"
 
 #: dispatch/models.py:221
 msgid "Child Current City"
-msgstr "Orașul Curent al Copilului"
+msgstr "Orașul Curent al pacientului"
 
 #: dispatch/models.py:222
 msgid "Child Current County"
-msgstr "Județul Curent al Copilului"
+msgstr "Județul Curent al pacientului"
 
 #: dispatch/models.py:223
 msgid "Child Current Country"
-msgstr "Țara curentă a Copilului"
+msgstr "Țara curentă a pacientului"
 
 #: dispatch/models.py:226
 msgid "Estimated Arrival"
@@ -480,7 +480,7 @@ msgstr "Numele Instituției"
 
 #: dispatch/models.py:241
 msgid "Contact Person"
-msgstr "Persoană de Contact"
+msgstr "Date persoană de contact a instituției"
 
 #: dispatch/models.py:241
 msgid "Full Name of the contact person"
@@ -608,7 +608,7 @@ msgstr "Cazare Necesară"
 
 #: dispatch/models.py:364
 msgid "Wether accommodation is required for this assistence"
-msgstr "Dacă este necesară cazare pentru această cerere de asistență"
+msgstr "Dacă este necesară cazare pentru pacient și însoțitori"
 
 #: dispatch/models.py:367
 msgid "Accommodation Status"
@@ -616,7 +616,7 @@ msgstr "Situație Cazare"
 
 #: dispatch/models.py:373
 msgid "Accommodation Details"
-msgstr "Detalii Cazare"
+msgstr "Observații Cazare"
 
 #: dispatch/models.py:375
 msgid "External accommodation Representative"
@@ -644,15 +644,15 @@ msgstr "Situația asistenței"
 
 #: dispatch/models.py:395
 msgid "External Assistance Representative"
-msgstr "Reprezentant asistență externa"
+msgstr "Reprezentant asistență externa (din afara Dăruiește Aripi)"
 
 #: dispatch/models.py:397
 msgid "Is the assistance representative external to the organization?"
-msgstr "Este reprezentantul asistenței extern organizației?"
+msgstr "Este reprezentantul asistenței extern (din afara Dăruiește Aripi)?"
 
 #: dispatch/models.py:400
 msgid "External Assistance Representantive Details"
-msgstr "Detalii reprezentant asistență externa"
+msgstr "Date contact reprezentant asistență externă"
 
 #: dispatch/models.py:404
 msgid "Logistic & Transport"
@@ -755,15 +755,15 @@ msgstr "Toate Solicitările de Pacienți"
 
 #: templates/admin/custom_admin_index.html:28
 msgid "Assigned Patient Requests"
-msgstr "Solicitări Pacienți Asignate"
+msgstr "Solicitări Pacienți Alocate"
 
 #: templates/admin/custom_admin_index.html:37
 msgid "Unassigned Patient Requests"
-msgstr "Solicitări Pacienți Neasignate"
+msgstr "Solicitări Pacienți Nealocate"
 
 #: templates/admin/custom_admin_index.html:47
 msgid "Assignment Progress"
-msgstr "Situație Asignare"
+msgstr "Situație Alocare"
 
 #: templates/admin/custom_admin_index.html:56
 msgid "Clinic Beds"
