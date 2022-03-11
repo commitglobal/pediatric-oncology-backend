@@ -203,7 +203,7 @@ class AdminPatientRequest(ImportExportModelAdmin):
         clinic = obj.med_assistance.clinic
         if clinic:
             return mark_safe(
-                f'<span style="font-weight: bold; color: green;">{clinic.name}, {clinic.city} ({clinic.county})</span>'
+                f'<span style="font-weight: bold;" class="text-success">{clinic.name}, {clinic.city} ({clinic.county})</span>'
             )
         # return mark_safe('<i class="fas fa-times" style="font-weight: bold; color: red; font-size: 20px;"></i>')
         return
@@ -244,11 +244,13 @@ class AdminPatientRequest(ImportExportModelAdmin):
             badge_color, badge_text = "secondary", _("NO CASE STATUS")
             status = obj.med_assistance.case_status
             if status == "P":
-                badge_color, badge_text = "danger", _("PENDING")
+                badge_color, badge_text = "warning", _("UNALLOCATED")
             if status == "R":
-                badge_color, badge_text = "info", _("READY")
-            if status in ["T", "TP"]:
+                badge_color, badge_text = "primary", _("ACCEPTED")
+            if status == "T":
                 badge_color, badge_text = "success", _("TAKEN")
+            if status == "TP":
+                badge_color, badge_text = "success", _("DIRECT CASE")
             return mark_safe(f'<span class="badge badge-{badge_color}">{badge_text}</span>')
         badge_color, badge_text = "secondary", _("NO CLINIC ASSIGNED")
         return mark_safe(f'<span class="badge badge-{badge_color}">{badge_text}</span>')
