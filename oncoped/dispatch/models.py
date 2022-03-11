@@ -222,7 +222,6 @@ class PatientRequest(models.Model):
     child_current_county = models.CharField(verbose_name=_("Child Current County"), max_length=100, blank=True)
     child_current_country = models.CharField(verbose_name=_("Child Current Country"), max_length=100, blank=True)
 
-
     # Origin Institution
     origin_medical_institution_name = models.CharField(verbose_name=_("Institution Name"), max_length=150, blank=True)
     origin_medical_institution_contact_person = models.CharField(
