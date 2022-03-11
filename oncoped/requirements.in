@@ -4,6 +4,7 @@ django-environ
 django-storages
 django-crispy-forms
 django-recaptcha
+django-ckeditor
 
 # scheduler
 django-q

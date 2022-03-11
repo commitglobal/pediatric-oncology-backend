@@ -45,11 +45,14 @@ django==3.2.12
     #   django-extensions
     #   django-import-export
     #   django-jazzmin
+    #   django-js-asset
     #   django-multiselectfield
     #   django-picklefield
     #   django-q
     #   django-recaptcha
     #   django-storages
+django-ckeditor==6.2.0
+    # via -r requirements.txt
 django-crispy-forms==1.14.0
     # via -r requirements.txt
 django-debug-toolbar==3.2.4
@@ -62,6 +65,10 @@ django-import-export==2.7.1
     # via -r requirements.txt
 django-jazzmin==2.4.9
     # via -r requirements.txt
+django-js-asset==2.0.0
+    # via
+    #   -r requirements.txt
+    #   django-ckeditor
 django-multiselectfield==0.1.12
     # via -r requirements.txt
 django-picklefield==3.0.1

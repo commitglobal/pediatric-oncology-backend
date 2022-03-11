@@ -43,7 +43,9 @@
 
 <script>
   $( document ).ready(function() {
-    $("#id_birth_date").attr("type", "date").attr("pattern", "\d{4}-\d{2}-\d{2}");
+    $("#id_birth_date").attr("type", "date").attr("pattern", "\d{4}-\d{2}-\d{2}").attr("max", "{% now 'Y-m-d' %}");
+    $("#id_date_diagnosed").attr("type", "date").attr("pattern", "\d{4}-\d{2}-\d{2}").attr("max", "{% now 'Y-m-d' %}");
+
     $("#div_id_complete_diagnostic").hide();
     $("#div_id_date_diagnosed").hide();
     $("#div_id_diagnosing_institution_name").hide();
