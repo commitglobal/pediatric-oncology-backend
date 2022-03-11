@@ -180,23 +180,38 @@ class PatientRequest(models.Model):
 
     # Requester
     institution_type = models.CharField(
-        verbose_name=_("Type"), max_length=3, choices=REQUESTER_TYPE, default="MED", blank=False
+        verbose_name=_("Requester Type"),
+        max_length=3,
+        choices=REQUESTER_TYPE,
+        default="MED",
+        blank=False,
     )
     institution_name = models.CharField(
-        verbose_name=_("Name"),
+        verbose_name=_("Organization Name"),
         max_length=250,
         blank=True,
         help_text=_("Fill in only if requester is not a Person"),
     )
-    requester_first_name = models.CharField(verbose_name=_("First Name"), max_length=100, blank=False)
-    requester_last_name = models.CharField(verbose_name=_("Last Name"), max_length=100, blank=False)
+    requester_first_name = models.CharField(
+        verbose_name=_("Requester First Name"),
+        max_length=100,
+        blank=False,
+    )
+    requester_last_name = models.CharField(
+        verbose_name=_("Requester Last Name"),
+        max_length=100,
+        blank=False,
+    )
     requester_phone_number = models.CharField(
-        verbose_name=_("Phone Number"),
+        verbose_name=_("Requester Phone Number"),
         max_length=30,
         help_text=_("Please include country prefix e.g. +40723000123"),
         blank=False,
     )
-    requester_email = models.EmailField(verbose_name=_("Email"), blank=False)
+    requester_email = models.EmailField(
+        verbose_name=_("Requester Email"),
+        blank=False,
+    )
 
     # Diagnostic
     diagnostic_class = models.CharField(
