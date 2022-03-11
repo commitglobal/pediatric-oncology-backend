@@ -106,6 +106,8 @@ LOGISTIC_STATUS_CHOICES = (
 
 
 class Clinic(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+
     tumor_type = MultiSelectField(
         verbose_name=_("Tumor Type"),
         max_length=3,
@@ -166,6 +168,7 @@ class Clinic(models.Model):
 
 
 class PatientRequest(models.Model):
+    created_at = models.DateTimeField(verbose_name=_("Created At"), auto_now_add=True)
 
     # Identification
 
@@ -284,11 +287,15 @@ def patient_request_upload(instance, filename):
 
 
 class PatientRequestFile(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+
     request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE)
     file = models.FileField(upload_to=patient_request_upload, null=True, blank=True)
 
 
 class MedicalAssistance(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+
     request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="med_assistance")
 
     clinic = models.ForeignKey(Clinic, on_delete=models.SET_NULL, null=True, blank=True, related_name="rel_clinics")
@@ -319,6 +326,8 @@ class MedicalAssistance(models.Model):
 
 
 class LogisticAndSocialAssistance(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+
     request = models.OneToOneField(PatientRequest, on_delete=models.CASCADE, related_name="logsol_assistance")
 
     # Transport
@@ -408,6 +417,8 @@ class LogisticAndSocialAssistance(models.Model):
 
 
 class Companion(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+
     request = models.ForeignKey(PatientRequest, on_delete=models.CASCADE, related_name="companions")
 
     companion_name = models.CharField(verbose_name=_("Companion Name"), max_length=150, blank=True)

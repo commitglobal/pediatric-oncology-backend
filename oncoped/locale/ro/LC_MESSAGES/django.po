@@ -302,43 +302,43 @@ msgstr "Rezolvat"
 msgid "Tumor Type"
 msgstr "Tipul Tumorii"
 
-#: dispatch/models.py:116
+#: dispatch/models.py:118
 msgid "Therapy Services"
 msgstr "Servicii Terapeutice"
 
-#: dispatch/models.py:121
+#: dispatch/models.py:123
 msgid "Clinic Name"
 msgstr "Numele Clinicii"
 
-#: dispatch/models.py:126
+#: dispatch/models.py:128
 msgid "City"
 msgstr "Oraș"
 
-#: dispatch/models.py:131 oncoped_site/utils.py:7
+#: dispatch/models.py:133 oncoped_site/utils.py:7
 msgid "County"
 msgstr "Județ"
 
-#: dispatch/models.py:137 dispatch/models.py:176
+#: dispatch/models.py:139 dispatch/models.py:179
 msgid "Address"
 msgstr "Adresă clinică"
 
-#: dispatch/models.py:141
+#: dispatch/models.py:143
 msgid "Hospitalization Office Email"
 msgstr "Email Birou Internări"
 
-#: dispatch/models.py:143
+#: dispatch/models.py:145
 msgid "Hospitalization Office Phone Number"
 msgstr "Telefon Birou Internări"
 
-#: dispatch/models.py:148
+#: dispatch/models.py:150
 msgid "Head Of Department Name"
 msgstr "Numele Șefului de Secție"
 
-#: dispatch/models.py:152
+#: dispatch/models.py:154
 msgid "Head Of Department Email"
 msgstr "Email-ul Șefului de Secție"
 
-#: dispatch/models.py:154
+#: dispatch/models.py:156
 msgid "Department Phone Number"
 msgstr "Numărul de Telefon al Secției"
 
@@ -346,11 +346,11 @@ msgstr "Numărul de Telefon al Secției"
 msgid "Available Beds"
 msgstr "Paturi Disponibile"
 
-#: dispatch/models.py:164
+#: dispatch/models.py:166
 msgid "Clinic"
 msgstr "Clinică"
 
-#: dispatch/models.py:165
+#: dispatch/models.py:167
 msgid "Clinics"
 msgstr "Clinici"
 
@@ -362,11 +362,11 @@ msgstr "Prenume"
 msgid "Last Name"
 msgstr "Nume"
 
-#: dispatch/models.py:174
+#: dispatch/models.py:177
 msgid "Birth Date"
 msgstr "Data de Naștere"
 
-#: dispatch/models.py:175
+#: dispatch/models.py:178
 msgid "Sex"
 msgstr "Sex"
 
