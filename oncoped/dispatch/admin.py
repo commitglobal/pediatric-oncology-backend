@@ -223,6 +223,8 @@ class AdminClinic(ImportExportModelAdmin):
         "county",
     ]
 
+    # filter_horizontal = ("therapy_services",)
+
     ordering = ("pk",)
 
     formfield_overrides = {
