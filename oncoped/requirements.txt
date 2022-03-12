@@ -63,7 +63,7 @@ gunicorn==20.1.0
     # via -r requirements.in
 markuppy==1.14
     # via tablib
-numpy==1.22.2
+numpy==1.22.3
     # via pandas
 odfpy==1.4.1
     # via tablib
