@@ -73,8 +73,6 @@ pandas==1.4.1
     # via -r requirements.in
 psycopg2==2.9.3
     # via -r requirements.in
-pymemcache==3.5.1
-    # via -r requirements.in
 python-dateutil==2.8.2
     # via
     #   arrow
@@ -90,7 +88,6 @@ redis==3.5.3
 six==1.16.0
     # via
     #   blessed
-    #   pymemcache
     #   python-dateutil
 sqlparse==0.4.2
     # via django

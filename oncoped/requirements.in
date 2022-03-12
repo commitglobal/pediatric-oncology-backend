@@ -17,7 +17,7 @@ django-q-email
 supervisor
 
 # py caching
-pymemcache
+# pymemcache
 
 # database
 psycopg2<2.10

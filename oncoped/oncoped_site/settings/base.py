@@ -21,7 +21,7 @@ env = environ.Env(
     LANGUAGE_CODE=(str, "en"),
     HOME_SITE_URL=(str, ""),
     ALLOWED_HOSTS=(list, ["*"]),
-    MEMCACHED_HOST=(str, "cache:11211"),
+    # MEMCACHED_HOST=(str, "cache:11211"),
     RECAPTCHA_PUBLIC_KEY=(str, ""),
     RECAPTCHA_PRIVATE_KEY=(str, ""),
 )
@@ -157,13 +157,13 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 LOCALE_PATHS = (path.join(BASE_DIR, "locale"),)
 
-MEMCACHED_HOST = env("MEMCACHED_HOST")
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
-        "LOCATION": MEMCACHED_HOST,
-    },
-}
+# MEMCACHED_HOST = env("MEMCACHED_HOST")
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
+#         "LOCATION": MEMCACHED_HOST,
+#     },
+# }
 
 COUNTIES_SHORTNAME = {
     "AB": "Alba",

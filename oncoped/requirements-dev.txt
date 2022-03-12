@@ -157,8 +157,6 @@ pygments==2.11.2
     # via
     #   ipython
     #   pdbpp
-pymemcache==3.5.1
-    # via -r requirements.txt
 pyrepl==0.9.0
     # via fancycompleter
 python-dateutil==2.8.2
@@ -183,7 +181,6 @@ six==1.16.0
     # via
     #   -r requirements.txt
     #   blessed
-    #   pymemcache
     #   python-dateutil
 sqlparse==0.4.2
     # via

@@ -18,11 +18,11 @@ services:
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
       - POSTGRES_DB=${DATABASE_NAME}
 
-  cache:
-    container_name: oncoped-cache
-    image: memcached:1.6.14-alpine
-    networks:
-      - internal
+  # cache:
+  #   container_name: oncoped-cache
+  #   image: memcached:1.6.14-alpine
+  #   networks:
+  #     - internal
 
   redis:
     image: redis:alpine
@@ -47,7 +47,7 @@ services:
       - "8070:8070"
     depends_on:
       - db
-      - cache
+      # - cache
       - redis
 
 networks:
