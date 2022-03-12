@@ -55,6 +55,12 @@ compilemessages:                  ## compile the translations
 collectstatic:
 	docker-compose exec oncoped ./manage.py collectstatic --no-input
 
+css-live:
+	npx tailwindcss -i ./oncoped/static_custom/src/main.css -o ./oncoped/static_custom/static/site/css/main.css --watch
+
+css:
+	npx tailwindcss -i ./oncoped/static_custom/src/main.css -o ./oncoped/static_custom/static/site/css/main.css -m
+
 format:
 	docker-compose run --rm --no-deps --entrypoint "bash -c" oncoped "isort --skip migrations . && black --target-version=py39 --exclude migrations ."
 
