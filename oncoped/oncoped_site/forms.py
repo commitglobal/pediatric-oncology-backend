@@ -14,18 +14,32 @@ class PatientRequestForm(forms.ModelForm):
 
     class Meta:
         model = PatientRequest
-        exclude = [
-            "created_at",
-            "medical_documents_checked",
-            "current_clinical_status",
+        fields = [
+            # requester
+            "requester_category",
+            "institution_name",
+            "requester_first_name",
+            "requester_last_name",
+            "requester_phone_number",
+            "requester_email",
+            # patient
+            "first_name",
+            "last_name",
+            "birth_date",
+            "sex",
+            "birth_place",
+            # diagnostic
+            "known_complete_diagnostic",
+            "complete_diagnostic",
+            "date_diagnosed",
+            "diagnosing_institution_name",
+            "general_problem_description",
+            "therapy_needs",
+            "other_therapy_needs",
+            # location
             "child_current_address",
             "child_current_city",
-            "child_current_county",
             "child_current_country",
-            "origin_medical_institution_name",
-            "origin_medical_institution_contact_person",
-            "origin_medical_institution_phone_number",
-            "origin_medical_institution_email",
         ]
         widgets = {
             "sex": forms.RadioSelect,
@@ -38,3 +52,5 @@ class PatientRequestForm(forms.ModelForm):
 
         if not settings.RECAPTCHA_PUBLIC_KEY:
             del self.fields["captcha"]
+
+        self.fields["therapy_needs"].label = _("What are the medical services the patient needs?")
