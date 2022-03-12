@@ -3,14 +3,10 @@
 {% block extrajs %}
 {{ block.super }}
 <script type="text/javascript">
-    let detect_category = function () {
+    let initFormFields = function () {
 
-        switch ($('#id_requester_category').find('option:selected').text()) {
-            case "Person":
-                $('.field-institution_name').hide();
-                $('#id_institution_name').attr('value', '');
-                break;
-            case "Persoană":
+        switch ($('#id_requester_category').find('option:selected').val()) {
+            case "PER":
                 $('.field-institution_name').hide();
                 $('#id_institution_name').attr('value', '');
                 break;
@@ -19,26 +15,21 @@
                 break;
         }
 
-
-        switch ($('#id_known_complete_diagnostic').find('option:selected').text()) {
-            case "Yes":
-            case "Da":
+        switch ($('#id_known_complete_diagnostic').find('option:selected').val()) {
+            case "1":
                 $('.field-complete_diagnostic').show();
                 $('.field-date_diagnosed').show();
                 $('.field-diagnosing_institution_name').show();
-
                 $('.field-general_problem_description').hide();
                 $('#id_general_problem_description').val('');
                 break;
-            case "No":
-            case "Nu":
+            case "0":
                 $('.field-complete_diagnostic').hide();
                 $('.field-date_diagnosed').hide();
                 $('.field-diagnosing_institution_name').hide();
                 $('#id_complete_diagnostic').val('');
                 $('#id_date_diagnosed').val('');
                 $('#id_diagnosing_institution_name').val('');
-
                 $('.field-general_problem_description').show();
                 break;
         }
@@ -54,10 +45,8 @@
 
         // Transport
         if ($('#id_logsol_assistance-0-transport_rep_external').is(":checked")) {
-
             $('.field-transport_rep_external_details').show();
         } else {
-
             $('.field-transport_rep_external_details').hide();
             $('#id_logsol_assistance-0-transport_rep_external_details').val('');
         }
@@ -122,9 +111,8 @@
         }
 
         // Medical Assistance
-        switch ($('#id_med_assistance-0-case_status').find('option:selected').text()) {
-            case "Clinic is Ready for takeover":
-            case "Clinica este pregătită să primească pacientul":
+        switch ($('#id_med_assistance-0-case_status').find('option:selected').val()) {
+            case "R": // "Clinic is Ready for takeover"
                 $('.field-estimated_arrival_date').show();
 
                 $('.field-hospitalization_start').hide();
@@ -143,8 +131,7 @@
                 $('#id_med_assistance-0-reason').val('');
 
                 break;
-            case "Case Pending":
-            case "Caz în așteptare":
+            case "P": // "Case Pending"
                 $('.field-estimated_arrival_date').hide();
                 $('#id_med_assistance-0-estimated_arrival_date').val('');
 
@@ -165,18 +152,14 @@
                 $('#id_med_assistance-0-reason').val('');
 
                 break;
-
-            case "Redirected":
-            case "Redirecționat":
+            case "RE": // "Redirected"
                 $('.field-international_redirect').show();
                 $('.field-redirect_institution').show();
                 $('.field-specialty').show();
                 $('.field-location').show();
                 $('.field-reason').show();
 
-
                 break;
-
             default:
                 $('.field-estimated_arrival_date').hide();
 
@@ -204,44 +187,42 @@
     }
 
 
-
-    $('#id_requester_category').on('change', function () {
-        detect_category();
+    $('#id_requester_category').change(function() {
+        initFormFields();
     });
-    $('#id_known_complete_diagnostic').on('change', function () {
-        detect_category();
+    $('#id_known_complete_diagnostic').change(function() {
+        initFormFields();
     });
-    $('#id_therapy_needs_8').on('change', function () {
-        detect_category();
+    $('#id_therapy_needs_8').change(function() {
+        initFormFields();
     });
 
     // Logistic & Accommodation
-    $('#id_logsol_assistance-0-transport_required').on('change', function () {
-        detect_category();
+    $('#id_logsol_assistance-0-transport_required').change(function () {
+        initFormFields();
     });
-    $('#id_logsol_assistance-0-transport_rep_external').on('change', function () {
-        detect_category();
+    $('#id_logsol_assistance-0-transport_rep_external').change(function() {
+        initFormFields();
     });
-    $('#id_logsol_assistance-0-accommodation_required').on('change', function () {
-        detect_category();
+    $('#id_logsol_assistance-0-accommodation_required').change(function() {
+        initFormFields();
     });
-    $('#id_logsol_assistance-0-accommodation_rep_external').on('change', function () {
-        detect_category();
+    $('#id_logsol_assistance-0-accommodation_rep_external').change(function() {
+        initFormFields();
     });
-    $('#id_logsol_assistance-0-assistance_required').on('change', function () {
-        detect_category();
+    $('#id_logsol_assistance-0-assistance_required').change(function() {
+        initFormFields();
     });
-    $('#id_logsol_assistance-0-assistance_rep_external').on('change', function () {
-        detect_category();
+    $('#id_logsol_assistance-0-assistance_rep_external').change(function() {
+        initFormFields();
     });
 
     // Medical Assistance
-    $('#id_med_assistance-0-case_status').on('change', function () {
-        detect_category();
+    $('#id_med_assistance-0-case_status').change(function() {
+        initFormFields();
     });
 
-
-    detect_category();
+    initFormFields();
 
 </script>
 {% endblock %}

@@ -13,6 +13,7 @@ from dispatch.models import (
     MedicalAssistance,
     PatientRequest,
     PatientRequestFile,
+    THERAPY_NEEDS_CHOICES,
 )
 
 admin.site.index_template = "admin/custom_admin_index.html"
@@ -165,6 +166,22 @@ class AdminCompanion(admin.ModelAdmin):
         return {}
 
 
+class TherapyServicesFilter(admin.SimpleListFilter):
+    """
+    This custom filter is needed because of a bug in django-multiselectfield.
+    Ref.: https://github.com/goinnn/django-multiselectfield/issues/116
+    """
+    title = _("Medical Services")
+    parameter_name = "therapy_services"
+
+    def lookups(self, request, model_admin):
+        return THERAPY_NEEDS_CHOICES
+
+    def queryset(self, request, queryset):
+        if self.value():
+            return queryset.filter(therapy_services__icontains=self.value())
+        return queryset
+
 @admin.register(Clinic)
 class AdminClinic(ImportExportModelAdmin):
 
@@ -198,7 +215,7 @@ class AdminClinic(ImportExportModelAdmin):
 
     list_filter = [
         "tumor_type",
-        "therapy_services",
+        TherapyServicesFilter,
         "name",
         "city",
         "county",

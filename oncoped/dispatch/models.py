@@ -106,8 +106,8 @@ LOGISTIC_STATUS_CHOICES = (
 )
 
 YES_NO_CHOICES = (
-    (1, _("Yes")),
-    (0, _("No")),
+    ("1", _("Yes")),
+    ("0", _("No")),
 )
 
 class Clinic(models.Model):
