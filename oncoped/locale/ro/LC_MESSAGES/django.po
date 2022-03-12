@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 14:06+0200\n"
+"POT-Creation-Date: 2022-03-12 19:15+0200\n"
 "PO-Revision-Date: 2022-03-11 20:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -758,19 +758,27 @@ msgstr "O soluție Code4Romania. Află mai multe"
 msgid "Pediatric Oncology"
 msgstr "Oncologie Pediatrică"
 
+#: oncoped_site/templates/base.html:26 oncoped_site/templates/base.html:40
+msgid "A Code for Romania project."
+msgstr "O soluție Code for Romania."
+
+#: oncoped_site/templates/base.html:27
+msgid "Find out more"
+msgstr "Află mai multe"
+
 #: oncoped_site/templates/form.html:5 oncoped_site/views.py:43
 msgid "Pediatric Oncology - Patient Request Form"
 msgstr "Oncologie Pediatrică - Formular Înregistrare Pacient"
 
-#: oncoped_site/templates/form.html:11
+#: oncoped_site/templates/form.html:17
 msgid "Patient Request Form"
 msgstr "Formular Înregistrare Pacient"
 
-#: oncoped_site/templates/form.html:26 oncoped_site/templates/form.html:32
+#: oncoped_site/templates/form.html:37 oncoped_site/templates/form.html:43
 msgid "Errors"
 msgstr "Erori"
 
-#: oncoped_site/templates/form.html:38
+#: oncoped_site/templates/form.html:49
 msgid "Send request"
 msgstr "Trimite cerere"
 
