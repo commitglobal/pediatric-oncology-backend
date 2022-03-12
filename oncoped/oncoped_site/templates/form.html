@@ -52,7 +52,7 @@
     $("#div_id_other_therapy_needs").hide();
 
     $("#id_known_complete_diagnostic").change(function() {
-      if ($(this).is(":checked")) {
+      if ($(this).val() == "1") {
         $("#div_id_complete_diagnostic").show();
         $("#div_id_date_diagnosed").show();
         $("#div_id_diagnosing_institution_name").show();
@@ -73,6 +73,13 @@
       }
     });
 
+    $("#id_requester_category").change(function() {
+      if ($(this).val() == "PER") {
+        $("#div_id_institution_name").hide();
+      } else {
+        $("#div_id_institution_name").show();
+      }
+    });
 
   });
 </script>

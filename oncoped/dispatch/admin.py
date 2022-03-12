@@ -83,8 +83,8 @@ class MedicalAssistanceInLine(admin.StackedInline):
     verbose_name_plural = _("Add Medical Assitance")
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == 'clinic':
-            kwargs['queryset'] = Clinic.objects.exclude(available_beds__lte=0)
+        if db_field.name == "clinic":
+            kwargs["queryset"] = Clinic.objects.exclude(available_beds__lte=0)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
@@ -166,19 +166,23 @@ class AdminCompanion(admin.ModelAdmin):
         return {}
 
 
-class TherapyServicesListFilter(admin.SimpleListFilter):
+class TherapyServicesFilter(admin.SimpleListFilter):
+    """
+    This custom filter is needed because of a bug in django-multiselectfield.
+    Ref.: https://github.com/goinnn/django-multiselectfield/issues/116
+    """
 
     title = _("Medical Services")
-
-    parameter_name = 'medical_services'
+    parameter_name = "therapy_services"
 
     def lookups(self, request, model_admin):
         return THERAPY_NEEDS_CHOICES
 
     def queryset(self, request, queryset):
         if self.value():
-            return queryset.filter(therapy_services__contains=self.value())
+            return queryset.filter(therapy_services__icontains=self.value())
         return queryset
+
 
 @admin.register(Clinic)
 class AdminClinic(ImportExportModelAdmin):
@@ -213,7 +217,7 @@ class AdminClinic(ImportExportModelAdmin):
 
     list_filter = [
         "tumor_type",
-        TherapyServicesListFilter,
+        TherapyServicesFilter,
         "name",
         "city",
         "county",
