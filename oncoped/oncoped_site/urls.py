@@ -5,16 +5,22 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
 from django.urls import include, path
+from django.utils.translation import ugettext_lazy as _
 
+from .views import PatientRegisterRequestCreateView
 
 admin.site.site_title = settings.ADMIN_TITLE
 admin.site.site_header = settings.ADMIN_TITLE
 admin.site.index_title = settings.ADMIN_TITLE_SHORT
 
 
-
 urlpatterns = i18n_patterns(
     # URL patterns which accept a language prefix
+    path(
+        _("request-form/"),
+        PatientRegisterRequestCreateView.as_view(),
+        name="patient_request_form",
+    ),
     path(
         "admin/password_reset/",
         auth_views.PasswordResetView.as_view(),

@@ -15,11 +15,19 @@ run:
 run-d:
 	docker-compose up -d
 
-seed_superuser:                   ## creates a superuser for the APP based on the data in the .env file
+seed_superuser:                  ## creates a superuser for the APP based on the data in the .env file
 	docker-compose exec oncoped ./manage.py seed_superuser
 
-seed_groups:                   ## creates a groups for the APP based on the data in the .env file
+seed_groups:                     ## creates a groups for the APP based on the data in the .env file
 	docker-compose exec oncoped ./manage.py seed_groups
+
+seed_email_templates:            ## creates initial email templates for notifications
+	docker-compose exec oncoped ./manage.py seed_email_templates
+
+replace_email_templates:         ## replaces initial email templates for notifications
+	docker-compose exec oncoped ./manage.py seed_email_templates --replace
+
+seed: seed_superuser seed_groups seed_email_templates
 
 drop-db:                          ## drops the database
 	docker-compose down -t 60
@@ -47,8 +55,14 @@ compilemessages:                  ## compile the translations
 collectstatic:
 	docker-compose exec oncoped ./manage.py collectstatic --no-input
 
+css-live:
+	npx tailwindcss -i ./oncoped/static_custom/src/main.css -o ./oncoped/static_custom/static/site/css/main.css --watch
+
+css:
+	npx tailwindcss -i ./oncoped/static_custom/src/main.css -o ./oncoped/static_custom/static/site/css/main.css -m
+
 format:
-	black --line-length=120 --target-version=py39  --exclude migrations ./oncoped
+	docker-compose run --rm --no-deps --entrypoint "bash -c" oncoped "isort --skip migrations . && black --target-version=py39 --exclude migrations ."
 
 format-check:
-	black --line-length=120 --target-version=py39 --check --diff  --exclude migrations ./oncoped
+	docker-compose run --rm --no-deps --entrypoint "bash -c" oncoped "isort --skip migrations --check . && black --target-version=py39 --check --diff --exclude migrations ."

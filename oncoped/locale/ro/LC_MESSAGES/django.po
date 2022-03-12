@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-07 12:34+0200\n"
-"PO-Revision-Date: 2022-03-07 12:37+0200\n"
+"POT-Creation-Date: 2022-03-12 19:15+0200\n"
+"PO-Revision-Date: 2022-03-11 20:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ro\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: app_account/admin.py:11 app_account/admin.py:47
+#: app_account/admin.py:11 app_account/admin.py:48
 msgid "Personal info"
 msgstr "Informații Personale"
 
@@ -26,15 +26,15 @@ msgstr "Informații Personale"
 msgid "Password"
 msgstr "Parolă"
 
-#: app_account/admin.py:19 app_account/admin.py:52
+#: app_account/admin.py:19 app_account/admin.py:53
 msgid "Permissions"
 msgstr "Permisiuni"
 
-#: app_account/admin.py:50
+#: app_account/admin.py:51
 msgid "Profile data"
 msgstr "Date de profil"
 
-#: app_account/admin.py:64
+#: app_account/admin.py:65
 msgid "DOP User"
 msgstr "Utilizator DOP"
 
@@ -42,281 +42,764 @@ msgstr "Utilizator DOP"
 msgid "Accounts"
 msgstr "Conturi"
 
-#: app_account/models.py:11
+#: app_account/models.py:16
 msgid "Individual"
 msgstr "Individual"
 
-#: app_account/models.py:12
+#: app_account/models.py:17
 msgid "Corporate"
 msgstr "Corporativ"
 
-#: app_account/models.py:13
+#: app_account/models.py:18
 msgid "Non-Profit"
-msgstr "Non-Profit"
+msgstr "Non-Profit (ONG)"
 
-#: app_account/models.py:14
+#: app_account/models.py:19
 msgid "Government"
 msgstr "Guvernamental"
 
-#: app_account/models.py:17
+#: app_account/models.py:22
 msgid "email address"
 msgstr "adresa de email"
 
-#: app_account/models.py:19
+#: app_account/models.py:24
 msgid "type"
 msgstr "tip"
 
-#: app_account/models.py:21
+#: app_account/models.py:25
 msgid "phone number"
 msgstr "număr de telefon"
 
-#: app_account/models.py:23
+#: app_account/models.py:26
 msgid "address"
 msgstr "adresă"
 
-#: app_account/models.py:24
+#: app_account/models.py:27
 msgid "details"
 msgstr "detalii"
 
-#: app_account/models.py:26
+#: app_account/models.py:29
 msgid "general user description"
 msgstr "descriere generală utilizator"
 
-#: app_account/models.py:36
+#: app_account/models.py:39
 msgid "user"
 msgstr "utilizator"
 
-#: app_account/models.py:37
+#: app_account/models.py:40
 msgid "users"
 msgstr "utilizatori"
 
-#: dispatch/admin.py:43
+#: app_account/models.py:59 dispatch/models.py:273
+msgid "Full Name"
+msgstr "Nume medic"
+
+#: dispatch/admin.py:69 dispatch/admin.py:439
+msgid "Upload Medical Files"
+msgstr "Încărcați fișiere medicale"
+
+#: dispatch/admin.py:82 dispatch/admin.py:83 dispatch/admin.py:435
+msgid "Add Medical Assitance"
+msgstr "Adaugă asistență medicală"
+
+#: dispatch/admin.py:101 dispatch/admin.py:102 dispatch/admin.py:437
+msgid "Add Logistic & Social Assistance"
+msgstr "Aduagă Asistență Logistică & Socială"
+
+#: dispatch/admin.py:106 dispatch/models.py:361
+msgid "Transport"
+msgstr "Transport"
+
+#: dispatch/admin.py:122
+msgid "Accommodation"
+msgstr "Cazare"
+
+#: dispatch/admin.py:134
+msgid "Assistance"
+msgstr "Asistență"
+
+#: dispatch/admin.py:158 dispatch/admin.py:159 dispatch/admin.py:438
+msgid "Add Companion"
+msgstr "Adaugă însoțitor"
+
+#: dispatch/admin.py:175 dispatch/models.py:124
+msgid "Medical Services"
+msgstr "Servicii medicale"
+
+#: dispatch/admin.py:240
+msgid "Age will be computed once the form is saved."
+msgstr "Vârsta se va calcula o dată ce formularul este salvat."
+
+#: dispatch/admin.py:259
+msgid "Assigned Clinic"
+msgstr "Clinică Alocată"
+
+#: dispatch/admin.py:290
+msgid "Logistic & Social Assistance"
+msgstr "Asistență Logistică & Socială"
+
+#: dispatch/admin.py:300
+msgid "Companions"
+msgstr "Însoțitori"
+
+#: dispatch/admin.py:302 dispatch/models.py:318
+msgid "Case Status"
+msgstr "Situația cazului"
+
+#: dispatch/admin.py:305
+msgid "NO CASE STATUS"
+msgstr "FĂRĂ STATUS"
+
+#: dispatch/admin.py:308
+msgid "UNALLOCATED"
+msgstr "NEALOCAT"
+
+#: dispatch/admin.py:310
+msgid "ACCEPTED"
+msgstr "ACCEPTAT"
+
+#: dispatch/admin.py:312
+msgid "TAKEN"
+msgstr "PRELUAT"
+
+#: dispatch/admin.py:314
+msgid "DIRECT CASE"
+msgstr "CAZ DIRECT"
+
+#: dispatch/admin.py:316
+msgid "REDIRECTED"
+msgstr "REDIRECȚIONAT"
+
+#: dispatch/admin.py:318
+msgid "NO CLINIC ASSIGNED"
+msgstr "CLINICĂ NEASIGNATĂ"
+
+#: dispatch/admin.py:361 dispatch/admin.py:430
 msgid "Identification"
-msgstr "Identificare"
+msgstr "Date identificare pacient"
 
-#: dispatch/admin.py:58
-msgid "Requester"
-msgstr "Solicitant"
+#: dispatch/admin.py:374 dispatch/admin.py:431
+msgid "Requester Data"
+msgstr "Date Solicitant"
 
-#: dispatch/admin.py:70
-msgid "Medical Info"
-msgstr "Informații Medicale"
+#: dispatch/admin.py:388 dispatch/admin.py:432
+msgid "Diagnostic"
+msgstr "Diagnostic"
 
-#: dispatch/admin.py:83
+#: dispatch/admin.py:406 dispatch/admin.py:434
+msgid "Child Location"
+msgstr "Locația curenta a pacientului"
+
+#: dispatch/admin.py:417 dispatch/admin.py:433
+msgid "Origin Medical Institution"
+msgstr "Instituție Medicală Anterioară"
+
+#: dispatch/admin.py:436
 msgid "Logistical Info"
 msgstr "Informații Logistice"
 
-#: dispatch/apps.py:8
+#: dispatch/apps.py:10
 msgid "Dispatch"
 msgstr "Dispecerat"
 
-#: dispatch/models.py:7
-msgid "Passport"
-msgstr "Pașaport"
-
-#: dispatch/models.py:8
-msgid "National ID"
-msgstr "Carte de Identitate"
-
-#: dispatch/models.py:12
-msgid "Male"
-msgstr "Masculin"
-
 #: dispatch/models.py:13
-msgid "Female"
-msgstr "Feminin"
+msgid "Male"
+msgstr "M"
 
 #: dispatch/models.py:14
+msgid "Female"
+msgstr "F"
+
+#: dispatch/models.py:15
 msgid "Other / Unspecified"
 msgstr "Altul / Nespecificat"
 
-#: dispatch/models.py:17
+#: dispatch/models.py:18
 msgid "Solid"
 msgstr "Solid"
 
-#: dispatch/models.py:17
-msgid "Hemato"
-msgstr "Hemato"
+#: dispatch/models.py:18
+msgid "Hematologic"
+msgstr "Hematologic"
 
-#: dispatch/models.py:20
+#: dispatch/models.py:21
 msgid "Chemotherapy"
 msgstr "Chimioterapie"
 
-#: dispatch/models.py:21
-msgid "Surgical"
-msgstr "Chirurgical"
-
 #: dispatch/models.py:22
-msgid "Palliative"
-msgstr "Paliativ"
+msgid "Surgical"
+msgstr "Intervenție chirurgicală"
 
 #: dispatch/models.py:23
-msgid "Monitoring"
-msgstr "Monitorizare"
+msgid "Palliative"
+msgstr "Îngrijiri paliative"
 
 #: dispatch/models.py:24
-msgid "Diagnostic Investigation"
-msgstr "Investigații Diagnostice"
+msgid "Monitoring after Treatment"
+msgstr "Monitorizare după tratament"
 
 #: dispatch/models.py:25
-msgid "Supportive Treatment"
-msgstr "Tratament Suportiv"
+msgid "Diagnostic Investigation"
+msgstr "Investigații diagnostice"
 
 #: dispatch/models.py:26
+msgid "Supportive Treatment"
+msgstr "Tratament suportiv"
+
+#: dispatch/models.py:27
 msgid "Radiotherapy"
 msgstr "Radioterapie"
 
-#: dispatch/models.py:27
-msgid "Transplant"
-msgstr "Transplant"
+#: dispatch/models.py:28
+msgid "Transplant Waitlist"
+msgstr "Așteptare transplant"
 
-#: dispatch/models.py:40
-msgid "Document Type"
-msgstr "Tip de Document"
+#: dispatch/models.py:29
+msgid "Other"
+msgstr "Altul"
 
-#: dispatch/models.py:48
-msgid "Document Identification Number"
-msgstr "Număr de identificare a documentului"
-
-#: dispatch/models.py:54
-msgid "Document Expiry Date"
-msgstr "Data de Expirare a Documentului"
-
-#: dispatch/models.py:59
-msgid "Document Issuing Country"
-msgstr "Țara de Eliberare a Documentului"
-
-#: dispatch/models.py:65
-msgid "First Name"
-msgstr "Prenume"
-
-#: dispatch/models.py:71
-msgid "Last Name"
-msgstr "Nume"
-
-#: dispatch/models.py:77
-msgid "Age"
-msgstr "Vârstă"
-
-#: dispatch/models.py:80
-msgid "Sex"
-msgstr "Sex"
-
-#: dispatch/models.py:90
-msgid "Requester First Name"
-msgstr "Prenumele Solicitantului"
-
-#: dispatch/models.py:96
-msgid "Requester Last Name"
-msgstr "Numele Solicitantului"
-
-#: dispatch/models.py:102
-msgid "Requester Phone Number"
-msgstr "Numărul de Telefon al Solicitantului"
-
-#: dispatch/models.py:104
-msgid "Please include country prefix e.g. +40723000123"
-msgstr "Te rog include prefixul țării, ex: +40723000123"
-
-#: dispatch/models.py:107
+#: dispatch/models.py:33
 msgid "Medical Institution"
 msgstr "Instituție Medicală"
 
+#: dispatch/models.py:34
+msgid "Non-Governmental Organization"
+msgstr "Organizație Non-Guvernamentală"
+
+#: dispatch/models.py:35
+msgid "Person"
+msgstr "Persoană fizică"
+
+#: dispatch/models.py:36
+msgid "Company"
+msgstr "Companie"
+
+#: dispatch/models.py:40
+msgid "National"
+msgstr "Național"
+
+#: dispatch/models.py:41
+msgid "International"
+msgstr "Internațional"
+
+#: dispatch/models.py:96
+msgid "Case Pending"
+msgstr "Caz în așteptare"
+
+#: dispatch/models.py:97
+msgid "Clinic is Ready for takeover"
+msgstr "Clinica este pregătită să primească pacientul"
+
+#: dispatch/models.py:98
+msgid "Taken over by Clinic"
+msgstr "Preluat de clinică"
+
+#: dispatch/models.py:99
+msgid "Taken over previously, in person"
+msgstr "Preluat anterior, prin prezentare directă"
+
+#: dispatch/models.py:100
+msgid "Redirected"
+msgstr "Redirecționat"
+
+#: dispatch/models.py:104
+msgid "Unsolved"
+msgstr "Nerezolvat"
+
+#: dispatch/models.py:105
+msgid "Solved"
+msgstr "Rezolvat"
+
+#: dispatch/models.py:109
+msgid "Yes"
+msgstr "Da"
+
 #: dispatch/models.py:110
-msgid "Medical Institution Name"
-msgstr "Numele Instituției Medicale"
+msgid "No"
+msgstr "Nu"
 
-#: dispatch/models.py:114
-msgid "Fill in only if requester is a medical institution"
-msgstr "Completează doar dacă solicitantul este o instituție medicală"
+#: dispatch/models.py:118 dispatch/models.py:246
+msgid "Tumor Type"
+msgstr "Tipul Tumorii"
 
-#: dispatch/models.py:119
+#: dispatch/models.py:129
+msgid "Clinic Name"
+msgstr "Numele Clinicii"
+
+#: dispatch/models.py:134
+msgid "City"
+msgstr "Oraș"
+
+#: dispatch/models.py:139 oncoped_site/utils.py:7
+msgid "County"
+msgstr "Județ"
+
+#: dispatch/models.py:145
+msgid "Address"
+msgstr "Adresă clinică"
+
+#: dispatch/models.py:149
+msgid "Hospitalization Office Email"
+msgstr "Email Birou Internări"
+
+#: dispatch/models.py:151
+msgid "Hospitalization Office Phone Number"
+msgstr "Telefon Birou Internări"
+
+#: dispatch/models.py:156
+msgid "Head Of Department Name"
+msgstr "Numele Șefului de Secție"
+
+#: dispatch/models.py:160
+msgid "Head Of Department Email"
+msgstr "Email-ul Șefului de Secție"
+
+#: dispatch/models.py:162
+msgid "Department Phone Number"
+msgstr "Numărul de Telefon al Secției"
+
+#: dispatch/models.py:166
+msgid "Available Beds"
+msgstr "Paturi Disponibile"
+
+#: dispatch/models.py:172
+msgid "Clinic"
+msgstr "Clinică"
+
+#: dispatch/models.py:173
+msgid "Clinics"
+msgstr "Clinici"
+
+#: dispatch/models.py:177
+msgid "Created At"
+msgstr "Adăugat la"
+
+#: dispatch/models.py:181
+msgid "Pacient First Name"
+msgstr "Prenume pacient"
+
+#: dispatch/models.py:182
+msgid "PacientLast Name"
+msgstr "Nume Pacient"
+
+#: dispatch/models.py:183
+msgid "Birth Date"
+msgstr "Data de Naștere"
+
+#: dispatch/models.py:184
+msgid "Sex"
+msgstr "Sex"
+
+#: dispatch/models.py:186
+msgid "Birth Place"
+msgstr "Locul Nașterii"
+
+#: dispatch/models.py:186
+msgid "Birth Place: City, Country"
+msgstr "Locul Nașterii: Oraș, Țară"
+
+#: dispatch/models.py:191
+msgid "Requester Category"
+msgstr "Categorie solicitant"
+
+#: dispatch/models.py:198
+msgid "Organization Name"
+msgstr "Denumire"
+
+#: dispatch/models.py:201
+msgid "Fill in only if requester is not a Person"
+msgstr "Completează doar dacă solicitantul nu este o Persoană fizică"
+
+#: dispatch/models.py:204
+msgid "Requester First Name"
+msgstr "Prenumele Solicitantului"
+
+#: dispatch/models.py:209
+msgid "Requester Last Name"
+msgstr "Numele Solicitantului"
+
+#: dispatch/models.py:214
+msgid "Requester Phone Number"
+msgstr "Telefon solicitant"
+
+#: dispatch/models.py:216 dispatch/models.py:443
+msgid "Please include country prefix e.g. +40723000123"
+msgstr "Te rog include prefixul țării, ex: +40723000123"
+
+#: dispatch/models.py:220
+msgid "Requester Email"
+msgstr "Email Solicitant"
+
+#: dispatch/models.py:224
+msgid "Translator Contact"
+msgstr "Contact translator"
+
+#: dispatch/models.py:230
+msgid "Diagnostic Class"
+msgstr "Clasa de diagnostic"
+
+#: dispatch/models.py:233
+msgid "Complete Diagnostic Known"
+msgstr "Se cunoaște diagnosticul complet"
+
+#: dispatch/models.py:235
 msgid "Complete Diagnostic"
 msgstr "Diagnostic Complet"
 
-#: dispatch/models.py:125
-msgid "Available Diagnostic / Request Reason"
-msgstr "Diagnostic Disponibil / Motivul Solicitării"
+#: dispatch/models.py:236
+msgid "Date Diagnosed"
+msgstr "Data de diagnostic"
 
-#: dispatch/models.py:131
-msgid "Tumor Type"
-msgstr "Tipul Tumoarei"
+#: dispatch/models.py:238
+msgid "Diagnosing Institution Name"
+msgstr "Numele Instituției care a diagnosticat"
 
-#: dispatch/models.py:139
+#: dispatch/models.py:241
+msgid "General Problem Description"
+msgstr "Descrierea problemei"
+
+#: dispatch/models.py:245
+msgid "Medical Documents Checked"
+msgstr "Am verificat documentele medicale"
+
+#: dispatch/models.py:247
 msgid "Therapy Needs"
-msgstr "Necesarul Terapeutic"
+msgstr "Nevoi Terapeutice"
 
-#: dispatch/models.py:145
-msgid "Child Location"
-msgstr "Locația Copilului"
+#: dispatch/models.py:248
+msgid "Other Therapy Needs"
+msgstr "Alte Nevoi terapeutice"
 
-#: dispatch/models.py:147
-msgid "Where is the child at the moment of the request"
-msgstr "Unde se află copilul la momentul solicitării"
+#: dispatch/models.py:249
+msgid "Current Clinical Status"
+msgstr "Situație curentă a pacientului (status clinic)"
 
-#: dispatch/models.py:152
-msgid "Clinical Status"
-msgstr "Status Clinic"
+#: dispatch/models.py:252
+msgid "Child Current Address"
+msgstr "Adresa Curenta a pacientului"
 
-#: dispatch/models.py:161
-msgid "Estimated Arrival"
-msgstr "Data estimată a sosirii"
+#: dispatch/models.py:253
+msgid "Child Current City"
+msgstr "Orașul Curent al pacientului"
 
-#: dispatch/models.py:164
-msgid "Redirect Info"
-msgstr "Informații de Redirecționare"
+#: dispatch/models.py:254
+msgid "Child Current County"
+msgstr "Județul Curent al pacientului"
 
-#: dispatch/models.py:166
+#: dispatch/models.py:255
+msgid "Child Current Country"
+msgstr "Țara curentă a pacientului"
+
+#: dispatch/models.py:258
+msgid "Institution Name"
+msgstr "Numele Instituției"
+
+#: dispatch/models.py:260
+msgid "Contact Person"
+msgstr "Date persoană de contact a instituției"
+
+#: dispatch/models.py:260
+msgid "Full Name of the contact person"
+msgstr "Numele complet al persoanei de contact"
+
+#: dispatch/models.py:263
+msgid "Phone Number"
+msgstr "Număr de Telefon"
+
+#: dispatch/models.py:265
 msgid ""
-"Redirection to a different specialty. Provide all info, including contact!"
+"Contact Person's phone number. Please include country prefix e.g. "
+"+40723000123"
 msgstr ""
-"Redirecționare către o instituție diferită. Te rog furnizează toate "
-"informațiile, inclusiv contact!"
+"Numărul de Telefon al Persoanei de Contact. Te rog include prefixul țării, "
+"ex: +40723000123"
 
-#: dispatch/models.py:170
-msgid "Direct Request"
-msgstr "Prezentare Directă"
+#: dispatch/models.py:268
+msgid "Email"
+msgstr "Email"
 
-#: dispatch/models.py:173
-msgid ""
-"Patient has directly presented him/herself in the clinc without contact?"
-msgstr "Pacientul s-a prezentat direct în clinică, fără contact în prealabil?"
+#: dispatch/models.py:281
+msgid "Age"
+msgstr "Vârstă"
 
-#: dispatch/models.py:184
+#: dispatch/models.py:290
+msgid "There is already a Pacient Request with this name, birth date and age."
+msgstr "Există deja un pacient cu acest nume, dată de naștere si vârstă."
+
+#: dispatch/models.py:293
 msgid "Patient Request"
 msgstr "Solicitare Pacient"
 
-#: dispatch/models.py:185
+#: dispatch/models.py:294
 msgid "Patient Requests"
 msgstr "Solicitări Pacienți"
 
-#: oncoped_site/admin.py:12
-msgid "Allocate this resource to a request"
-msgstr "Alocă această resursă unei cereri"
+#: dispatch/models.py:320
+msgid "Estimated Arrival Date"
+msgstr "Data estimată a sosirii"
 
-#: oncoped_site/admin.py:16
-msgid "Allocate from the available offers"
-msgstr "Alocă din ofertele disponibile"
+#: dispatch/models.py:322
+msgid "Hospitalization Start"
+msgstr "Dată Internare"
 
-#: oncoped_site/settings/base.py:28
-msgid "Dispecerat Oncologie Pediatrică"
-msgstr "Dispecerat Oncologie Pediatrică"
+#: dispatch/models.py:325
+msgid "Only with confirmation from the receiving clinic!"
+msgstr "Doar cu confirmarea Clinicii!"
+
+#: dispatch/models.py:327
+msgid "Receiving Dr Full Name"
+msgstr "Nume Complet Medic Curant"
+
+#: dispatch/models.py:328
+msgid "Comments"
+msgstr "Observații"
+
+#: dispatch/models.py:329
+msgid "International Redirect"
+msgstr "Redirecționare internațională"
+
+#: dispatch/models.py:330
+msgid "Redirect Institution"
+msgstr "Instituție medicală unde se redirecționează"
+
+#: dispatch/models.py:331
+msgid "Specialty"
+msgstr "Specialitate"
+
+#: dispatch/models.py:333
+msgid "Location"
+msgstr "Locație"
+
+#: dispatch/models.py:333
+msgid "Location: City, Country"
+msgstr "Locație: Oraș, Țară"
+
+#: dispatch/models.py:335
+msgid "Reason"
+msgstr "Motivul"
+
+#: dispatch/models.py:338
+msgid "Medical Assistance"
+msgstr "Asistență medicală"
+
+#: dispatch/models.py:349
+msgid "Transport Required"
+msgstr "Necesar Transport"
+
+#: dispatch/models.py:351
+msgid ""
+"Wether national or international transportation is required for this "
+"assistence"
+msgstr ""
+"Dacă este necesar transport național sau internațional pentru această cerere "
+"de asistență"
+
+#: dispatch/models.py:354
+msgid "Transport Status"
+msgstr "Situație Transport"
+
+#: dispatch/models.py:364
+msgid "Pick Up Location"
+msgstr "Locația de preluare a Copilului"
+
+#: dispatch/models.py:367 dispatch/models.py:373
+msgid "Departing from: City, Country"
+msgstr "Plecare din: Oraș, Țară"
+
+#: dispatch/models.py:370
+msgid "Destination Location"
+msgstr "Destinația pacientului"
+
+#: dispatch/models.py:375
+msgid "Transport Details"
+msgstr "Detalii de Transport"
+
+#: dispatch/models.py:377
+msgid "Transport Responsability"
+msgstr "Responsabilitate transport"
+
+#: dispatch/models.py:379 dispatch/models.py:402 dispatch/models.py:422
+msgid "Check if the responsible is outside Dăruiește Aripi organization"
+msgstr "Bifează dacă responsabilul de asistență este din afara Dăruiește Aripi"
+
+#: dispatch/models.py:382
+msgid "External Transport Representantive Details"
+msgstr "Reprezentant extern transport"
+
+#: dispatch/models.py:387
+msgid "Accommodation Required"
+msgstr "Cazare Necesară"
+
+#: dispatch/models.py:389
+msgid "Wether accommodation is required for this assistence"
+msgstr "Dacă este necesară cazare pentru pacient și însoțitori"
+
+#: dispatch/models.py:392
+msgid "Accommodation Status"
+msgstr "Situație Cazare"
+
+#: dispatch/models.py:398
+msgid "Accommodation Details"
+msgstr "Detalii responsabil cazare"
+
+#: dispatch/models.py:400
+msgid "Accomodation responsibility"
+msgstr "Responsabilitate cazare"
+
+#: dispatch/models.py:405
+msgid "External Accomodation Representative Details"
+msgstr "Detalii responsabil cazare"
+
+#: dispatch/models.py:410
+msgid "Local Assistance Required"
+msgstr "Asistență locală necesară"
+
+#: dispatch/models.py:410
+msgid "Wether local assistance is required"
+msgstr "Dacă este necesară asistență locală"
+
+#: dispatch/models.py:413
+msgid "Assistance Status"
+msgstr "Situația asistenței"
+
+#: dispatch/models.py:420
+msgid "Assistance Representative"
+msgstr "Responsabilitate asistență"
+
+#: dispatch/models.py:425
+msgid "External Assistance Representantive Details"
+msgstr "Date contact reprezentant asistență externă"
+
+#: dispatch/models.py:429
+msgid "Logistic & Transport"
+msgstr "Logistic & Transport"
+
+#: dispatch/models.py:438
+msgid "Companion Name"
+msgstr "Numele însoțitorului"
+
+#: dispatch/models.py:439
+msgid "Companion Relationship"
+msgstr "Calitatea însoțitorului"
+
+#: dispatch/models.py:441
+msgid "Companion Phone Number"
+msgstr "Număr de Telefon însoțitor"
+
+#: dispatch/models.py:446
+msgid "Companion Other Details"
+msgstr "Alte detalii însoțitor"
+
+#: dispatch/models.py:449
+msgid "Companion"
+msgstr "Însoțitor"
+
+#: oncoped_site/apps.py:8
+msgid "Site"
+msgstr "Site"
+
+#: oncoped_site/forms.py:56
+msgid "What are the medical services the patient needs?"
+msgstr "Care sunt serviciile medicale de care are nevoie pacientului?"
+
+#: oncoped_site/models.py:6
+msgid "Patient Request Form Email"
+msgstr "Email Formular Înregistrare Pacient"
+
+#: oncoped_site/models.py:11
+msgid "Template"
+msgstr "Șablon"
+
+#: oncoped_site/models.py:12
+msgid "Text content"
+msgstr "Conținut text"
+
+#: oncoped_site/models.py:13
+msgid "HTML content"
+msgstr "Conținut HTML"
+
+#: oncoped_site/models.py:16
+msgid "Email template"
+msgstr "Șablon email"
+
+#: oncoped_site/models.py:17
+msgid "Email templates"
+msgstr "Șabloane email"
 
 #: oncoped_site/settings/base.py:29
-msgid "DOP"
+msgid "Pedriatic Oncology Dispatcher"
+msgstr "Dispecerat Oncologie Pediatrică"
+
+#: oncoped_site/settings/base.py:30
+msgid "POD"
 msgstr "DOP"
 
-#: oncoped_site/settings/base.py:135
+#: oncoped_site/settings/base.py:143
 msgid "Romanian"
 msgstr "Română"
 
-#: oncoped_site/settings/base.py:136
+#: oncoped_site/settings/base.py:144
 msgid "English"
 msgstr "Engleză"
 
-#: oncoped_site/utils.py:7
-msgid "County"
-msgstr "Județ"
+#: oncoped_site/settings/base.py:301
+msgid "Home"
+msgstr "Acasă"
+
+#: oncoped_site/settings/base.py:303
+msgid "External Form"
+msgstr "Formular Extern"
+
+#: oncoped_site/settings/base.py:308
+msgid "A Code4Romania solution. Find Out More"
+msgstr "O soluție Code4Romania. Află mai multe"
+
+#: oncoped_site/templates/base.html:8
+msgid "Pediatric Oncology"
+msgstr "Oncologie Pediatrică"
+
+#: oncoped_site/templates/base.html:26 oncoped_site/templates/base.html:40
+msgid "A Code for Romania project."
+msgstr "O soluție Code for Romania."
+
+#: oncoped_site/templates/base.html:27
+msgid "Find out more"
+msgstr "Află mai multe"
+
+#: oncoped_site/templates/form.html:5 oncoped_site/views.py:43
+msgid "Pediatric Oncology - Patient Request Form"
+msgstr "Oncologie Pediatrică - Formular Înregistrare Pacient"
+
+#: oncoped_site/templates/form.html:17
+msgid "Patient Request Form"
+msgstr "Formular Înregistrare Pacient"
+
+#: oncoped_site/templates/form.html:37 oncoped_site/templates/form.html:43
+msgid "Errors"
+msgstr "Erori"
+
+#: oncoped_site/templates/form.html:49
+msgid "Send request"
+msgstr "Trimite cerere"
+
+#: oncoped_site/urls.py:20
+msgid "request-form/"
+msgstr "cerere-pacient/"
+
+#: oncoped_site/views.py:22
+msgid ""
+"Thank you for registering the patient! The form you filled in has reached us."
+msgstr ""
+"Mulțumim pentru înregistrarea pacientului! Formularul completat de tine a "
+"ajuns la noi."
+
+#: oncoped_site/views.py:24
+msgid ""
+"There was an error submitting your request. Please try again or contact the "
+"site administrator."
+msgstr ""
+"A avut loc o eroare la înregistrarea cererii. Vă rugăm să încercați din nou "
+"sau să contactați administratorul site-ului."
 
 #: templates/app_account/user_offers.html:14
 #: templates/app_account/user_offers.html:22
@@ -358,9 +841,164 @@ msgid "Objects"
 msgstr "Obiecte"
 
 #: templates/app_account/user_offers.html:56
-msgid "Yes, I’m sure"
+msgid "Yes, I'm sure"
 msgstr "Da, sunt sigur"
 
 #: templates/app_account/user_offers.html:59
 msgid "No, take me back"
 msgstr "Nu, du-mă înapoi"
+
+#, fuzzy
+#~| msgid "External Transport Representantive Details"
+#~ msgid "External Representative Details"
+#~ msgstr "Reprezentant extern transport"
+
+#~ msgid "External Transport Representative"
+#~ msgstr "Reprezentant transport extern"
+
+#~ msgid "Is the transport representative external to the organization?"
+#~ msgstr "Este reprezentantul transportului extern organizației?"
+
+#~ msgid "External accommodation Representative"
+#~ msgstr "Reprezentant Extern Cazare"
+
+#~ msgid "Is the accommodation representative external to the organization?"
+#~ msgstr "Este reprezentantul pentru cazare extern organizației?"
+
+#~ msgid "Is the assistance representative external to the organization?"
+#~ msgstr "Este reprezentantul asistenței extern (din afara Dăruiește Aripi)?"
+
+#~ msgid "Monitoring"
+#~ msgstr "Monitorizare"
+
+#~ msgid "Requester Type"
+#~ msgstr "Tip Solicitant"
+
+#~ msgid "Needs Transfer"
+#~ msgstr "Necesită transfer"
+
+#~ msgid "Town"
+#~ msgstr "Oraș"
+
+#~ msgid "Country"
+#~ msgstr "Județ"
+
+#~ msgid "Allocate this resource to a request"
+#~ msgstr "Alocă această resursă unei cereri"
+
+#~ msgid "Allocate from the available offers"
+#~ msgstr "Alocă din ofertele disponibile"
+
+#~ msgid "Type"
+#~ msgstr "Tip"
+
+#~ msgid "Name"
+#~ msgstr "Denumire"
+
+#~ msgid "Estimated Arrival"
+#~ msgstr "Data estimată a sosirii"
+
+#~ msgid ""
+#~ "Redirection to a different specialty. Provide all info, including contact!"
+#~ msgstr ""
+#~ "Redirecționare către o instituție diferită. Te rog furnizează toate "
+#~ "informațiile, inclusiv contact!"
+
+#~ msgid "Direct Request"
+#~ msgstr "Prezentare Directă"
+
+#~ msgid ""
+#~ "Patient has directly presented him/herself in the clinc without contact?"
+#~ msgstr ""
+#~ "Pacientul s-a prezentat direct în clinică, fără contact în prealabil?"
+
+#~ msgid "Pacient Requests"
+#~ msgstr "Solicitări Pacienți"
+
+#~ msgid "All Patient Requests"
+#~ msgstr "Toate Solicitările de Pacienți"
+
+#~ msgid "Assigned Patient Requests"
+#~ msgstr "Solicitări Pacienți Alocate"
+
+#~ msgid "Unassigned Patient Requests"
+#~ msgstr "Solicitări Pacienți Nealocate"
+
+#~ msgid "Assignment Progress"
+#~ msgstr "Situație Alocare"
+
+#~ msgid "Clinic Beds"
+#~ msgstr "Paturi în Clinici"
+
+#~ msgid "All Clinics"
+#~ msgstr "Toate Clinicile"
+
+#~ msgid "All Beds"
+#~ msgstr "Paturi Disponibile"
+
+#~ msgid "Beds Occupation"
+#~ msgstr "Ocupare Paturi"
+
+#~ msgid "PENDING"
+#~ msgstr "ÎN AȘTEPTARE"
+
+#~ msgid "READY"
+#~ msgstr "PREGĂTIT"
+
+#~ msgid "Dispecerat Oncologie Pediatrică"
+#~ msgstr "Dispecerat Oncologie Pediatrică"
+
+#~ msgid "DOP"
+#~ msgstr "DOP"
+
+#~ msgid ""
+#~ "Details: contact person / problem owner, phone number, other details."
+#~ msgstr ""
+#~ "Detalii: persoana de contact / responsabil, număr de telefon, alte "
+#~ "detalii."
+
+#~ msgid "Destination Assisting Entity Details"
+#~ msgstr "Detalii Organizație de Asistență Locala"
+
+#~ msgid ""
+#~ "Info & contact details of the Organization/Person providing social "
+#~ "assitance at destination"
+#~ msgstr ""
+#~ "Informații & detalii de contact al organizației / persoanei care va oferi "
+#~ "asistență locală la destinație"
+
+#~ msgid "Receiving Dr Phone Number"
+#~ msgstr "Numărul de Telefon al Medicului Curant"
+
+#~ msgid "Hospitalization End"
+#~ msgstr "Dată Externare"
+
+#~ msgid "General Medical Info"
+#~ msgstr "Informații Medicale"
+
+#~ msgid "Passport"
+#~ msgstr "Pașaport"
+
+#~ msgid "National ID"
+#~ msgstr "Carte de Identitate"
+
+#~ msgid "Document Type"
+#~ msgstr "Tip de Document"
+
+#~ msgid "Document Identification Number"
+#~ msgstr "Număr de identificare a documentului"
+
+#~ msgid "Document Expiry Date"
+#~ msgstr "Data de Expirare a Documentului"
+
+#~ msgid "Document Issuing Country"
+#~ msgstr "Țara de Eliberare a Documentului"
+
+#~ msgid "Institution Type"
+#~ msgstr "Tipul Instituției"
+
+#~ msgid "Available Diagnostic / Request Reason"
+#~ msgstr "Diagnostic Disponibil / Motivul Solicitării"
+
+#~ msgid "Where is the child at the moment of the request"
+#~ msgstr "Unde se află copilul la momentul solicitării"

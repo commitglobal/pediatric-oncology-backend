@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from os import path
 
-
 import environ
 from django.utils.translation import gettext_lazy as _
 
@@ -23,10 +22,14 @@ env = environ.Env(
     HOME_SITE_URL=(str, ""),
     ALLOWED_HOSTS=(list, ["*"]),
     MEMCACHED_HOST=(str, "cache:11211"),
+    RECAPTCHA_PUBLIC_KEY=(str, ""),
+    RECAPTCHA_PRIVATE_KEY=(str, ""),
 )
 
-ADMIN_TITLE = _("Dispecerat Oncologie Pediatrică")
-ADMIN_TITLE_SHORT = _("DOP")
+ADMIN_TITLE = _("Pedriatic Oncology Dispatcher")
+ADMIN_TITLE_SHORT = _("POD")
+
+LIST_PER_PAGE = 10
 
 # Build paths inside the project like this: path.join(BASE_DIR, ...)
 BASE_DIR = path.join(path.dirname(path.abspath(__file__)), "../..")
@@ -56,10 +59,14 @@ INSTALLED_APPS = [
     "import_export",
     "multiselectfield",
     "django_q",
+    "crispy_forms",
+    "captcha",
+    "ckeditor",
     # project apps
     "static_custom",
     "app_account",
-    "dispatch"
+    "dispatch",
+    "oncoped_site",
 ]
 
 MIDDLEWARE = [
@@ -89,6 +96,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "dispatch.admin.admin_index_custom_context",
             ]
         },
     }
@@ -222,22 +230,45 @@ SUPER_ADMIN_EMAIL = env("SUPER_ADMIN_EMAIL")
 SUPER_ADMIN_FIRST_NAME = env("SUPER_ADMIN_FIRST_NAME")
 SUPER_ADMIN_LAST_NAME = env("SUPER_ADMIN_LAST_NAME")
 
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": [
+            ["Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker"],
+            [
+                "NumberedList",
+                "BulletedList",
+                "Indent",
+                "Outdent",
+                "JustifyLeft",
+                "JustifyCenter",
+                "JustifyRight",
+                "JustifyBlock",
+            ],
+            ["Image", "Table", "Link", "Unlink", "Anchor", "SectionLink", "Subscript", "Superscript"],
+            ["Undo", "Redo"],
+            ["Source"],
+            ["Maximize"],
+        ],
+    },
+}
+
 
 # django-q https://django-q.readthedocs.io/en/latest/configure.html
 
 Q_CLUSTER = {
-    'name': 'SdU',
-    'recycle': 500,
-    'timeout': 60,
-    'compress': True,
-    'save_limit': 250,
-    'queue_limit': 500,
-    'cpu_affinity': 1,
-    'label': 'Django Q',
-    'redis': {
-        'host': 'redis',
-        'port': 6379,
-        'db': 0, }
+    "name": "SdU",
+    "recycle": 500,
+    "timeout": 60,
+    "compress": True,
+    "save_limit": 250,
+    "queue_limit": 500,
+    "cpu_affinity": 1,
+    "label": "Django Q",
+    "redis": {
+        "host": "redis",
+        "port": 6379,
+        "db": 0,
+    },
 }
 
 # django-jazzmin
@@ -250,11 +281,11 @@ JAZZMIN_SETTINGS = {
     # Title on the brand, and the login screen (19 chars max)
     "site_header": ADMIN_TITLE,
     # square logo to use for your site, must be present in static files, used for favicon and brand on top left
-    "site_logo": "jazzmin/img/sprijin-de-urgenta.svg",
+    "site_logo": "jazzmin/img/code4.svg",
     "site_icon": "jazzmin/img/sprijin-de-urgenta-logo.svg",
     "site_logo_classes": "site-logo",
     # Welcome text on the login screen
-    "welcome_sign": "",
+    "welcome_sign": ADMIN_TITLE,
     # Copyright on the footer
     "copyright": "Code4Romania - War Task Force",
     # The model admin to search from the search bar, search bar omitted if excluded
@@ -267,7 +298,14 @@ JAZZMIN_SETTINGS = {
     # Links to put along the top menu
     "topmenu_links": [
         # Url that gets reversed (Permissions can be added)
-        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": _("Home"), "url": "admin:index", "permissions": ["auth.view_user"]},
+        {
+            "name": _("External Form"),
+            "url": "patient_request_form",
+            "permissions": ["auth.view_user"],
+            "new_window": True,
+        },
+        {"name": _("A Code4Romania solution. Find Out More"), "url": "https://www.code4.ro/", "new_window": True},
         # external url that opens in a new window (Permissions can be added)
         # {
         #     "name": "View website",
@@ -310,14 +348,14 @@ JAZZMIN_SETTINGS = {
     ],
     # Custom links to append to app groups, keyed on app name
     "custom_links": {
-        "books": [
-            {
-                "name": "Make Messages",
-                "url": "make_messages",
-                "icon": "fas fa-comments",
-                "permissions": ["books.view_book"],
-            }
-        ]
+        # "books": [
+        #     {
+        #         "name": "Make Messages",
+        #         "url": "make_messages",
+        #         "icon": "fas fa-comments",
+        #         "permissions": ["books.view_book"],
+        #     }
+        # ]
     },
     # Custom icons for side menu apps/models See https://fontawesome.com/icons?d=gallery&m=free
     # for a list of icon classes
@@ -331,7 +369,9 @@ JAZZMIN_SETTINGS = {
         "django_q.Success": "fas fa-check",
         #
         "app_account.CustomUser": "fas fa-user",
+        "dispatch.Clinic": "fas fa-hospital",
         "dispatch.PatientRequest": "fas fa-hospital-user",
+        "oncoped_site.EmailTemplate": "fas fa-at",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
@@ -340,7 +380,7 @@ JAZZMIN_SETTINGS = {
     # Related Modal #
     #################
     # Use modals instead of popups
-    "related_modal_active": True,
+    "related_modal_active": False,
     #############
     # UI Tweaks #
     #############
@@ -375,19 +415,37 @@ JAZZMIN_UI_TWEAKS = {
     "brand_small_text": False,
     "brand_colour": False,
     "accent": "accent-primary",
-    "navbar": "navbar-dark",
+    "navbar": "navbar-light",
     "no_navbar_border": False,
     "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-primary",
+    "sidebar": "sidebar-light-primary",
     "sidebar_nav_small_text": False,
     "sidebar_disable_expand": False,
     "sidebar_nav_child_indent": True,
     "sidebar_nav_compact_style": True,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": True,
-    "theme": "default",
-    "dark_mode_theme": "darkly",
+    "theme": "cosmo",
+    "dark_mode_theme": None,
+}
+
+# Recaptcha settings
+RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY", default="")
+RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY", default="")
+
+if not RECAPTCHA_PUBLIC_KEY:
+    SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+NOTIFICATIONS_EMAIL = env("NOTIFICATIONS_EMAIL", default="")
+NOTIFICATIONS_REPLYTO_EMAIL = env("NOTIFICATIONS_REPLYTO_EMAIL", default="")
+NOTIFICATIONS_X_SES_CONFIGURATION_SET_HEADER = env("NOTIFICATIONS_X_SES_CONFIGURATION_SET_HEADER", default="")
+
+CKEDITOR_BASEPATH = f"{STATIC_URL}ckeditor/ckeditor/"
+CKEDITOR_CONFIGS = {
+    "default": {"height": 400, "width": "100%"},
 }

@@ -1,16 +1,23 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
-
-class CommonInline(admin.TabularInline):
-    extra = 1
-    show_change_link = True
-    view_on_site = True
+from .models import EmailTemplate
 
 
-class CommonOfferInline(CommonInline):
-    verbose_name_plural = _("Allocate this resource to a request")
+@admin.register(EmailTemplate)
+class AdminEmailTemplate(admin.ModelAdmin):
+    def has_module_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        return False
 
+    def has_change_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        return False
 
-class CommonRequestInline(CommonInline):
-    verbose_name_plural = _("Allocate from the available offers")
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False

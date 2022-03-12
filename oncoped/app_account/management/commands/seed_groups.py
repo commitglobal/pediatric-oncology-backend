@@ -1,10 +1,18 @@
-from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group, Permission
+from django.core.management.base import BaseCommand
 
 from app_account.models import DEFAULT_USER_GROUP
 
-
-DEFAULT_USER_GROUP_PERMISSIONS = []
+DEFAULT_USER_GROUP_PERMISSIONS = [
+    "view_patientrequest",
+    "add_patientrequest",
+    "change_patientrequest",
+    "delete_patientrequest",
+    "view_clinic",
+    "add_clinic",
+    "change_clinic",
+    "delete_clinic",
+]
 
 
 class Command(BaseCommand):
@@ -14,5 +22,7 @@ class Command(BaseCommand):
             Permission.objects.filter(codename__in=DEFAULT_USER_GROUP_PERMISSIONS).values_list("id", flat=True)
         )
         self.stdout.write(
-            self.style.SUCCESS(f"'{DEFAULT_USER_GROUP}' group has been created and appropriate permissions were assigned")
+            self.style.SUCCESS(
+                f"'{DEFAULT_USER_GROUP}' group has been created and appropriate permissions were assigned"
+            )
         )

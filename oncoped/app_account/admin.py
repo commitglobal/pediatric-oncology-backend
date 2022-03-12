@@ -24,10 +24,11 @@ DjangoUserAdmin.add_fieldsets = (
 
 @admin.register(models.CustomUser)
 class AdminCustomUser(DjangoUserAdmin):
-    list_display = ("id", "first_name", "last_name", "email", "phone_number", "type")
-    list_display_links = ["id", "first_name", "last_name", "email"]
+    list_display = ("id", "get_full_name", "email", "phone_number", "type")
+    list_display_links = ["id", "get_full_name", "email"]
     search_fields = ("email", "first_name", "last_name")
-    list_filter = ["is_validated"]
+    # list_filter = ["is_validated"]
+    list_filter = ()
     ordering = ("first_name",)
     change_form_template = "admin/user_admin.html"
 
@@ -78,19 +79,13 @@ class AdminCustomUser(DjangoUserAdmin):
 
     def has_delete_permission(self, request, obj=None):
         if obj and hasattr(obj, "email"):
-            if (
-                obj.email == settings.SUPER_ADMIN_EMAIL
-                and request.user.email != settings.SUPER_ADMIN_EMAIL
-            ):
+            if obj.email == settings.SUPER_ADMIN_EMAIL and request.user.email != settings.SUPER_ADMIN_EMAIL:
                 return False
         return True
 
     def has_change_permission(self, request, obj=None):
         if obj and hasattr(obj, "email"):
-            if (
-                obj.email == settings.SUPER_ADMIN_EMAIL
-                and request.user.email != settings.SUPER_ADMIN_EMAIL
-            ):
+            if obj.email == settings.SUPER_ADMIN_EMAIL and request.user.email != settings.SUPER_ADMIN_EMAIL:
                 return False
         return True
 
