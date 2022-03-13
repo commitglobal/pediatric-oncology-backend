@@ -239,7 +239,7 @@ class PatientRequest(models.Model):
     )
     general_problem_description = models.TextField(
         verbose_name=_("General Problem Description"),
-        help_text="Describe the Child's medical issue",
+        help_text=_("Describe the Child's medical issue"),
         blank=True,
     )
     medical_documents_checked = models.BooleanField(verbose_name=_("Medical Documents Checked"), default=False)
