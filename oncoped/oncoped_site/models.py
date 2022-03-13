@@ -20,4 +20,4 @@ class EmailTemplate(models.Model):
         unique_together = ['template', 'lang']
 
     def __str__(self):
-        return f"{self.template} ({self.lang})"
+        return f"{self.get_template_display()} ({self.get_lang_display()})"
