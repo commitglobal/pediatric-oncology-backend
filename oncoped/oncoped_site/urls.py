@@ -4,7 +4,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.views.generic.base import RedirectView
 from django.utils.translation import ugettext_lazy as _
 
 from .views import PatientRegisterRequestCreateView
@@ -20,6 +21,12 @@ urlpatterns = i18n_patterns(
         _("request-form/"),
         PatientRegisterRequestCreateView.as_view(),
         name="patient_request_form",
+    ),
+    # Redirect / to /admin
+    path(
+        "",
+        RedirectView.as_view(url="admin/"),
+        name='home'
     ),
     path(
         "admin/password_reset/",
