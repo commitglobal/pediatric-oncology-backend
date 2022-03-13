@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-13 18:21+0200\n"
+"POT-Creation-Date: 2022-03-13 18:27+0200\n"
 "PO-Revision-Date: 2022-03-11 20:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -460,7 +460,7 @@ msgstr "Descrierea problemei"
 
 #: dispatch/models.py:242
 msgid "Describe the Child's medical issue"
-msgstr ""
+msgstr "Descrie problema medicală a copilului"
 
 #: dispatch/models.py:245
 msgid "Medical Documents Checked"
@@ -766,10 +766,6 @@ msgstr "Formular Extern"
 msgid "A Code4Romania solution. Find Out More"
 msgstr "O soluție Code4Romania. Află mai multe"
 
-#: oncoped_site/templates/base.html:8
-msgid "Pediatric Oncology"
-msgstr "Oncologie Pediatrică"
-
 #: oncoped_site/templates/base.html:26 oncoped_site/templates/base.html:40
 msgid "A Code for Romania project."
 msgstr "O soluție Code for Romania."
@@ -778,11 +774,7 @@ msgstr "O soluție Code for Romania."
 msgid "Find out more"
 msgstr "Află mai multe"
 
-#: oncoped_site/templates/form.html:5 oncoped_site/views.py:43
-msgid "Pediatric Oncology - Patient Request Form"
-msgstr "Oncologie Pediatrică - Formular Înregistrare Pacient"
-
-#: oncoped_site/templates/form.html:17
+#: oncoped_site/templates/form.html:5 oncoped_site/templates/form.html:17
 msgid "Patient Request Form"
 msgstr "Formular Înregistrare Pacient"
 
@@ -812,6 +804,10 @@ msgid ""
 msgstr ""
 "A avut loc o eroare la înregistrarea cererii. Vă rugăm să încercați din nou "
 "sau să contactați administratorul site-ului."
+
+#: oncoped_site/views.py:43
+msgid "Pediatric Oncology - Patient Request Form"
+msgstr "Oncologie Pediatrică - Formular Înregistrare Pacient"
 
 #: templates/app_account/user_offers.html:14
 #: templates/app_account/user_offers.html:22
@@ -859,6 +855,9 @@ msgstr "Da, sunt sigur"
 #: templates/app_account/user_offers.html:59
 msgid "No, take me back"
 msgstr "Nu, du-mă înapoi"
+
+#~ msgid "Pediatric Oncology"
+#~ msgstr "Oncologie Pediatrică"
 
 #, fuzzy
 #~| msgid "External Transport Representantive Details"

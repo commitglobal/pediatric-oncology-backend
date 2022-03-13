@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-13 18:21+0200\n"
+"POT-Creation-Date: 2022-03-13 18:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -766,10 +766,6 @@ msgstr ""
 msgid "A Code4Romania solution. Find Out More"
 msgstr ""
 
-#: oncoped_site/templates/base.html:8
-msgid "Pediatric Oncology"
-msgstr ""
-
 #: oncoped_site/templates/base.html:26 oncoped_site/templates/base.html:40
 msgid "A Code for Romania project."
 msgstr ""
@@ -778,11 +774,7 @@ msgstr ""
 msgid "Find out more"
 msgstr ""
 
-#: oncoped_site/templates/form.html:5 oncoped_site/views.py:43
-msgid "Pediatric Oncology - Patient Request Form"
-msgstr "Регистрационная форма пациента"
-
-#: oncoped_site/templates/form.html:17
+#: oncoped_site/templates/form.html:5 oncoped_site/templates/form.html:17
 msgid "Patient Request Form"
 msgstr "Регистрационная форма пациента"
 
@@ -810,6 +802,10 @@ msgid ""
 msgstr ""
 "При отправке вашего запроса произошла ошибка. Пожалуйста, попробуйте еще раз "
 "или обратитесь к администратору сайта"
+
+#: oncoped_site/views.py:43
+msgid "Pediatric Oncology - Patient Request Form"
+msgstr "Регистрационная форма пациента"
 
 #: templates/app_account/user_offers.html:14
 #: templates/app_account/user_offers.html:22
