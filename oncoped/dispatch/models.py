@@ -179,7 +179,7 @@ class PatientRequest(models.Model):
     # Identification
 
     first_name = models.CharField(verbose_name=_("Pacient First Name"), max_length=100, blank=False)
-    last_name = models.CharField(verbose_name=_("PacientLast Name"), max_length=100, blank=False)
+    last_name = models.CharField(verbose_name=_("Pacient Last Name"), max_length=100, blank=False)
     birth_date = models.DateField(verbose_name=_("Birth Date"), blank=False)
     sex = models.CharField(verbose_name=_("Sex"), max_length=2, choices=SEX_CHOICES, default="PAS", blank=False)
     birth_place = models.CharField(

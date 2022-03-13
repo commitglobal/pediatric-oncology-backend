@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-13 17:36+0200\n"
+"POT-Creation-Date: 2022-03-13 18:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,15 +94,15 @@ msgstr ""
 msgid "Full Name"
 msgstr ""
 
-#: dispatch/admin.py:69 dispatch/admin.py:439
+#: dispatch/admin.py:69 dispatch/admin.py:440
 msgid "Upload Medical Files"
 msgstr ""
 
-#: dispatch/admin.py:82 dispatch/admin.py:83 dispatch/admin.py:435
+#: dispatch/admin.py:82 dispatch/admin.py:83 dispatch/admin.py:436
 msgid "Add Medical Assitance"
 msgstr ""
 
-#: dispatch/admin.py:101 dispatch/admin.py:102 dispatch/admin.py:437
+#: dispatch/admin.py:101 dispatch/admin.py:102 dispatch/admin.py:438
 msgid "Add Logistic & Social Assistance"
 msgstr ""
 
@@ -118,7 +118,7 @@ msgstr ""
 msgid "Assistance"
 msgstr ""
 
-#: dispatch/admin.py:158 dispatch/admin.py:159 dispatch/admin.py:438
+#: dispatch/admin.py:158 dispatch/admin.py:159 dispatch/admin.py:439
 msgid "Add Companion"
 msgstr ""
 
@@ -126,75 +126,75 @@ msgstr ""
 msgid "Medical Services"
 msgstr ""
 
-#: dispatch/admin.py:240
+#: dispatch/admin.py:241
 msgid "Age will be computed once the form is saved."
 msgstr ""
 
-#: dispatch/admin.py:259
+#: dispatch/admin.py:260
 msgid "Assigned Clinic"
 msgstr ""
 
-#: dispatch/admin.py:290
+#: dispatch/admin.py:291
 msgid "Logistic & Social Assistance"
 msgstr ""
 
-#: dispatch/admin.py:300
+#: dispatch/admin.py:301
 msgid "Companions"
 msgstr ""
 
-#: dispatch/admin.py:302 dispatch/models.py:318
+#: dispatch/admin.py:303 dispatch/models.py:318
 msgid "Case Status"
 msgstr ""
 
-#: dispatch/admin.py:305
+#: dispatch/admin.py:306
 msgid "NO CASE STATUS"
 msgstr ""
 
-#: dispatch/admin.py:308
+#: dispatch/admin.py:309
 msgid "UNALLOCATED"
 msgstr ""
 
-#: dispatch/admin.py:310
+#: dispatch/admin.py:311
 msgid "ACCEPTED"
 msgstr ""
 
-#: dispatch/admin.py:312
+#: dispatch/admin.py:313
 msgid "TAKEN"
 msgstr ""
 
-#: dispatch/admin.py:314
+#: dispatch/admin.py:315
 msgid "DIRECT CASE"
 msgstr ""
 
-#: dispatch/admin.py:316
+#: dispatch/admin.py:317
 msgid "REDIRECTED"
 msgstr ""
 
-#: dispatch/admin.py:318
+#: dispatch/admin.py:319
 msgid "NO CLINIC ASSIGNED"
 msgstr ""
 
-#: dispatch/admin.py:361 dispatch/admin.py:430
+#: dispatch/admin.py:362 dispatch/admin.py:431
 msgid "Identification"
 msgstr ""
 
-#: dispatch/admin.py:374 dispatch/admin.py:431
+#: dispatch/admin.py:375 dispatch/admin.py:432
 msgid "Requester Data"
 msgstr ""
 
-#: dispatch/admin.py:388 dispatch/admin.py:432
+#: dispatch/admin.py:389 dispatch/admin.py:433
 msgid "Diagnostic"
 msgstr ""
 
-#: dispatch/admin.py:406 dispatch/admin.py:434
+#: dispatch/admin.py:407 dispatch/admin.py:435
 msgid "Child Location"
 msgstr ""
 
-#: dispatch/admin.py:417 dispatch/admin.py:433
+#: dispatch/admin.py:418 dispatch/admin.py:434
 msgid "Origin Medical Institution"
 msgstr ""
 
-#: dispatch/admin.py:436
+#: dispatch/admin.py:437
 msgid "Logistical Info"
 msgstr ""
 
@@ -379,7 +379,7 @@ msgid "Pacient First Name"
 msgstr ""
 
 #: dispatch/models.py:182
-msgid "PacientLast Name"
+msgid "Pacient Last Name"
 msgstr ""
 
 #: dispatch/models.py:183
@@ -722,39 +722,39 @@ msgstr ""
 msgid "Email templates"
 msgstr ""
 
-#: oncoped_site/settings/base.py:29
+#: oncoped_site/settings/base.py:32
 msgid "Pedriatic Oncology Dispatcher"
 msgstr ""
 
-#: oncoped_site/settings/base.py:30
+#: oncoped_site/settings/base.py:33
 msgid "POD"
 msgstr ""
 
-#: oncoped_site/settings/base.py:143
+#: oncoped_site/settings/base.py:150
 msgid "Romanian"
 msgstr ""
 
-#: oncoped_site/settings/base.py:144
+#: oncoped_site/settings/base.py:151
 msgid "English"
 msgstr ""
 
-#: oncoped_site/settings/base.py:145
+#: oncoped_site/settings/base.py:152
 msgid "Ukrainian"
 msgstr ""
 
-#: oncoped_site/settings/base.py:146
+#: oncoped_site/settings/base.py:153
 msgid "Russian"
 msgstr ""
 
-#: oncoped_site/settings/base.py:305
+#: oncoped_site/settings/base.py:312
 msgid "Home"
 msgstr ""
 
-#: oncoped_site/settings/base.py:307
+#: oncoped_site/settings/base.py:314
 msgid "External Form"
 msgstr ""
 
-#: oncoped_site/settings/base.py:312
+#: oncoped_site/settings/base.py:319
 msgid "A Code4Romania solution. Find Out More"
 msgstr ""
 
@@ -786,7 +786,7 @@ msgstr ""
 msgid "Send request"
 msgstr ""
 
-#: oncoped_site/urls.py:20
+#: oncoped_site/urls.py:21
 msgid "request-form/"
 msgstr ""
 
