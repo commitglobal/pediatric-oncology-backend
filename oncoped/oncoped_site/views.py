@@ -67,7 +67,10 @@ def send_email(template, lang, context, subject, to):
     :param to: Destination email address
     :return: Message send result
     """
-    tpl = EmailTemplate.objects.get(template=template, lang=lang)
+    try:
+        tpl = EmailTemplate.objects.get(template=template, lang=lang)
+    except EmailTemplate.DoesNotExist:
+        return
 
     text_content = Template(tpl.text_content).render(context)
     msg = EmailMultiAlternatives(
