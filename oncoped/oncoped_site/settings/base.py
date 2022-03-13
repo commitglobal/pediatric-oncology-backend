@@ -249,9 +249,11 @@ CKEDITOR_CONFIGS = {
             ["Source"],
             ["Maximize"],
         ],
+        "height": 400,
+        "width": "100%",
     },
 }
-
+CKEDITOR_BASEPATH = f"{STATIC_URL}ckeditor/ckeditor/"
 
 # django-q https://django-q.readthedocs.io/en/latest/configure.html
 
@@ -445,7 +447,29 @@ NOTIFICATIONS_EMAIL = env("NOTIFICATIONS_EMAIL", default="")
 NOTIFICATIONS_REPLYTO_EMAIL = env("NOTIFICATIONS_REPLYTO_EMAIL", default="")
 NOTIFICATIONS_X_SES_CONFIGURATION_SET_HEADER = env("NOTIFICATIONS_X_SES_CONFIGURATION_SET_HEADER", default="")
 
-CKEDITOR_BASEPATH = f"{STATIC_URL}ckeditor/ckeditor/"
-CKEDITOR_CONFIGS = {
-    "default": {"height": 400, "width": "100%"},
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+        },
+        # "slack": {
+        #     "level": "ERROR",
+        #     "class": "revm_site.handlers.SlackHandler",
+        # },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            # "handlers": ["slack", "console"],
+            "handlers": ["console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
 }
