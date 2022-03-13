@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-13 18:27+0200\n"
+"POT-Creation-Date: 2022-03-13 18:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -702,27 +702,32 @@ msgstr ""
 msgid "What are the medical services the patient needs?"
 msgstr ""
 
-#: oncoped_site/models.py:6
-msgid "Patient Request Form Email"
-msgstr ""
-
-#: oncoped_site/models.py:11
-msgid "Template"
+#: oncoped_site/models.py:7 oncoped_site/templates/form.html:5
+#: oncoped_site/templates/form.html:17 oncoped_site/views.py:45
+msgid "Patient Request Form"
 msgstr ""
 
 #: oncoped_site/models.py:12
-msgid "Text content"
+msgid "Template"
 msgstr ""
 
 #: oncoped_site/models.py:13
+msgid "Text content"
+msgstr ""
+
+#: oncoped_site/models.py:14
 msgid "HTML content"
 msgstr ""
 
-#: oncoped_site/models.py:16
+#: oncoped_site/models.py:15
+msgid "Language"
+msgstr ""
+
+#: oncoped_site/models.py:18
 msgid "Email template"
 msgstr ""
 
-#: oncoped_site/models.py:17
+#: oncoped_site/models.py:19
 msgid "Email templates"
 msgstr ""
 
@@ -770,10 +775,6 @@ msgstr ""
 msgid "Find out more"
 msgstr ""
 
-#: oncoped_site/templates/form.html:5 oncoped_site/templates/form.html:17
-msgid "Patient Request Form"
-msgstr ""
-
 #: oncoped_site/templates/form.html:37 oncoped_site/templates/form.html:43
 msgid "Errors"
 msgstr ""
@@ -786,19 +787,15 @@ msgstr ""
 msgid "request-form/"
 msgstr ""
 
-#: oncoped_site/views.py:22
+#: oncoped_site/views.py:23
 msgid ""
 "Thank you for registering the patient! The form you filled in has reached us."
 msgstr ""
 
-#: oncoped_site/views.py:24
+#: oncoped_site/views.py:25
 msgid ""
 "There was an error submitting your request. Please try again or contact the "
 "site administrator."
-msgstr ""
-
-#: oncoped_site/views.py:43
-msgid "Pediatric Oncology - Patient Request Form"
 msgstr ""
 
 #: templates/app_account/user_offers.html:14

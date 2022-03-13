@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-13 18:27+0200\n"
+"POT-Creation-Date: 2022-03-13 18:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -448,15 +448,15 @@ msgstr "Полная диагностика"
 
 #: dispatch/models.py:235
 msgid "Complete Diagnostic"
-msgstr "Опишите медицинскую проблему ребенка"
+msgstr "Полная диагностика"
 
 #: dispatch/models.py:236
 msgid "Date Diagnosed"
-msgstr ""
+msgstr "Дата диагностики"
 
 #: dispatch/models.py:238
 msgid "Diagnosing Institution Name"
-msgstr ""
+msgstr "Диагностика имени учреждения"
 
 #: dispatch/models.py:241
 msgid "General Problem Description"
@@ -706,27 +706,32 @@ msgstr ""
 msgid "What are the medical services the patient needs?"
 msgstr "В каких медицинских услугах нуждается пациент?"
 
-#: oncoped_site/models.py:6
-msgid "Patient Request Form Email"
-msgstr ""
+#: oncoped_site/models.py:7 oncoped_site/templates/form.html:5
+#: oncoped_site/templates/form.html:17 oncoped_site/views.py:45
+msgid "Patient Request Form"
+msgstr "Регистрационная форма пациента"
 
-#: oncoped_site/models.py:11
+#: oncoped_site/models.py:12
 msgid "Template"
 msgstr ""
 
-#: oncoped_site/models.py:12
+#: oncoped_site/models.py:13
 msgid "Text content"
 msgstr ""
 
-#: oncoped_site/models.py:13
+#: oncoped_site/models.py:14
 msgid "HTML content"
 msgstr ""
 
-#: oncoped_site/models.py:16
+#: oncoped_site/models.py:15
+msgid "Language"
+msgstr ""
+
+#: oncoped_site/models.py:18
 msgid "Email template"
 msgstr ""
 
-#: oncoped_site/models.py:17
+#: oncoped_site/models.py:19
 msgid "Email templates"
 msgstr ""
 
@@ -774,13 +779,9 @@ msgstr ""
 msgid "Find out more"
 msgstr ""
 
-#: oncoped_site/templates/form.html:5 oncoped_site/templates/form.html:17
-msgid "Patient Request Form"
-msgstr "Регистрационная форма пациента"
-
 #: oncoped_site/templates/form.html:37 oncoped_site/templates/form.html:43
 msgid "Errors"
-msgstr ""
+msgstr "ошибки"
 
 #: oncoped_site/templates/form.html:49
 msgid "Send request"
@@ -788,24 +789,20 @@ msgstr "Отправить запрос"
 
 #: oncoped_site/urls.py:21
 msgid "request-form/"
-msgstr ""
+msgstr "запрос-пациента/"
 
-#: oncoped_site/views.py:22
+#: oncoped_site/views.py:23
 msgid ""
 "Thank you for registering the patient! The form you filled in has reached us."
 msgstr "Спасибо за регистрацию пациента! Заполненная вами форма дошла до нас"
 
-#: oncoped_site/views.py:24
+#: oncoped_site/views.py:25
 msgid ""
 "There was an error submitting your request. Please try again or contact the "
 "site administrator."
 msgstr ""
 "При отправке вашего запроса произошла ошибка. Пожалуйста, попробуйте еще раз "
 "или обратитесь к администратору сайта"
-
-#: oncoped_site/views.py:43
-msgid "Pediatric Oncology - Patient Request Form"
-msgstr "Регистрационная форма пациента"
 
 #: templates/app_account/user_offers.html:14
 #: templates/app_account/user_offers.html:22
@@ -845,3 +842,6 @@ msgstr ""
 #: templates/app_account/user_offers.html:59
 msgid "No, take me back"
 msgstr ""
+
+#~ msgid "Pediatric Oncology - Patient Request Form"
+#~ msgstr "Регистрационная форма пациента"
