@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-13 17:36+0200\n"
+"POT-Creation-Date: 2022-03-13 19:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -206,15 +206,15 @@ msgstr ""
 
 #: dispatch/models.py:13
 msgid "Male"
-msgstr ""
+msgstr "Мужской"
 
 #: dispatch/models.py:14
 msgid "Female"
-msgstr ""
+msgstr "Женский"
 
 #: dispatch/models.py:15
 msgid "Other / Unspecified"
-msgstr ""
+msgstr "Другое / Не указано"
 
 #: dispatch/models.py:18
 msgid "Solid"
@@ -226,55 +226,55 @@ msgstr ""
 
 #: dispatch/models.py:21
 msgid "Chemotherapy"
-msgstr ""
+msgstr "Химиотерапия"
 
 #: dispatch/models.py:22
 msgid "Surgical"
-msgstr ""
+msgstr "Операция"
 
 #: dispatch/models.py:23
 msgid "Palliative"
-msgstr ""
+msgstr "Паллиативный уход"
 
 #: dispatch/models.py:24
 msgid "Monitoring after Treatment"
-msgstr ""
+msgstr "Наблюдение после лечения"
 
 #: dispatch/models.py:25
 msgid "Diagnostic Investigation"
-msgstr ""
+msgstr "Диагностическое обследование"
 
 #: dispatch/models.py:26
 msgid "Supportive Treatment"
-msgstr ""
+msgstr "Поддерживающая терапия"
 
 #: dispatch/models.py:27
 msgid "Radiotherapy"
-msgstr ""
+msgstr "Радиотерапия"
 
 #: dispatch/models.py:28
 msgid "Transplant Waitlist"
-msgstr ""
+msgstr "В ожидании пересадки"
 
 #: dispatch/models.py:29
 msgid "Other"
-msgstr ""
+msgstr "Другой"
 
 #: dispatch/models.py:33
 msgid "Medical Institution"
-msgstr ""
+msgstr "Медицинское учреждение"
 
 #: dispatch/models.py:34
 msgid "Non-Governmental Organization"
-msgstr ""
+msgstr "Некоммерческая организация"
 
 #: dispatch/models.py:35
 msgid "Person"
-msgstr ""
+msgstr "Физическое лицо"
 
 #: dispatch/models.py:36
 msgid "Company"
-msgstr ""
+msgstr "Компания"
 
 #: dispatch/models.py:40
 msgid "National"
@@ -314,11 +314,11 @@ msgstr ""
 
 #: dispatch/models.py:109
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: dispatch/models.py:110
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: dispatch/models.py:118 dispatch/models.py:246
 msgid "Tumor Type"
@@ -378,59 +378,61 @@ msgstr ""
 
 #: dispatch/models.py:181
 msgid "Pacient First Name"
-msgstr ""
+msgstr "Имя пациента"
 
 #: dispatch/models.py:182
-msgid "PacientLast Name"
-msgstr ""
+msgid "Pacient Last Name"
+msgstr "Фамилия пациента"
 
 #: dispatch/models.py:183
 msgid "Birth Date"
-msgstr ""
+msgstr "Дата рождения"
 
 #: dispatch/models.py:184
 msgid "Sex"
-msgstr ""
+msgstr "Пол"
 
 #: dispatch/models.py:186
 msgid "Birth Place"
-msgstr ""
+msgstr "Место рождения"
 
 #: dispatch/models.py:186
 msgid "Birth Place: City, Country"
-msgstr ""
+msgstr "Место Рождения: Город, Страна"
 
 #: dispatch/models.py:191
 msgid "Requester Category"
-msgstr ""
+msgstr "Категория запрашивающего"
 
 #: dispatch/models.py:198
 msgid "Organization Name"
-msgstr ""
+msgstr "Название организации"
 
 #: dispatch/models.py:201
 msgid "Fill in only if requester is not a Person"
 msgstr ""
+"Заполняется только в том случае, если запрашивающая сторона не является "
+"Физическим лицом"
 
 #: dispatch/models.py:204
 msgid "Requester First Name"
-msgstr ""
+msgstr "Имя запрашивающего"
 
 #: dispatch/models.py:209
 msgid "Requester Last Name"
-msgstr ""
+msgstr "Фамилия запрашивающего"
 
 #: dispatch/models.py:214
 msgid "Requester Phone Number"
-msgstr ""
+msgstr "Номер телефона запрашивающего"
 
 #: dispatch/models.py:216 dispatch/models.py:443
 msgid "Please include country prefix e.g. +40723000123"
-msgstr ""
+msgstr "Пожалуйста, укажите префикс страны например +40723000123"
 
 #: dispatch/models.py:220
 msgid "Requester Email"
-msgstr ""
+msgstr "Электронная почта запрашивающего"
 
 #: dispatch/models.py:224
 msgid "Translator Contact"
@@ -442,23 +444,27 @@ msgstr ""
 
 #: dispatch/models.py:233
 msgid "Complete Diagnostic Known"
-msgstr ""
+msgstr "Полная диагностика"
 
 #: dispatch/models.py:235
 msgid "Complete Diagnostic"
-msgstr ""
+msgstr "Полная диагностика"
 
 #: dispatch/models.py:236
 msgid "Date Diagnosed"
-msgstr ""
+msgstr "Дата диагностики"
 
 #: dispatch/models.py:238
 msgid "Diagnosing Institution Name"
-msgstr ""
+msgstr "Диагностика имени учреждения"
 
 #: dispatch/models.py:241
 msgid "General Problem Description"
-msgstr ""
+msgstr "Общее описание проблемы"
+
+#: dispatch/models.py:242
+msgid "Describe the Child's medical issue"
+msgstr "Опишите медицинскую проблему ребенка"
 
 #: dispatch/models.py:245
 msgid "Medical Documents Checked"
@@ -470,7 +476,7 @@ msgstr ""
 
 #: dispatch/models.py:248
 msgid "Other Therapy Needs"
-msgstr ""
+msgstr "Другие медицинские потребности"
 
 #: dispatch/models.py:249
 msgid "Current Clinical Status"
@@ -478,11 +484,11 @@ msgstr ""
 
 #: dispatch/models.py:252
 msgid "Child Current Address"
-msgstr ""
+msgstr "Текущий адрес ребенка"
 
 #: dispatch/models.py:253
 msgid "Child Current City"
-msgstr ""
+msgstr "Текущий город ребенка"
 
 #: dispatch/models.py:254
 msgid "Child Current County"
@@ -490,7 +496,7 @@ msgstr ""
 
 #: dispatch/models.py:255
 msgid "Child Current Country"
-msgstr ""
+msgstr "Текущая страна ребенка"
 
 #: dispatch/models.py:258
 msgid "Institution Name"
@@ -524,7 +530,7 @@ msgstr ""
 
 #: dispatch/models.py:290
 msgid "There is already a Pacient Request with this name, birth date and age."
-msgstr ""
+msgstr "Запрос пациента с таким именем, датой рождения и возрастом уже есть."
 
 #: dispatch/models.py:293
 msgid "Patient Request"
@@ -698,70 +704,71 @@ msgstr ""
 
 #: oncoped_site/forms.py:56
 msgid "What are the medical services the patient needs?"
-msgstr ""
+msgstr "В каких медицинских услугах нуждается пациент?"
 
-#: oncoped_site/models.py:6
-msgid "Patient Request Form Email"
-msgstr ""
+#: oncoped_site/models.py:7 oncoped_site/templates/form.html:5
+#: oncoped_site/templates/form.html:17 oncoped_site/views.py:45
+msgid "Patient Request Form"
+msgstr "Регистрационная форма пациента"
 
-#: oncoped_site/models.py:11
+#: oncoped_site/models.py:12
 msgid "Template"
 msgstr ""
 
-#: oncoped_site/models.py:12
+#: oncoped_site/models.py:13
 msgid "Text content"
 msgstr ""
 
-#: oncoped_site/models.py:13
+#: oncoped_site/models.py:14
 msgid "HTML content"
 msgstr ""
 
-#: oncoped_site/models.py:16
+#: oncoped_site/models.py:15
+msgid "Language"
+msgstr ""
+
+#: oncoped_site/models.py:18
 msgid "Email template"
 msgstr ""
 
-#: oncoped_site/models.py:17
+#: oncoped_site/models.py:19
 msgid "Email templates"
 msgstr ""
 
-#: oncoped_site/settings/base.py:29
+#: oncoped_site/settings/base.py:32
 msgid "Pedriatic Oncology Dispatcher"
 msgstr ""
 
-#: oncoped_site/settings/base.py:30
+#: oncoped_site/settings/base.py:33
 msgid "POD"
 msgstr ""
 
-#: oncoped_site/settings/base.py:143
+#: oncoped_site/settings/base.py:150
 msgid "Romanian"
 msgstr ""
 
-#: oncoped_site/settings/base.py:144
+#: oncoped_site/settings/base.py:151
 msgid "English"
 msgstr ""
 
-#: oncoped_site/settings/base.py:145
+#: oncoped_site/settings/base.py:152
 msgid "Ukrainian"
 msgstr ""
 
-#: oncoped_site/settings/base.py:146
+#: oncoped_site/settings/base.py:153
 msgid "Russian"
 msgstr "Русский"
 
-#: oncoped_site/settings/base.py:305
+#: oncoped_site/settings/base.py:312
 msgid "Home"
 msgstr ""
 
-#: oncoped_site/settings/base.py:307
+#: oncoped_site/settings/base.py:314
 msgid "External Form"
 msgstr ""
 
-#: oncoped_site/settings/base.py:312
+#: oncoped_site/settings/base.py:319
 msgid "A Code4Romania solution. Find Out More"
-msgstr ""
-
-#: oncoped_site/templates/base.html:8
-msgid "Pediatric Oncology"
 msgstr ""
 
 #: oncoped_site/templates/base.html:26 oncoped_site/templates/base.html:40
@@ -772,36 +779,30 @@ msgstr ""
 msgid "Find out more"
 msgstr ""
 
-#: oncoped_site/templates/form.html:5 oncoped_site/views.py:43
-msgid "Pediatric Oncology - Patient Request Form"
-msgstr ""
-
-#: oncoped_site/templates/form.html:17
-msgid "Patient Request Form"
-msgstr ""
-
 #: oncoped_site/templates/form.html:37 oncoped_site/templates/form.html:43
 msgid "Errors"
-msgstr ""
+msgstr "ошибки"
 
 #: oncoped_site/templates/form.html:49
 msgid "Send request"
-msgstr ""
+msgstr "Отправить запрос"
 
-#: oncoped_site/urls.py:20
+#: oncoped_site/urls.py:21
 msgid "request-form/"
-msgstr ""
+msgstr "запрос-пациента/"
 
-#: oncoped_site/views.py:22
+#: oncoped_site/views.py:23
 msgid ""
 "Thank you for registering the patient! The form you filled in has reached us."
-msgstr ""
+msgstr "Спасибо за регистрацию пациента! Заполненная вами форма дошла до нас"
 
-#: oncoped_site/views.py:24
+#: oncoped_site/views.py:25
 msgid ""
 "There was an error submitting your request. Please try again or contact the "
 "site administrator."
 msgstr ""
+"При отправке вашего запроса произошла ошибка. Пожалуйста, попробуйте еще раз "
+"или обратитесь к администратору сайта"
 
 #: templates/app_account/user_offers.html:14
 #: templates/app_account/user_offers.html:22
@@ -841,3 +842,6 @@ msgstr ""
 #: templates/app_account/user_offers.html:59
 msgid "No, take me back"
 msgstr ""
+
+#~ msgid "Pediatric Oncology - Patient Request Form"
+#~ msgstr "Регистрационная форма пациента"

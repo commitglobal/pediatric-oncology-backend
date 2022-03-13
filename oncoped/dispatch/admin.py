@@ -180,7 +180,6 @@ class TherapyServicesFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value():
-            raise Exception("Something")
             return queryset.filter(therapy_services__icontains=self.value())
         return queryset
 

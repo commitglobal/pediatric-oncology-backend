@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-13 17:36+0200\n"
+"POT-Creation-Date: 2022-03-13 19:14+0200\n"
 "PO-Revision-Date: 2022-03-11 20:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -379,7 +379,7 @@ msgid "Pacient First Name"
 msgstr "Prenume pacient"
 
 #: dispatch/models.py:182
-msgid "PacientLast Name"
+msgid "Pacient Last Name"
 msgstr "Nume Pacient"
 
 #: dispatch/models.py:183
@@ -457,6 +457,10 @@ msgstr "Numele Instituției care a diagnosticat"
 #: dispatch/models.py:241
 msgid "General Problem Description"
 msgstr "Descrierea problemei"
+
+#: dispatch/models.py:242
+msgid "Describe the Child's medical issue"
+msgstr "Descrie problema medicală a copilului"
 
 #: dispatch/models.py:245
 msgid "Medical Documents Checked"
@@ -702,69 +706,70 @@ msgstr "Site"
 msgid "What are the medical services the patient needs?"
 msgstr "Care sunt serviciile medicale de care are nevoie pacientului?"
 
-#: oncoped_site/models.py:6
-msgid "Patient Request Form Email"
-msgstr "Email Formular Înregistrare Pacient"
+#: oncoped_site/models.py:7 oncoped_site/templates/form.html:5
+#: oncoped_site/templates/form.html:17 oncoped_site/views.py:45
+msgid "Patient Request Form"
+msgstr "Formular Înregistrare Pacient"
 
-#: oncoped_site/models.py:11
+#: oncoped_site/models.py:12
 msgid "Template"
 msgstr "Șablon"
 
-#: oncoped_site/models.py:12
+#: oncoped_site/models.py:13
 msgid "Text content"
 msgstr "Conținut text"
 
-#: oncoped_site/models.py:13
+#: oncoped_site/models.py:14
 msgid "HTML content"
 msgstr "Conținut HTML"
 
-#: oncoped_site/models.py:16
+#: oncoped_site/models.py:15
+msgid "Language"
+msgstr ""
+
+#: oncoped_site/models.py:18
 msgid "Email template"
 msgstr "Șablon email"
 
-#: oncoped_site/models.py:17
+#: oncoped_site/models.py:19
 msgid "Email templates"
 msgstr "Șabloane email"
 
-#: oncoped_site/settings/base.py:29
+#: oncoped_site/settings/base.py:32
 msgid "Pedriatic Oncology Dispatcher"
 msgstr "Dispecerat Oncologie Pediatrică"
 
-#: oncoped_site/settings/base.py:30
+#: oncoped_site/settings/base.py:33
 msgid "POD"
 msgstr "DOP"
 
-#: oncoped_site/settings/base.py:143
+#: oncoped_site/settings/base.py:150
 msgid "Romanian"
 msgstr "Română"
 
-#: oncoped_site/settings/base.py:144
+#: oncoped_site/settings/base.py:151
 msgid "English"
 msgstr "Engleză"
 
-#: oncoped_site/settings/base.py:145
+#: oncoped_site/settings/base.py:152
 msgid "Ukrainian"
 msgstr "Ucraineană"
 
-#: oncoped_site/settings/base.py:146
+#: oncoped_site/settings/base.py:153
 msgid "Russian"
 msgstr "Rusă"
 
-#: oncoped_site/settings/base.py:305
+#: oncoped_site/settings/base.py:312
 msgid "Home"
 msgstr "Acasă"
 
-#: oncoped_site/settings/base.py:307
+#: oncoped_site/settings/base.py:314
 msgid "External Form"
 msgstr "Formular Extern"
 
-#: oncoped_site/settings/base.py:312
+#: oncoped_site/settings/base.py:319
 msgid "A Code4Romania solution. Find Out More"
 msgstr "O soluție Code4Romania. Află mai multe"
-
-#: oncoped_site/templates/base.html:8
-msgid "Pediatric Oncology"
-msgstr "Oncologie Pediatrică"
 
 #: oncoped_site/templates/base.html:26 oncoped_site/templates/base.html:40
 msgid "A Code for Romania project."
@@ -774,14 +779,6 @@ msgstr "O soluție Code for Romania."
 msgid "Find out more"
 msgstr "Află mai multe"
 
-#: oncoped_site/templates/form.html:5 oncoped_site/views.py:43
-msgid "Pediatric Oncology - Patient Request Form"
-msgstr "Oncologie Pediatrică - Formular Înregistrare Pacient"
-
-#: oncoped_site/templates/form.html:17
-msgid "Patient Request Form"
-msgstr "Formular Înregistrare Pacient"
-
 #: oncoped_site/templates/form.html:37 oncoped_site/templates/form.html:43
 msgid "Errors"
 msgstr "Erori"
@@ -790,18 +787,18 @@ msgstr "Erori"
 msgid "Send request"
 msgstr "Trimite cerere"
 
-#: oncoped_site/urls.py:20
+#: oncoped_site/urls.py:21
 msgid "request-form/"
 msgstr "cerere-pacient/"
 
-#: oncoped_site/views.py:22
+#: oncoped_site/views.py:23
 msgid ""
 "Thank you for registering the patient! The form you filled in has reached us."
 msgstr ""
 "Mulțumim pentru înregistrarea pacientului! Formularul completat de tine a "
 "ajuns la noi."
 
-#: oncoped_site/views.py:24
+#: oncoped_site/views.py:25
 msgid ""
 "There was an error submitting your request. Please try again or contact the "
 "site administrator."
@@ -855,6 +852,15 @@ msgstr "Da, sunt sigur"
 #: templates/app_account/user_offers.html:59
 msgid "No, take me back"
 msgstr "Nu, du-mă înapoi"
+
+#~ msgid "Patient Request Form Email"
+#~ msgstr "Email Formular Înregistrare Pacient"
+
+#~ msgid "Pediatric Oncology - Patient Request Form"
+#~ msgstr "Oncologie Pediatrică - Formular Înregistrare Pacient"
+
+#~ msgid "Pediatric Oncology"
+#~ msgstr "Oncologie Pediatrică"
 
 #, fuzzy
 #~| msgid "External Transport Representantive Details"

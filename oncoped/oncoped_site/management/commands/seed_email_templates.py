@@ -3,8 +3,7 @@ from django.core.management.base import BaseCommand
 
 from oncoped_site.models import EmailTemplate
 
-PATIENT_REQUEST_TEXT = """
-Hi,
+TEMPLATE_EN = """Hi,
 
 The request for patient "{{ pr.first_name }} {{ pr.last_name }}" was received with the following data:
 
@@ -39,10 +38,9 @@ Child Current Country: {{ pr.child_current_country }}
 
 Thank you!
 Ukraine Child Cancer Help Romania
+"""
 
---- RO ---
-
-Buna,
+TEMPLATE_RO = """Buna,
 
 Cererea de inscriere a pacientului "{{ pr.first_name }} {{ pr.last_name }}" a fost primita cu urmatoarele date:
 
@@ -91,8 +89,9 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        template, created = EmailTemplate.objects.get_or_create(template="patient_request")
+        for lang in ["en", "ro", "uk", "ru"]:
+            template, created = EmailTemplate.objects.get_or_create(template="patient_request", lang=lang)
 
-        if created or options["replace"]:
-            template.text_content = PATIENT_REQUEST_TEXT
-            template.save()
+            if created or options["replace"]:
+                template.text_content = TEMPLATE_RO if lang == "ro" else TEMPLATE_EN
+                template.save()

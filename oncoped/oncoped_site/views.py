@@ -6,6 +6,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template import Context, Template
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import get_language
 from django.views.generic import CreateView
 
 from dispatch.models import THERAPY_NEEDS_CHOICES, TUMOR_TYPE_CHOICES, PatientRequest
@@ -39,15 +40,24 @@ class PatientRegisterRequestCreateView(SuccessMessageMixin, CreateView):
         else:
             send_email(
                 template="patient_request",
+                lang=get_language() or "en",
                 context=Context({"pr": patient_request}),
-                subject=_("Pediatric Oncology - Patient Request Form"),
-                to=[settings.NOTIFICATIONS_EMAIL, cleaned_data["requester_email"]],
+                subject="UCCH - " + _("Patient Request Form"),
+                to=cleaned_data["requester_email"],
             )
+            if settings.NOTIFICATIONS_EMAIL:
+                send_email(
+                    template="patient_request",
+                    lang="ro",
+                    context=Context({"pr": patient_request}),
+                    subject="UCCH - Formular Înregistrare Pacient",
+                    to=settings.NOTIFICATIONS_EMAIL,
+                )
 
         return self.success_message
 
 
-def send_email(template, context, subject, to):
+def send_email(template, lang, context, subject, to):
     """
     Sends a single email
 
@@ -57,14 +67,17 @@ def send_email(template, context, subject, to):
     :param to: Destination email address
     :return: Message send result
     """
-    tpl = EmailTemplate.objects.get(template=template)
+    try:
+        tpl = EmailTemplate.objects.get(template=template, lang=lang)
+    except EmailTemplate.DoesNotExist:
+        return
 
     text_content = Template(tpl.text_content).render(context)
     msg = EmailMultiAlternatives(
         subject,
         text_content,
         settings.NOTIFICATIONS_REPLYTO_EMAIL,
-        to,
+        [to],
         headers={"X-SES-CONFIGURATION-SET": settings.NOTIFICATIONS_X_SES_CONFIGURATION_SET_HEADER},
     )
 

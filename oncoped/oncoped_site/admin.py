@@ -6,6 +6,9 @@ from .models import EmailTemplate
 
 @admin.register(EmailTemplate)
 class AdminEmailTemplate(admin.ModelAdmin):
+    list_display = ["template", "lang"]
+    readonly_fields = ["template", "lang"]
+
     def has_module_permission(self, request, obj=None):
         if request.user.is_superuser:
             return True
