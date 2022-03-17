@@ -11,6 +11,12 @@ django-multiselectfield
 django-jazzmin
 django-import-export
 
+# dashboard charts
+django-plotly-dash
+dpd_components
+# dash_bootstrap_components
+dpd-static-support
+
 # scheduler
 django-q
 django-q-email
