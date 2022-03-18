@@ -108,7 +108,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "dispatch.admin.admin_index_custom_context",
             ]
         },
     }
@@ -193,7 +192,7 @@ PLOTLY_COMPONENTS = [
     # static support if serving local assets
     "dpd_static_support",
     # Other components, as needed
-    # "dash_bootstrap_components",
+    "dash_bootstrap_components",
 ]
 
 # MEMCACHED_HOST = env("MEMCACHED_HOST")

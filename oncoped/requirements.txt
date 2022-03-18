@@ -19,7 +19,11 @@ charset-normalizer==2.0.12
 click==8.0.4
     # via flask
 dash==1.20.0
-    # via django-plotly-dash
+    # via
+    #   dash-bootstrap-components
+    #   django-plotly-dash
+dash-bootstrap-components==0.13.0
+    # via -r requirements.in
 dash-core-components==1.16.0
     # via
     #   dash
