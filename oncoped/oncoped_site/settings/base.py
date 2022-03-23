@@ -31,7 +31,7 @@ env = environ.Env(
     AWS_ACCESS_KEY_ID=(str, ""),
     AWS_SECRET_ACCESS_KEY=(str, ""),
     AWS_STORAGE_BUCKET_NAME=(str, ""),
-    AWS_SUBDOMAIN=(str, "s3.amazonaws.com"),
+    AWS_S3_REGION_NAME=(str, "eu-west-1"),
 )
 
 ADMIN_TITLE = _("Pedriatic Oncology Dispatcher")
@@ -172,6 +172,7 @@ if USE_S3:
     AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
     AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME")
     AWS_DEFAULT_ACL = "private"
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     AWS_S3_FILE_OVERWRITE = False
