@@ -22,6 +22,13 @@ blessed==1.19.1
     # via
     #   -r requirements.txt
     #   django-q
+boto3==1.21.24
+    # via -r requirements.txt
+botocore==1.24.24
+    # via
+    #   -r requirements.txt
+    #   boto3
+    #   s3transfer
 certifi==2021.10.8
     # via
     #   -r requirements.txt
@@ -119,6 +126,11 @@ isort==5.10.1
     # via -r requirements-dev.in
 jedi==0.18.1
     # via ipython
+jmespath==1.0.0
+    # via
+    #   -r requirements.txt
+    #   boto3
+    #   botocore
 markuppy==1.14
     # via
     #   -r requirements.txt
@@ -175,6 +187,7 @@ python-dateutil==2.8.2
     # via
     #   -r requirements.txt
     #   arrow
+    #   botocore
     #   pandas
 pytz==2021.3
     # via
@@ -191,6 +204,10 @@ redis==3.5.3
     #   django-q
 requests==2.27.1
     # via -r requirements.txt
+s3transfer==0.5.2
+    # via
+    #   -r requirements.txt
+    #   boto3
 six==1.16.0
     # via
     #   -r requirements.txt
@@ -222,6 +239,7 @@ typing-extensions==4.1.1
 urllib3==1.26.8
     # via
     #   -r requirements.txt
+    #   botocore
     #   requests
 wcwidth==0.2.5
     # via

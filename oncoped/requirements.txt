@@ -10,6 +10,12 @@ asgiref==3.5.0
     # via django
 blessed==1.19.1
     # via django-q
+boto3==1.21.24
+    # via -r requirements.in
+botocore==1.24.24
+    # via
+    #   boto3
+    #   s3transfer
 certifi==2021.10.8
     # via requests
 charset-normalizer==2.0.12
@@ -67,6 +73,10 @@ gunicorn==20.1.0
     # via -r requirements.in
 idna==3.3
     # via requests
+jmespath==1.0.0
+    # via
+    #   boto3
+    #   botocore
 markuppy==1.14
     # via tablib
 numpy==1.22.3
@@ -82,6 +92,7 @@ psycopg2==2.9.3
 python-dateutil==2.8.2
     # via
     #   arrow
+    #   botocore
     #   pandas
 pytz==2021.3
     # via
@@ -93,6 +104,8 @@ redis==3.5.3
     # via django-q
 requests==2.27.1
     # via -r requirements.in
+s3transfer==0.5.2
+    # via boto3
 six==1.16.0
     # via
     #   blessed
@@ -104,7 +117,9 @@ supervisor==4.2.4
 tablib[html,ods,xls,xlsx,yaml]==3.2.0
     # via django-import-export
 urllib3==1.26.8
-    # via requests
+    # via
+    #   botocore
+    #   requests
 wcwidth==0.2.5
     # via blessed
 whitenoise==6.0.0

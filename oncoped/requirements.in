@@ -2,6 +2,7 @@
 django>=3.2,<3.3
 django-environ
 django-storages
+boto3
 django-crispy-forms
 django-recaptcha
 django-ckeditor
