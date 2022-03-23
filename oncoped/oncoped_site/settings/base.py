@@ -177,6 +177,7 @@ if USE_S3:
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     AWS_S3_FILE_OVERWRITE = False
     AWS_S3_SIGNATURE_VERSION = "s3v4"
+    AWS_S3_ADDRESSING_STYLE = "virtual"
     AWS_QUERYSTRING_EXPIRE = 120
     AWS_LOCATION = "media"
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
