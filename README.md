@@ -6,7 +6,7 @@
 
 Insert bullets description of the project if available.
 
-[See the project live][link-production]
+[See the project live][https://app.ukrainechildcancerhelp.ro/]
 
 Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.
 
