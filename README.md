@@ -4,7 +4,7 @@
 [![GitHub last commit][ico-last-commit]][link-last-commit]
 [![License: MPL 2.0][ico-license]][link-license]
 
-Insert bullets description of the project if available.
+The solution enables access to healthcare service for children withcancer, providing them with timely support in case they are taking refuge fromthe war in Ukraine. The solution is agnostic of geography and can beredeployed for any need of case management for the chronically ill who needto request assistance. The solution can be adapted with custom forms andthe content on the public interface can be easily changed with no need fortechnical support. This type of digital solution is essential in the case ofdisplaced populations as it allows them to request aid fast and easy for theirmedical needs and first responders can get a clear view of what availabilityexists to support them and provide them with. The platform is multilingual andallows for multiple interfaces for as many languages as needed with no needfor extra development.
 
 [See the project live](https://app.ukrainechildcancerhelp.ro/)
 
@@ -14,7 +14,7 @@ Give a short introduction of your project. Let this section explain the objectiv
 
 ## Contributing
 
-This project is built by amazing volunteers and you can be one of them! Here's a list of ways in [which you can contribute to this project][link-contributing]. If you want to make any change to this repository, please **make a fork first**.
+This project is built by amazing civic technologists and great volunteers and you can be one of them! Here's a list of ways in [which you can contribute to this project][link-contributing]. If you want to make any change to this repository, please **make a fork first**.
 
 Help us out by testing this project in the [staging environment](https://oncologie-pediatrica.heroesof.tech/). If you see something that doesn't quite work the way you expect it to, open an Issue. Make sure to describe what you _expect to happen_ and _what is actually happening_ in detail.
 
