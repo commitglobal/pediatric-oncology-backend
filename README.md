@@ -8,8 +8,6 @@ The solution enables access to healthcare service for children withcancer, provi
 
 [See the project live](https://app.ukrainechildcancerhelp.ro/)
 
-Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.
-
 [Contributing](#contributing) | [Built with](#built-with) | [Repos and projects](#repos-and-projects) | [Deployment](#deployment) | [Feedback](#feedback) | [License](#license) | [About Commit Global](#about-commit-global)
 
 ## Contributing
