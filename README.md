@@ -10,7 +10,7 @@ Insert bullets description of the project if available.
 
 Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.
 
-[Contributing](#contributing) | [Built with](#built-with) | [Repos and projects](#repos-and-projects) | [Deployment](#deployment) | [Feedback](#feedback) | [License](#license) | [About Code for Romania](#about-code-for-romania)
+[Contributing](#contributing) | [Built with](#built-with) | [Repos and projects](#repos-and-projects) | [Deployment](#deployment) | [Feedback](#feedback) | [License](#license) | [About Commit Global](#about-commit-global)
 
 ## Contributing
 
@@ -77,18 +77,19 @@ When deploying onto a machine, there is no need to clone the whole project. You 
 * Request a new feature on GitHub.
 * Vote for popular feature requests.
 * File a bug in GitHub Issues.
-* Email us with other feedback contact@code4.ro
+* Email us with other feedback contact@commitglobal.org
 
 ## License
 
 This project is licensed under the MPL 2.0 License - see the [LICENSE](LICENSE) file for details
 
-## About Code for Romania
+## About Commit Global
 
-Started in 2016, Code for Romania is a civic tech NGO, official member of the Code for All network. We have a community of around 2.000 volunteers (developers, ux/ui, communications, data scientists, graphic designers, devops, it security and more) who work pro-bono for developing digital solutions to solve social problems. #techforsocialgood. If you want to learn more details about our projects [visit our site][link-code4] or if you want to talk to one of our staff members, please e-mail us at contact@code4.ro.
+The team behind Commit Global has a robust and celebrated track record in the tech for social good field since 2015. We have built the fastest growing organization in the space, Code for Romania and set it up as a model of good practices on how to design and build technology that helps at scale. Our tools have served governments, UN agencies and large and small CSOs during crisis and peace time. Most recently we have built, deployed and maintained a first of its kind humanitarian ecosystem in support of refugees fleeing from Ukraine, ensuring their safe and uninterrupted access to information, healthcare and services, while equipping NGOs with the tools they need to be more effective.
 
-Last, but not least, we rely on donations to ensure the infrastructure, logistics and management of our community that is widely spread across 11 timezones, coding for social change to make Romania and the world a better place. If you want to support us, [you can do it here][link-donate].
+All throughout our activity we have been one of the champions of cooperation and co-creation in the the civic tech field, constantly investing efforts and resources in working with and supporting the work of similar organizations around the world. As part of these efforts we created, curated and hosted the largest civic tech strategic event in history, the 2018 Code for All Global Summit: a 4 days offline event where hundreds of delegates from all continents exchanged ideas and digital solutions for the benefit of humanity.
 
+Find more details on https://www.commitglobal.org/en
 
 [ico-contributors]: https://img.shields.io/github/contributors/code4romania/war-taskforce-oncologie-pediatrica.svg?style=for-the-badge
 [ico-last-commit]: https://img.shields.io/github/last-commit/code4romania/war-taskforce-oncologie-pediatrica.svg?style=for-the-badge
