@@ -1,4 +1,4 @@
-# Dispecerat Oncologie Pediatrica
+# Pediatric Oncology Case Manager
 
 [![GitHub contributors][ico-contributors]][link-contributors]
 [![GitHub last commit][ico-last-commit]][link-last-commit]
